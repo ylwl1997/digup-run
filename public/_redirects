@@ -1,0 +1,2 @@
+# Soft-200 homepage HTML at /sitemap.xml confuses crawlers; robots already uses sitemap-index.xml
+/sitemap.xml /sitemap-index.xml 301

@@ -8,25 +8,28 @@ import Layout from '../layouts/Layout.astro';
 >
   <main>
     <section class="hero wrap">
-      <span class="badge">Unofficial · Independent coverage</span>
-      <h1>DigUp: search your files by what’s inside them</h1>
-      <p class="lede">
-        DigUp is an open-source, on-device multimodal semantic file search app. Describe a photo, PDF page, recording, or video moment in plain language — it finds matches locally with EmbeddingGemma 2. This site is independent coverage; downloads only from GitHub Releases.
-      </p>
-      <div class="hero-actions">
-        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
-        <a class="cta-secondary" href="/install-mac/">Mac install guide</a>
-      </div>
-      <p class="muted" style="font-size:0.95rem;margin:0 0 1rem;">
-        Mac Homebrew: <code>brew install --cask arahim3/tap/digup</code>
-      </p>
-      <div class="callout">
-        <strong>Not the official DigUp website.</strong> digup.run is independent keyword / how-to coverage. Upstream project: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a> (MIT). We never host DMG or EXE files.
+      <div class="hero-panel">
+        <span class="badge">Unofficial · Independent coverage</span>
+        <h1>DigUp: search your files by what’s inside them</h1>
+        <p class="lede">
+          DigUp is an open-source, on-device multimodal semantic file search app. Describe a photo, PDF page, recording, or video moment in plain language — it finds matches locally with EmbeddingGemma 2. This site is independent coverage; downloads only from GitHub Releases.
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
+          <a class="cta-secondary" href="/install-mac/">Mac install guide</a>
+        </div>
+        <p class="hero-brew">
+          Mac Homebrew: <code>brew install --cask arahim3/tap/digup</code>
+        </p>
+        <div class="callout">
+          <strong>Not the official DigUp website.</strong> digup.run is independent keyword / how-to coverage. Upstream project: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a> (MIT). We never host DMG or EXE files.
+        </div>
       </div>
     </section>
 
-    <section class="wrap" style="margin-top:1.5rem;">
-      <h2>Platforms (verify on GitHub before install)</h2>
+    <section class="wrap" style="margin-top:2rem;">
+      <p class="section-label">Platforms</p>
+      <h2 style="margin-top:0;">Verify on GitHub before install</h2>
       <p class="muted">Numbers checked via GitHub API on 2026-10-15: ~3,716 stars · forks 252 · MIT.</p>
       <div class="platform-grid">
         <div class="platform">
@@ -51,7 +54,8 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <section class="wrap">
-      <h2>Guides on this site</h2>
+      <p class="section-label">Guides</p>
+      <h2 style="margin-top:0;">Guides on this site</h2>
       <div class="cards">
         <a class="card" href="/what-is-digup/">
           <span class="tag">Overview</span>
@@ -97,7 +101,8 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <section class="wrap" style="margin-top:0.5rem;">
-      <h2>Who this site is for</h2>
+      <p class="section-label">Audience</p>
+      <h2 style="margin-top:0;">Who this site is for</h2>
       <ul class="checklist">
         <li>People who searched for <strong>DigUp Mac</strong>, brew install, or Windows/Linux beta setup and want a scannable checklist.</li>
         <li>Anyone comparing DigUp to Spotlight or reading about EmbeddingGemma 2 file search.</li>
