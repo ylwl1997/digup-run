@@ -3,8 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../../lib/site';
 ---
 <Layout
-  title="在 Linux 上安装 DigUp — .deb 与 AppImage 指南"
-  description="在 Ubuntu/Debian/Mint（.deb）或其他发行版（AppImage）安装 DigUp 0.7 测试版。GPU/CPU、Wayland 快捷键与首次索引清单。"
+  title="在 Linux 上安装 Digup Run — .deb 与 AppImage 指南"
+  description="在 Ubuntu/Debian/Mint（.deb）或其他发行版（AppImage）安装 Digup Run 0.7 测试版。GPU/CPU、Wayland 快捷键与首次索引清单。"
   canonicalPath="/install-linux/"
   lang="zh"
   ogImage={DIGUP_UI.code.src}
@@ -12,12 +12,12 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Linux · 测试版</span> · 安装指南</p>
-      <h1>在 Linux 上安装 DigUp</h1>
+      <h1>在 Linux 上安装 Digup Run</h1>
       <p class="lead">DigUp <strong>0.7.0-beta.1</strong> 提供 amd64 <code>.deb</code> 与 AppImage。与 Mac 同一套本机 EmbeddingGemma 2 搜索——标为测试版。二进制仅从 GitHub Releases 获取。</p>
     </header>
     <article class="wide">
       <div class="cta-bar">
-        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/zh/install-mac/">Mac</a>
         <a class="cta-secondary" href="/zh/install-windows/">Windows（测试）</a>
       </div>
@@ -42,10 +42,11 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 
       <h2>用 .deb 安装</h2>
       <ol class="checklist">
-        <li>从 <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a> 下载 <code>DigUp_0.7.0-beta.1_amd64.deb</code>（或更新）。</li>
+        <li>从 <a href={SITE.appReleases} rel="noopener noreferrer">Releases</a> 下载 <code>digup-run_*.deb</code>（或更新）。</li>
         <li>在下载目录安装：</li>
       </ol>
-      <pre><code>sudo apt install ./DigUp_0.7.0-beta.1_amd64.deb</code></pre>
+      <pre><code>sudo apt install ./digup-run_*.deb
+# Exact filename: check ylwl1997/digup-run-app Releases assets</code></pre>
       <ol class="checklist" start="3">
         <li>从应用菜单启动 DigUp；完成模型下载（约 865 MB）与文件夹选择。</li>
         <li>快捷键：<strong>Ctrl+Shift+Space</strong>。</li>
@@ -54,11 +55,11 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 
       <h2>用 AppImage 安装</h2>
       <ol class="checklist">
-        <li>从 Releases 下载 <code>DigUp_*_amd64.AppImage</code>。</li>
+        <li>从 Releases 下载 <code>Digup_Run_*_amd64.AppImage</code>。</li>
         <li>赋予可执行权限并运行：</li>
       </ol>
-      <pre><code>chmod +x DigUp_0.7.0-beta.1_amd64.AppImage
-./DigUp_0.7.0-beta.1_amd64.AppImage</code></pre>
+      <pre><code>chmod +x Digup_Run_*.AppImage
+./Digup_Run_*.AppImage</code></pre>
 
       <h2>Wayland 快捷键</h2>
       <ul class="checklist">
@@ -68,7 +69,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 
       <h2>GPU、日志与测试版注意</h2>
       <p>与 Windows 相同的 GPU/CPU 选择。检查：</p>
-      <pre><code>~/.local/share/com.abdurrahim.DigUp/logs/speed.log</code></pre>
+      <pre><code>~/.local/share/com.ylwl1997.diguprun/logs/speed.log</code></pre>
       <ul class="checklist">
         <li>最后一行应含 <code>"device": "gpu"</code> 或 <code>"cpu"</code>。</li>
         <li><strong>0.7.0-beta.1 尚未有：</strong>截图 OCR 文字；旧 <code>.doc</code>、RAW、SVG 会跳过。</li>
@@ -85,7 +86,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
       </ol>
 
       <div class="cta-bar">
-        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/zh/faq/">常见问题</a>
         <a class="cta-secondary" href="/changelog-notes/" hreflang="en">Changelog（英文）</a>
       </div>

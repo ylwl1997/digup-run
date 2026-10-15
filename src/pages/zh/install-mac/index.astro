@@ -3,8 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../../lib/site';
 ---
 <Layout
-  title="在 Mac 上安装 DigUp（Apple Silicon）— Homebrew 与 DMG"
-  description="Apple Silicon（macOS 14+）安装 DigUp 步骤：Homebrew cask、GitHub Releases DMG、首次约 865 MB 模型、⇧⌘Space 搜索。"
+  title="在 Mac 上安装 Digup Run（Apple Silicon）— Homebrew 与 DMG"
+  description="Apple Silicon（macOS 14+）安装 Digup Run 步骤：Homebrew cask、GitHub Releases DMG、首次约 865 MB 模型、⇧⌘Space 搜索。"
   canonicalPath="/install-mac/"
   lang="zh"
   ogImage={DIGUP_UI.hero.src}
@@ -12,12 +12,12 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Mac · 0.6.1</span> · 安装指南</p>
-      <h1>在 Mac 上安装 DigUp</h1>
-      <p class="lead">需要 Apple Silicon 与 macOS 14 或更高。可用 Homebrew 或 GitHub Releases 的官方 DMG。本页从不托管二进制文件。</p>
+      <h1>在 Mac 上安装 Digup Run</h1>
+      <p class="lead">需要 Apple Silicon 与 macOS 14 或更高。可用 Homebrew 或 GitHub Releases 的Digup Run DMG。本页从不托管二进制文件。</p>
     </header>
     <article class="wide">
       <div class="cta-bar">
-        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/zh/install-windows/">Windows（测试）</a>
         <a class="cta-secondary" href="/zh/install-linux/">Linux（测试）</a>
       </div>
@@ -39,21 +39,11 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
         </tbody>
       </table>
 
-      <h2>方式 A — Homebrew（若已用 brew 推荐）</h2>
+      <h2>从 Digup Run GitHub Releases 下载 DMG</h2>
+      <p class="muted">Homebrew cask 尚未发布；请仅从我们的 Releases 下载 DMG。本站不托管二进制。</p>
       <ol class="checklist">
-        <li>若无 Homebrew，先装 <a href="https://brew.sh/" rel="noopener noreferrer">brew.sh</a>。</li>
-        <li>运行官方 cask 一行命令：</li>
-      </ol>
-      <pre><code>brew install --cask arahim3/tap/digup</code></pre>
-      <ol class="checklist" start="3">
-        <li>从「应用程序」或用 Spotlight 按名打开 DigUp。</li>
-        <li>首次启动允许模型下载，并选择要索引的文件夹。</li>
-      </ol>
-
-      <h2>方式 B — 从 GitHub Releases 下载 DMG</h2>
-      <ol class="checklist">
-        <li>打开 <a href={SITE.upstreamReleases} rel="noopener noreferrer">github.com/ARahim3/DigUp/releases</a>。</li>
-        <li>下载 <code>DigUp-0.6.1.dmg</code>（或以 Releases 页最新 Mac DMG 为准——始终以 Releases 为准，勿信缓存文件名）。</li>
+        <li>打开 <a href={SITE.appReleases} rel="noopener noreferrer">github.com/ylwl1997/digup-run-app/releases</a>。</li>
+        <li>下载 <code>DigupRun-*.dmg</code>（或以 Releases 页最新 Mac DMG 为准——始终以 Releases 为准，勿信缓存文件名）。</li>
         <li>打开 DMG，将 DigUp 拖入「应用程序」。</li>
         <li>启动 DigUp，完成首次模型下载与文件夹选择。</li>
       </ol>
@@ -72,7 +62,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
         <li><strong>网络挡住模型下载</strong> — 设置 → Storage → <strong>Use Files…</strong>，指向你在别处下载的两个模型文件（0.6.1 起）。DigUp 使用前会校验。</li>
         <li><strong>输入法 / 组合输入</strong> — 0.6.1 修复了韩文/日文/中文组字破坏搜索框的问题。</li>
         <li><strong>带重音 / CJK 的文件夹名</strong> — 0.6.1 修复了某一路径含非 ASCII 名时整盘索引停止。</li>
-        <li><strong>更新</strong> — DigUp → Check for Updates…，或从 Releases / <code>brew upgrade</code> 重装。</li>
+        <li><strong>更新</strong> — Digup Run → Check for Updates…，或从 Releases / <code>brew upgrade</code> 重装。</li>
       </ul>
       <p>英文发行说明摘要：<a href="/changelog-notes/" hreflang="en">Changelog notes（英文）</a>。请始终对照官方 release notes。</p>
 
@@ -88,7 +78,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
       </table>
 
       <div class="cta-bar">
-        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/zh/faq/">常见问题</a>
       </div>
       <section class="related">
