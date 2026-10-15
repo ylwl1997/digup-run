@@ -9,127 +9,197 @@ import { DIGUP_UI, SITE } from '../../lib/site';
   lang="zh"
   ogImage={DIGUP_UI.hero.src}
 >
-  <main>
-    <section class="hero wrap">
-      <div class="hero-split">
-        <div class="hero-copy">
-          <span class="badge">Digup Run · digup.run</span>
-          <h1>用自然语言描述，在本机把文件「挖」出来。</h1>
-          <ul class="job-steps" aria-label="Digup Run 怎么用">
-            <li><span class="n">1</span> 描述</li>
-            <li class="arrow" aria-hidden="true">→</li>
-            <li><span class="n">2</span> 命中内容</li>
-            <li class="arrow" aria-hidden="true">→</li>
-            <li><span class="n">3</span> 打开到页 / 时刻 / 行</li>
-          </ul>
-          <p class="lede">
-            <strong>Digup Run</strong> 是本地优先的多模态语义文件搜索桌面应用。
-            自然语言找的是照片、PDF、文档、录音、视频（以及可选代码）里的<strong>内容</strong>——只索引你选的文件夹。
-            基于 DigUp（MIT）衍生；<strong>非</strong>官方 DigUp 产品。
-          </p>
+  <main class="home-main">
+    <section class="stage wrap-wide">
+      <p class="stage-eyebrow">本地多模态搜索 · digup.run</p>
+      <h1>用自然语言描述，在本机把文件「挖」出来。</h1>
+      <p class="stage-lede">
+        Digup Run 找的是照片、PDF、文档、录音、视频里的<strong>内容</strong>——
+        用 EmbeddingGemma 2 做私有文件夹索引。不是网盘，也不是启动器。
+      </p>
 
-          <div class="download-grid" aria-label="下载 Digup Run">
-            <a class="dl-card" href={SITE.appReleasesLatest} rel="noopener noreferrer">
-              <span class="dl-os">Mac</span>
-              <span class="dl-meta">Apple Silicon · macOS 14+</span>
-              <span class="dl-cta">下载 DMG →</span>
-            </a>
-            <a class="dl-card" href={SITE.appReleases} rel="noopener noreferrer">
-              <span class="dl-os">Windows</span>
-              <span class="dl-meta">x64 · Win 10/11 · 测试版</span>
-              <span class="dl-cta">下载安装包 →</span>
-            </a>
-            <a class="dl-card" href={SITE.appReleases} rel="noopener noreferrer">
-              <span class="dl-os">Linux</span>
-              <span class="dl-meta">.deb · AppImage · amd64 · 测试版</span>
-              <span class="dl-cta">下载软件包 →</span>
-            </a>
+      <div class="dl-arch" aria-label="下载 Digup Run">
+        <a class="dl-primary" href={SITE.appReleasesLatest} rel="noopener noreferrer">
+          <span class="dl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 15 2.94 10.53 4.7 7.5c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.22-2 1.08-3.15-1.05.04-2.31.72-3.05 1.58-.66.76-1.23 1.98-1.08 3.14 1.14.09 2.32-.65 3.05-1.57"/></svg></span>
+          <span class="dl-copy">
+            <strong>下载 Mac 版</strong>
+            <span>Apple Silicon · macOS 14+ · DMG</span>
+          </span>
+        </a>
+        <div class="dl-secondary">
+          <a class="dl-pill" href={SITE.appReleases} rel="noopener noreferrer">
+            <span class="os-ico" aria-hidden="true">▦</span>
+            Windows <em>测试</em>
+          </a>
+          <a class="dl-pill" href={SITE.appReleases} rel="noopener noreferrer">
+            <span class="os-ico" aria-hidden="true">⬡</span>
+            Linux <em>测试</em>
+          </a>
+        </div>
+      </div>
+      <p class="stage-note">
+        安装包仅来自
+        <a href={SITE.appReleases} rel="noopener noreferrer">ylwl1997/digup-run-app Releases</a>——
+        本站从不托管二进制。
+        指南：<a href="/zh/install-mac/">Mac</a> · <a href="/zh/install-windows/">Windows</a> · <a href="/zh/install-linux/">Linux</a>
+      </p>
+
+      <figure class="app-window">
+        <div class="app-chrome" aria-hidden="true">
+          <div class="app-dots"><i></i><i></i><i></i></div>
+          <div class="app-chrome-title">Digup Run · 搜索</div>
+        </div>
+        <img
+          src={DIGUP_UI.hero.src}
+          width="1200"
+          height="800"
+          alt={DIGUP_UI.hero.altZh}
+          loading="eager"
+          decoding="async"
+        />
+        <figcaption class="app-caption">
+          {DIGUP_UI.sourceNoteZh} 查询「zebra in a video」→ 打开到 0:42。
+        </figcaption>
+      </figure>
+
+      <div class="trust-rail" role="list">
+        <div class="trust-item" role="listitem">
+          <strong>本地优先</strong>
+          <span>只索引你选的文件夹，不做云端文件索引。</span>
+        </div>
+        <div class="trust-item" role="listitem">
+          <strong>打开到位置</strong>
+          <span>直达页码、时间戳或代码行——不只是文件本身。</span>
+        </div>
+        <div class="trust-item" role="listitem">
+          <strong>DigUp 同源</strong>
+          <span>基于 DigUp（MIT）衍生。非官方 DigUp 产品。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="band-head">
+          <p class="kicker">使用感受</p>
+          <h2>说出你记得的内容，落到文件里的位置。</h2>
+          <p>每次都一样：用自然语言搜内容，然后打开到匹配处。</p>
+        </div>
+        <div class="bento">
+          <article class="bento-feat">
+            <span class="mod-pill text">PDF / 文档</span>
+            <p class="query">the clause about pets in the lease</p>
+            <p class="outcome">长 PDF 中的含义匹配 → 打开到对应<strong>页</strong>。</p>
+          </article>
+          <article class="bento-side">
+            <span class="mod-pill video">视频</span>
+            <p class="query">zebra in a video</p>
+            <p class="outcome">画面帧 + 音轨 → 到那一<strong>时刻</strong>。</p>
+          </article>
+          <article class="bento-side">
+            <span class="mod-pill audio">音频</span>
+            <p class="query">where they talk about sleep</p>
+            <p class="outcome">约 30 秒语义窗 → 到那一<strong>分钟</strong>。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="band-head">
+          <p class="kicker">界面</p>
+          <h2>搜索 → 结果 → 打开到页 / 时刻</h2>
+          <p>DigUp 同源界面静帧——用于 Digup Run 示意。</p>
+        </div>
+        <div class="filmstrip">
+          <figure class="film-main">
+            <span class="film-label">Windows · PDF</span>
+            <img src={DIGUP_UI.pdf.src} width="1200" height="800" alt={DIGUP_UI.pdf.altZh} loading="lazy" decoding="async" />
+          </figure>
+          <div class="film-side">
+            <figure>
+              <span class="film-label">Mac · 音频</span>
+              <img src={DIGUP_UI.audio.src} width="1200" height="800" alt={DIGUP_UI.audio.altZh} loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <span class="film-label">Linux · 代码</span>
+              <img src={DIGUP_UI.code.src} width="1200" height="800" alt={DIGUP_UI.code.altZh} loading="lazy" decoding="async" />
+            </figure>
           </div>
-          <p class="hero-brew muted">
-            安装包仅来自
-            <a href={SITE.appReleases} rel="noopener noreferrer">ylwl1997/digup-run-app Releases</a>
-            ——本站从不托管二进制。安装指南：
-            <a href="/zh/install-mac/">Mac</a> ·
-            <a href="/zh/install-windows/">Windows</a> ·
-            <a href="/zh/install-linux/">Linux</a>
-          </p>
+        </div>
+        <p class="film-note">{DIGUP_UI.sourceNoteZh}</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="band-head">
+          <p class="kicker">模态</p>
+          <h2>搜内容，不只是文件名</h2>
+          <p>图片、PDF、音频、视频、可选代码——全部本地。</p>
+        </div>
+        <div class="mod-strip" aria-label="支持的模态">
+          <span class="mod-chip image"><span class="ico" aria-hidden="true">▣</span> 图片</span>
+          <span class="mod-chip text"><span class="ico" aria-hidden="true">¶</span> PDF / 文档</span>
+          <span class="mod-chip audio"><span class="ico" aria-hidden="true">♫</span> 音频</span>
+          <span class="mod-chip video"><span class="ico" aria-hidden="true">▶</span> 视频</span>
+          <span class="mod-chip code"><span class="ico" aria-hidden="true">&lbrace;&rbrace;</span> 代码</span>
+          <span class="mod-chip local"><span class="ico" aria-hidden="true">⌂</span> 本地</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="band-head">
+          <p class="kicker">指南</p>
+          <h2>安装与了解 Digup Run</h2>
+          <p>安装说明与 digup 关键词指南——下载仍指向 GitHub Releases。</p>
+        </div>
+        <div class="guide-list">
+          <a class="guide-link" href="/zh/install-mac/">
+            <span class="gl-meta"><span class="gl-tag">Mac</span><span class="gl-title">在 Mac 上安装</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="guide-link" href="/zh/install-windows/">
+            <span class="gl-meta"><span class="gl-tag">Windows</span><span class="gl-title">在 Windows 上安装</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="guide-link" href="/zh/install-linux/">
+            <span class="gl-meta"><span class="gl-tag">Linux</span><span class="gl-title">在 Linux 上安装</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="guide-link" href="/zh/what-is-digup/">
+            <span class="gl-meta"><span class="gl-tag">概述</span><span class="gl-title">Digup Run 是什么？</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="guide-link" href="/zh/vs-spotlight/">
+            <span class="gl-meta"><span class="gl-tag">对比</span><span class="gl-title">对比 Spotlight</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="guide-link" href="/zh/embeddinggemma-2/">
+            <span class="gl-meta"><span class="gl-tag">模型</span><span class="gl-title">EmbeddingGemma 2</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="guide-link" href="/zh/faq/">
+            <span class="gl-meta"><span class="gl-tag">支持</span><span class="gl-title">常见问题</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="guide-link" href="/">
+            <span class="gl-meta"><span class="gl-tag">EN</span><span class="gl-title">English home</span></span>
+            <span class="gl-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <figure class="shot-panel">
-          <span class="shot-label">搜索界面 · Mac（示意）</span>
-          <img
-            src={DIGUP_UI.hero.src}
-            width="1200"
-            height="800"
-            alt={DIGUP_UI.hero.altZh}
-            loading="eager"
-            decoding="async"
-          />
-          <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} 查询：「zebra in a video」→ 打开到 0:42。</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="wrap section-head">
-      <p class="section-label">产品</p>
-      <h2>Digup Run 做什么</h2>
-      <p class="muted">每次都一样：用你记得的内容描述去搜，然后打开到文件里的位置。</p>
-      <div class="scenarios">
-        <article class="scenario">
-          <span class="mod-pill text">PDF / 文档</span>
-          <p class="query-line">the clause about pets in the lease</p>
-          <ul class="flow">
-            <li><span class="k">找到</span> <span>长 PDF 中的含义匹配</span></li>
-            <li><span class="k">打开</span> <span>到对应<strong>页</strong></span></li>
-          </ul>
-        </article>
-        <article class="scenario">
-          <span class="mod-pill video">视频</span>
-          <p class="query-line">zebra in a video</p>
-          <ul class="flow">
-            <li><span class="k">找到</span> <span>画面帧 + 音轨窗</span></li>
-            <li><span class="k">打开</span> <span>到那一<strong>时刻</strong></span></li>
-          </ul>
-        </article>
-        <article class="scenario">
-          <span class="mod-pill audio">音频</span>
-          <p class="query-line">where they talk about sleep</p>
-          <ul class="flow">
-            <li><span class="k">找到</span> <span>约 30 秒语义窗</span></li>
-            <li><span class="k">打开</span> <span>到那一<strong>分钟</strong></span></li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="wrap section-head">
-      <p class="section-label">模态</p>
-      <h2>搜内容，不只是文件名</h2>
-      <div class="modality-grid">
-        <div class="modality image"><div class="icon" aria-hidden="true">▣</div><h3>图片</h3><p>按画面含义搜照片与截图</p></div>
-        <div class="modality text"><div class="icon" aria-hidden="true">¶</div><h3>PDF / 文档</h3><p>页面与段落 → 打开到页</p></div>
-        <div class="modality audio"><div class="icon" aria-hidden="true">♫</div><h3>音频</h3><p>~30 秒语义窗 → 时间戳</p></div>
-        <div class="modality video"><div class="icon" aria-hidden="true">▶</div><h3>视频</h3><p>帧 + 声音 → 时刻</p></div>
-        <div class="modality code"><div class="icon" aria-hidden="true">&lbrace;&rbrace;</div><h3>代码</h3><p>可选 <code>code:</code> → 行</p></div>
-        <div class="modality local"><div class="icon" aria-hidden="true">⌂</div><h3>本地</h3><p>只索引你选的文件夹</p></div>
-      </div>
-    </section>
-
-    <section class="wrap section-head">
-      <p class="section-label">指南</p>
-      <h2>安装与了解 Digup Run</h2>
-      <div class="cards">
-        <a class="card" href="/zh/install-mac/"><span class="tag">Mac</span><h3>在 Mac 上安装</h3><p>从我们的 Releases 下载 DMG，首次下模型，⇧⌘Space。</p></a>
-        <a class="card" href="/zh/install-windows/"><span class="tag">Windows</span><h3>在 Windows 上安装</h3><p>从我们的 Releases 获取 x64 安装包。</p></a>
-        <a class="card" href="/zh/install-linux/"><span class="tag">Linux</span><h3>在 Linux 上安装</h3><p>digup-run 的 .deb 或 AppImage。</p></a>
-        <a class="card" href="/zh/what-is-digup/"><span class="tag">概述</span><h3>Digup Run 是什么？</h3><p>模态、索引与系统要求。</p></a>
-        <a class="card" href="/zh/faq/"><span class="tag">支持</span><h3>常见问题</h3><p>隐私、Intel Mac、索引耗时等。</p></a>
-        <a class="card" href="/"><span class="tag">EN</span><h3>English home</h3><p>Download-first English homepage.</p></a>
-      </div>
-      <div class="cta-bar">
-        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
-        <a class="cta-secondary" href={SITE.appRepo} rel="noopener noreferrer">应用源码</a>
-        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">上游 DigUp（MIT）</a>
+        <div class="bottom-cta">
+          <p><strong>开始挖掘？</strong>从我们的 GitHub Releases 获取 Digup Run。基于 DigUp（MIT）。</p>
+          <div class="actions">
+            <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
+            <a class="cta-secondary" href={SITE.appRepo} rel="noopener noreferrer">应用源码</a>
+            <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">上游 DigUp</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
