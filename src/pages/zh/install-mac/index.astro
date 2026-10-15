@@ -3,7 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../../lib/site';
 ---
 <Layout
-  title="在 Mac 上安装 DigUp（Apple Silicon）— Homebrew 与 DMG"
+  title="在 Mac 上安装 DigUp — brew install / Homebrew 与 DMG"
   description="在 Apple Silicon（macOS 14+）安装 DigUp：brew install --cask arahim3/tap/digup，或 DigUp-0.6.1.dmg。首次约 865 MB 模型与 ⇧⌘Space。"
   canonicalPath="/install-mac/"
   lang="zh"
@@ -12,8 +12,8 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Mac · {SITE.downloads.macVersion}</span> · 安装指南</p>
-      <h1>在 Mac 上安装 DigUp</h1>
-      <p class="lead">需要 Apple Silicon 与 macOS 14 或更高。推荐 Homebrew（tap），也可下载 DigUp DMG。</p>
+      <h1>在 Mac 上用 Homebrew 或 DMG 安装 DigUp</h1>
+      <p class="lead">需要 Apple Silicon 与 macOS 14 或更高。推荐 <strong>Homebrew</strong>（<code>brew install --cask arahim3/tap/digup</code>），也可下载 DigUp DMG。</p>
     </header>
 
     <article class="wide">
@@ -42,7 +42,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
         </tbody>
       </table>
 
-      <h2>用 Homebrew 安装（推荐）</h2>
+      <h2 id="homebrew">用 Homebrew 安装 DigUp（推荐）</h2>
       <p class="muted">来自 ARahim3 的官方 tap（议题 <a href="https://github.com/ARahim3/DigUp/issues/2" rel="noopener noreferrer">#2</a>）。进入 core <code>homebrew/cask</code> 约需仓库满 30 天（约 2026-11-07）。tap 现已可用。</p>
       <pre><code>{SITE.brewCommand}</code></pre>
       <ol class="checklist">

@@ -1,2 +1,25 @@
 # Soft-200 homepage HTML at /sitemap.xml confuses crawlers; robots already uses sitemap-index.xml
 /sitemap.xml /sitemap-index.xml 301
+
+# www → apex (Cloudflare Pages absolute-URL form)
+https://www.digup.run/* https://digup.run/:splat 301
+
+# Soft-200 killers: brew/Homebrew pseudo-paths → real Mac install (Homebrew section)
+/brew /install-mac/ 301
+/brew/ /install-mac/ 301
+/install-brew /install-mac/ 301
+/install-brew/ /install-mac/ 301
+/guides/homebrew /install-mac/ 301
+/guides/homebrew/ /install-mac/ 301
+/zh/brew /zh/install-mac/ 301
+/zh/brew/ /zh/install-mac/ 301
+/zh/install-brew /zh/install-mac/ 301
+/zh/install-brew/ /zh/install-mac/ 301
+/zh/guides/homebrew /zh/install-mac/ 301
+/zh/guides/homebrew/ /zh/install-mac/ 301
+
+# Soft-200 killer: /download/ → homepage download section (no top-level download page)
+/download /#download 301
+/download/ /#download 301
+/zh/download /zh/#download 301
+/zh/download/ /zh/#download 301

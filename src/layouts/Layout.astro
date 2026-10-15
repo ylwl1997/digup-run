@@ -91,6 +91,7 @@ const ogImageAbs = ogImage
             <summary>{label('Install', '安装')}</summary>
             <div class="submenu">
               <a href={pathFor(lang, '/install-mac/')}>Mac</a>
+              <a href={pathFor(lang, '/install-mac/') + '#homebrew'}>{label('Homebrew (brew)', 'Homebrew（brew）')}</a>
               <a href={pathFor(lang, '/install-windows/')}>{label('Windows (beta)', 'Windows（测试）')}</a>
               <a href={pathFor(lang, '/install-linux/')}>{label('Linux (beta)', 'Linux（测试）')}</a>
             </div>
@@ -102,11 +103,7 @@ const ogImageAbs = ogImage
               <a href={pathFor(lang, '/what-is-digup/')}>{label('What is DigUp', 'DigUp 是什么')}</a>
               <a href={pathFor(lang, '/vs-spotlight/')}>{label('vs Spotlight', '对比 Spotlight')}</a>
               <a href={pathFor(lang, '/embeddinggemma-2/')}>EmbeddingGemma 2</a>
-              {lang === 'en' ? (
-                <a href="/changelog-notes/">Changelog</a>
-              ) : (
-                <a href="/changelog-notes/" hreflang="en">{label('Changelog (EN)', '更新说明（英文）')}</a>
-              )}
+              <a href={pathFor(lang, '/changelog-notes/')}>{label('Changelog', '更新说明')}</a>
               <span class="submenu-label">{label('How-to', '教程')}</span>
               <a href={pathFor(lang, '/guides/zero-files-indexed/')}>{label('0 files indexed', '索引为 0')}</a>
               <a href={pathFor(lang, '/guides/battery-and-indexing-hours/')}>{label('Battery & hours', '耗电与时段')}</a>
@@ -147,11 +144,7 @@ const ogImageAbs = ogImage
           <a href={downloadHref}>{label('Download DigUp', '下载 DigUp')}</a>
           <a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
           <a href={pathFor(lang, '/faq/')}>{label('FAQ', '常见问题')}</a>
-          {lang === 'en' ? (
-            <a href="/changelog-notes/">Changelog notes</a>
-          ) : (
-            <a href="/changelog-notes/" hreflang="en">{label('Changelog (EN)', '更新说明（英文）')}</a>
-          )}
+          <a href={pathFor(lang, '/changelog-notes/')}>{label('Changelog notes', '更新说明')}</a>
           <div class="lang-switch" role="group" aria-label={label('Language', '语言')}>
             <a href={pathFor('en', canonicalPath)} class:list={['lang-opt', lang === 'en' && 'is-on']} hreflang="en">EN</a>
             <a href={pathFor('zh', canonicalPath)} class:list={['lang-opt', lang === 'zh' && 'is-on']} hreflang="zh-CN">中文</a>

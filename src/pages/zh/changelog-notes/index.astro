@@ -1,0 +1,78 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp 更新说明摘要 — 0.6.1 与 0.7 Beta"
+  description="用通俗语言概括 DigUp 0.6.1 Mac 修复与 0.7.0-beta.1 Windows/Linux 首发。"
+  canonicalPath="/changelog-notes/"
+  lang="zh"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">摘要</span></p>
+      <h1>DigUp 更新说明</h1>
+      <p class="lead">浓缩 DigUp 0.6.1（Mac）与 0.7.0-beta.1（Windows/Linux）要点。文中版本以 2026-10-15 为准。</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
+        <a class="cta-secondary" href="/zh/install-mac/">Mac 安装</a>
+        <a class="cta-secondary" href="/zh/install-windows/">Windows 安装</a>
+      </div>
+
+      <h2>0.6.1 — Mac（稳定版）</h2>
+      <p class="muted">标签 <code>v0.6.1</code> · 资源 <code>DigUp-0.6.1.dmg</code> · Apple Silicon，macOS 14+</p>
+      <table>
+        <thead>
+          <tr><th>方面</th><th>变更摘要</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>输入法</strong></td><td>组合输入（中日韩）不再把搜索框拆成零散字母。</td></tr>
+          <tr><td><strong>部分词</strong></td><td>前缀匹配（如 “Grok4” 中的 “Grok”）在停键后仍可命中。</td></tr>
+          <tr><td><strong>文件夹名</strong></td><td>路径含重音 / 中日韩时，不再拖垮所有文件夹的索引。</td></tr>
+          <tr><td><strong>索引稳定性</strong></td><td>大目录频繁变动时更少重启循环；跳过失控的文件读取；长文本下 helper 内存增长已修。</td></tr>
+          <tr><td><strong>扫描版 PDF</strong></td><td>对扫描 PDF 页做 OCR（类似截图），便于命中发票号等打印文字。</td></tr>
+          <tr><td><strong>SVG</strong></td><td>SVG 图片会被索引（此前跳过）。</td></tr>
+          <tr><td><strong>定时时段</strong></td><td>可只在设定时段索引（默认夜间窗口）；全天仍可搜索。</td></tr>
+          <tr><td><strong>离线模型</strong></td><td>网络阻断模型下载时可用 <strong>Use Files…</strong>。</td></tr>
+        </tbody>
+      </table>
+      <p>完整安装步骤：<a href="/zh/install-mac/">在 Mac 上安装 DigUp</a>。</p>
+
+      <h2>0.7.0-beta.1 — Windows 与 Linux（测试）</h2>
+      <p class="muted">标签 <code>v0.7.0-beta.1</code> · 发布于 2026-10-14 · 本列车 Mac 仍为 0.6.1</p>
+      <ul class="checklist">
+        <li><strong>Windows：</strong> <code>DigUp_0.7.0-beta.1_x64-setup.exe</code>，按用户安装、未签名 → SmartScreen 选「仍要运行」。</li>
+        <li><strong>Linux：</strong> <code>DigUp_0.7.0-beta.1_amd64.deb</code> / <code>DigUp_0.7.0-beta.1_amd64.AppImage</code>；AppImage 需 <code>chmod +x</code>。</li>
+        <li><strong>快捷键：</strong> Ctrl+Shift+Space；Wayland 下 GNOME/KDE 可注册，其他桌面需手动绑定。</li>
+        <li><strong>GPU/CPU：</strong> 自动选择；看 DigUp 本地日志目录中的 <code>speed.log</code>。</li>
+        <li><strong>尚缺：</strong> 截图 OCR 文字；本 beta 跳过 .doc / RAW / SVG。</li>
+      </ul>
+      <ol class="checklist">
+        <li>按 <a href="/zh/install-windows/">Windows</a> 或 <a href="/zh/install-linux/">Linux</a> 清单操作。</li>
+        <li>向 upstream 反馈时，若涉及 GPU，请附上 <code>speed.log</code> 中的设备行。</li>
+      </ol>
+
+      <h2>版本矩阵（2026-10-15）</h2>
+      <table>
+        <thead>
+          <tr><th>平台</th><th>版本</th><th>通道</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>macOS</td><td>0.6.1</td><td>稳定</td></tr>
+          <tr><td>Windows</td><td>0.7.0-beta.1</td><td>测试</td></tr>
+          <tr><td>Linux</td><td>0.7.0-beta.1</td><td>测试</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href="/zh/#download">全部下载</a>
+        <a class="cta-secondary" href="/zh/faq/">常见问题</a>
+        <a class="cta-secondary" href="/changelog-notes/" hreflang="en">English changelog</a>
+      </div>
+    </article>
+  </main>
+</Layout>
