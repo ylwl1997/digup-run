@@ -44,23 +44,62 @@ import { DIGUP_UI, SITE } from '../../lib/site';
         指南：<a href="/zh/install-mac/">Mac</a> · <a href="/zh/install-windows/">Windows</a> · <a href="/zh/install-linux/">Linux</a>
       </p>
 
-      <figure class="app-window">
+      <figure class="app-window demo-stage">
         <div class="app-chrome" aria-hidden="true">
           <div class="app-dots"><i></i><i></i><i></i></div>
-          <div class="app-chrome-title">Digup Run · 搜索</div>
+          <div class="app-chrome-title">Digup Run · 演示</div>
         </div>
-        <img
-          src={DIGUP_UI.hero.src}
-          width="1200"
-          height="800"
-          alt={DIGUP_UI.hero.altZh}
-          loading="eager"
-          decoding="async"
-        />
+        <div class="demo-media">
+          <video
+            class="demo-video"
+            width="1200"
+            height="800"
+            poster={DIGUP_UI.demo.poster}
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label={DIGUP_UI.demo.altZh}
+          >
+            <source src={DIGUP_UI.demo.webm} type="video/webm" />
+            <source src={DIGUP_UI.demo.mp4} type="video/mp4" />
+            <img src={DIGUP_UI.demo.gif} width="1200" height="800" alt={DIGUP_UI.demo.altZh} />
+          </video>
+        </div>
         <figcaption class="app-caption">
-          {DIGUP_UI.sourceNoteZh} 查询「zebra in a video」→ 打开到 0:42。
+          {DIGUP_UI.demo.captionZh}
         </figcaption>
       </figure>
+
+      <div class="proof-split">
+        <figure class="proof-shot">
+          <span class="film-label">Windows · 搜索界面</span>
+          <img
+            src={DIGUP_UI.multimodal.src}
+            width="1200"
+            height="800"
+            alt={DIGUP_UI.multimodal.altZh}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="proof-copy">
+          <p class="kicker">产品证明</p>
+          <h2>按内容搜索——按类型分组</h2>
+          <p class="muted">
+            Windows 搜索面板左侧按模态列出结果
+            （<strong>VIDEO</strong> · <strong>IMAGES</strong> · <strong>AUDIO</strong> · <strong>DOCUMENTS</strong>），
+            右侧预览命中处——例如 “Matches the frame at 0:12”。
+          </p>
+          <ul class="proof-types" aria-label="结果类型">
+            <li><span class="t video">VIDEO</span> 打开到那一时刻</li>
+            <li><span class="t image">IMAGES</span> 匹配画面内容</li>
+            <li><span class="t audio">AUDIO</span> 跳到那一分钟</li>
+            <li><span class="t docs">DOCUMENTS</span> 打开到对应页</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="trust-rail" role="list">
         <div class="trust-item" role="listitem">

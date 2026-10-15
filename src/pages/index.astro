@@ -44,23 +44,64 @@ import { DIGUP_UI, SITE } from '../lib/site';
         Guides: <a href="/install-mac/">Mac</a> · <a href="/install-windows/">Windows</a> · <a href="/install-linux/">Linux</a>
       </p>
 
-      <figure class="app-window">
+      <!-- Primary product proof: DigUp demo (MIT), self-hosted -->
+      <figure class="app-window demo-stage">
         <div class="app-chrome" aria-hidden="true">
           <div class="app-dots"><i></i><i></i><i></i></div>
-          <div class="app-chrome-title">Digup Run · Search</div>
+          <div class="app-chrome-title">Digup Run · Demo</div>
         </div>
-        <img
-          src={DIGUP_UI.hero.src}
-          width="1200"
-          height="800"
-          alt={DIGUP_UI.hero.altEn}
-          loading="eager"
-          decoding="async"
-        />
+        <div class="demo-media">
+          <video
+            class="demo-video"
+            width="1200"
+            height="800"
+            poster={DIGUP_UI.demo.poster}
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label={DIGUP_UI.demo.altEn}
+          >
+            <source src={DIGUP_UI.demo.webm} type="video/webm" />
+            <source src={DIGUP_UI.demo.mp4} type="video/mp4" />
+            <img src={DIGUP_UI.demo.gif} width="1200" height="800" alt={DIGUP_UI.demo.altEn} />
+          </video>
+        </div>
         <figcaption class="app-caption">
-          {DIGUP_UI.sourceNoteEn} Query “zebra in a video” → open at 0:42.
+          {DIGUP_UI.demo.captionEn}
         </figcaption>
       </figure>
+
+      <!-- Windows search UI product framing -->
+      <div class="proof-split">
+        <figure class="proof-shot">
+          <span class="film-label">Windows · Search UI</span>
+          <img
+            src={DIGUP_UI.multimodal.src}
+            width="1200"
+            height="800"
+            alt={DIGUP_UI.multimodal.altEn}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="proof-copy">
+          <p class="kicker">Product proof</p>
+          <h2>Search by what’s inside — grouped by type</h2>
+          <p class="muted">
+            The Windows search panel shows results in a sidebar by modality
+            (<strong>VIDEO</strong> · <strong>IMAGES</strong> · <strong>AUDIO</strong> · <strong>DOCUMENTS</strong>),
+            with a preview pane that lands on the match — e.g. “Matches the frame at 0:12”.
+          </p>
+          <ul class="proof-types" aria-label="Result types">
+            <li><span class="t video">VIDEO</span> Open at the moment</li>
+            <li><span class="t image">IMAGES</span> Match what’s shown</li>
+            <li><span class="t audio">AUDIO</span> Jump to the minute</li>
+            <li><span class="t docs">DOCUMENTS</span> Open to the page</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="trust-rail" role="list">
         <div class="trust-item" role="listitem">

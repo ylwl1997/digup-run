@@ -52,6 +52,21 @@ export const NAV = [
  * Digup Run experience (same engine lineage). Not an official DigUp endorsement.
  */
 export const DIGUP_UI = {
+  /** Upstream DigUp docs/demo.gif mirrored locally (MIT) — primary homepage proof. */
+  demo: {
+    gif: '/media/digup/demo.gif',
+    webm: '/media/digup/demo.webm',
+    mp4: '/media/digup/demo.mp4',
+    poster: '/media/digup/ui-win-multimodal-dog.webp',
+    altEn:
+      'DigUp-lineage demo (MIT): search across Mac, Windows, and Linux — zebra in a video, podcast minute, lease PDF clause, dog on the beach, and code. Illustrative for Digup Run; not an official DigUp endorsement.',
+    altZh:
+      'DigUp 同源演示（MIT）：Mac / Windows / Linux 上的内容搜索——视频斑马、播客分钟、租约 PDF、海滩上的狗、代码。用于 Digup Run 示意；非官方 DigUp 背书。',
+    captionEn:
+      'Demo from DigUp docs/demo.gif (ARahim3/DigUp, MIT), self-hosted here. Shows content search across platforms — not DigUp trademark use.',
+    captionZh:
+      '演示取自 DigUp docs/demo.gif（ARahim3/DigUp，MIT），由本站自托管。展示跨平台内容搜索——非 DigUp 商标使用。',
+  },
   hero: {
     src: '/media/digup/ui-mac-video-zebra.webp',
     altEn:
@@ -76,9 +91,9 @@ export const DIGUP_UI = {
   multimodal: {
     src: '/media/digup/ui-win-multimodal-dog.webp',
     altEn:
-      'Windows UI: “a dog on the beach”, multimodal results — still from upstream DigUp demo.gif (illustrative for Digup Run).',
+      'Windows search UI: results sidebar grouped by VIDEO / IMAGES / AUDIO / DOCUMENTS, preview pane for content match — still from DigUp demo.gif (illustrative for Digup Run).',
     altZh:
-      'Windows 界面：「a dog on the beach」，多模态结果 — 取自上游 DigUp demo.gif（Digup Run 示意）。',
+      'Windows 搜索界面：侧栏按 VIDEO / IMAGES / AUDIO / DOCUMENTS 分组，右侧预览命中内容 — 取自 DigUp demo.gif（Digup Run 示意）。',
   },
   code: {
     src: '/media/digup/ui-linux-code-search.webp',
@@ -93,7 +108,7 @@ export const DIGUP_UI = {
     altZh: 'Digup Run 标志（digup.run）— 本站原创，非 DigUp 商标标识。',
   },
   sourceNoteEn:
-    'UI stills from DigUp docs/demo.gif (ARahim3/DigUp, MIT). Illustrative for Digup Run; not an official DigUp screenshot endorsement.',
+    'Demo video and UI stills from DigUp docs/demo.gif (ARahim3/DigUp, MIT), self-hosted on digup.run. Illustrative for Digup Run; not an official DigUp endorsement.',
   sourceNoteZh:
-    '界面静帧取自 DigUp docs/demo.gif（ARahim3/DigUp，MIT）。用于 Digup Run 示意；非官方 DigUp 背书。',
+    '演示视频与界面静帧取自 DigUp docs/demo.gif（ARahim3/DigUp，MIT），由 digup.run 自托管。用于 Digup Run 示意；非官方 DigUp 背书。',
 } as const;
