@@ -8,29 +8,160 @@ import Layout from '../layouts/Layout.astro';
 >
   <main>
     <section class="hero wrap">
-      <div class="hero-panel">
-        <span class="badge">Unofficial · Independent coverage</span>
-        <h1>DigUp: search your files by what’s inside them</h1>
-        <p class="lede">
-          DigUp is an open-source, on-device multimodal semantic file search app. Describe a photo, PDF page, recording, or video moment in plain language — it finds matches locally with EmbeddingGemma 2. This site is independent coverage; downloads only from GitHub Releases.
-        </p>
-        <div class="hero-actions">
-          <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
-          <a class="cta-secondary" href="/install-mac/">Mac install guide</a>
+      <div class="hero-split">
+        <div class="hero-copy">
+          <span class="badge">Unofficial · Independent coverage</span>
+          <h1>Describe it. Dig it up on your machine.</h1>
+          <ul class="job-steps" aria-label="How DigUp works">
+            <li><span class="n">1</span> Describe</li>
+            <li class="arrow" aria-hidden="true">→</li>
+            <li><span class="n">2</span> Hit content</li>
+            <li class="arrow" aria-hidden="true">→</li>
+            <li><span class="n">3</span> Open at page / time / line</li>
+          </ul>
+          <p class="lede">
+            DigUp is open-source, on-device multimodal semantic file search. Natural language finds what’s <em>inside</em> photos, PDFs, docs, audio, and video (optional code) — private folder indexing, not a cloud drive, not a launcher, not another AI chat. This site is independent coverage; downloads only from GitHub Releases.
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
+            <a class="cta-secondary" href="/install-mac/">Mac install guide</a>
+          </div>
+          <p class="hero-brew">
+            Mac Homebrew: <code>brew install --cask arahim3/tap/digup</code>
+          </p>
+          <div class="callout">
+            <strong>Not the official DigUp website.</strong> digup.run is independent keyword / how-to coverage. Upstream project: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a> (MIT). We never host DMG or EXE files.
+          </div>
         </div>
-        <p class="hero-brew">
-          Mac Homebrew: <code>brew install --cask arahim3/tap/digup</code>
-        </p>
-        <div class="callout">
-          <strong>Not the official DigUp website.</strong> digup.run is independent keyword / how-to coverage. Upstream project: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a> (MIT). We never host DMG or EXE files.
+
+        <aside class="demo-panel" aria-label="Illustrative DigUp search flow (abstract mock)">
+          <span class="demo-label">Illustrative UI</span>
+          <div class="demo-search" role="img" aria-label="Example search query">
+            <span class="q-icon" aria-hidden="true"></span>
+            <span class="query">the clause about pets in the lease<span class="cursor" aria-hidden="true"></span></span>
+          </div>
+          <div class="demo-results">
+            <div class="demo-hit active">
+              <div class="demo-thumb pdf" aria-hidden="true"><span>PDF</span><span>p.12</span></div>
+              <div class="meta">
+                <h3>Lease_2024.pdf</h3>
+                <p>…pets allowed with written notice…</p>
+              </div>
+              <span class="loc">→ page 12</span>
+            </div>
+            <div class="demo-hit">
+              <div class="demo-thumb vid" aria-hidden="true"></div>
+              <div class="meta">
+                <h3>safari_clip.mp4</h3>
+                <p>Match: “zebra crossing the road”</p>
+              </div>
+              <span class="loc">→ 02:14</span>
+            </div>
+            <div class="demo-hit">
+              <div class="demo-thumb img" aria-hidden="true">IMG</div>
+              <div class="meta">
+                <h3>IMG_4821.heic</h3>
+                <p>Dog on the beach at sunset</p>
+              </div>
+              <span class="loc">→ open</span>
+            </div>
+          </div>
+          <p class="demo-caption">Abstract mock of describe → content hit → open to location. Not an official DigUp screenshot.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">How you use it</p>
+      <h2>Three searches that show the job</h2>
+      <p class="muted">Same idea every time: say what you remember about the contents; DigUp jumps to the place inside the file.</p>
+      <div class="scenarios">
+        <article class="scenario">
+          <span class="mod-pill text">PDF / docs</span>
+          <p class="query-line">the clause about pets in the lease</p>
+          <ul class="flow">
+            <li><span class="k">Find</span> <span>Meaning match in a long PDF</span></li>
+            <li><span class="k">Open</span> <span><strong>Page 12</strong> in your PDF viewer</span></li>
+          </ul>
+        </article>
+        <article class="scenario">
+          <span class="mod-pill video">Video</span>
+          <p class="query-line">zebra in a video</p>
+          <ul class="flow">
+            <li><span class="k">Find</span> <span>Frame + soundtrack window</span></li>
+            <li><span class="k">Open</span> <span>Clip at <strong>02:14</strong></span></li>
+          </ul>
+        </article>
+        <article class="scenario">
+          <span class="mod-pill audio">Audio</span>
+          <p class="query-line">where they talk about sleep</p>
+          <ul class="flow">
+            <li><span class="k">Find</span> <span>~30s audio window by meaning</span></li>
+            <li><span class="k">Open</span> <span>Podcast at that <strong>minute</strong></span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">What you search</p>
+      <h2>Modality matrix — content, not platforms</h2>
+      <p class="muted">Scannable at a glance: one shared embedding space across file types you choose to index. Platforms are install details below.</p>
+      <div class="modality-grid">
+        <div class="modality image">
+          <div class="icon" aria-hidden="true">▣</div>
+          <h3>Images</h3>
+          <p>Photos &amp; screenshots by what’s shown</p>
+        </div>
+        <div class="modality text">
+          <div class="icon" aria-hidden="true">¶</div>
+          <h3>PDFs / docs</h3>
+          <p>Pages &amp; passages → open to page</p>
+        </div>
+        <div class="modality audio">
+          <div class="icon" aria-hidden="true">♫</div>
+          <h3>Audio</h3>
+          <p>Meaning in ~30s windows → timestamp</p>
+        </div>
+        <div class="modality video">
+          <div class="icon" aria-hidden="true">▶</div>
+          <h3>Video</h3>
+          <p>Frames + sound → moment</p>
+        </div>
+        <div class="modality code">
+          <div class="icon" aria-hidden="true">&lbrace;&rbrace;</div>
+          <h3>Code</h3>
+          <p>Optional <code>code:</code> → line in editor</p>
+        </div>
+        <div class="modality local">
+          <div class="icon" aria-hidden="true">⌂</div>
+          <h3>On-device</h3>
+          <p>Folders you pick · no cloud index</p>
         </div>
       </div>
     </section>
 
-    <section class="wrap" style="margin-top:2rem;">
-      <p class="section-label">Platforms</p>
-      <h2 style="margin-top:0;">Verify on GitHub before install</h2>
-      <p class="muted">Numbers checked via GitHub API on 2026-10-15: ~3,716 stars · forks 252 · MIT.</p>
+    <section class="wrap section-head">
+      <p class="section-label">vs Spotlight</p>
+      <h2>Different job: names vs what’s inside</h2>
+      <div class="vs-strip">
+        <div class="vs-col">
+          <h3>Spotlight</h3>
+          <p>Apps, filenames, metadata, and a lot of plaintext. Best for “open X” and “find file named Y.”</p>
+        </div>
+        <div class="vs-mid" aria-hidden="true">vs</div>
+        <div class="vs-col digup">
+          <h3>DigUp</h3>
+          <p><strong>Content dimension:</strong> describe a photo, PDF page, recording, or video moment — open to that location. Local EmbeddingGemma 2.</p>
+        </div>
+      </div>
+      <p><a href="/vs-spotlight/">Full DigUp vs Spotlight comparison →</a></p>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">Install</p>
+      <h2>Verify on GitHub before install</h2>
+      <p class="muted">Numbers checked via GitHub API on 2026-10-15: ~3,716 stars · forks 252 · MIT. Platforms are secondary to the search job above.</p>
       <div class="platform-grid">
         <div class="platform">
           <h3>macOS</h3>
@@ -53,9 +184,9 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <section class="wrap">
+    <section class="wrap section-head">
       <p class="section-label">Guides</p>
-      <h2 style="margin-top:0;">Guides on this site</h2>
+      <h2>Guides on this site</h2>
       <div class="cards">
         <a class="card" href="/what-is-digup/">
           <span class="tag">Overview</span>
@@ -105,8 +236,8 @@ import Layout from '../layouts/Layout.astro';
       <h2 style="margin-top:0;">Who this site is for</h2>
       <ul class="checklist">
         <li>People who searched for <strong>DigUp Mac</strong>, brew install, or Windows/Linux beta setup and want a scannable checklist.</li>
-        <li>Anyone comparing DigUp to Spotlight or reading about EmbeddingGemma 2 file search.</li>
-        <li>Readers who want independent English how-tos with outbound links — not another binary mirror.</li>
+        <li>Anyone comparing DigUp to Spotlight on the <strong>content</strong> dimension — photos, PDF pages, audio/video moments — not filenames alone.</li>
+        <li>Readers who want independent English how-tos with outbound links — not another binary mirror or AI chat wrapper.</li>
       </ul>
       <div class="cta-bar">
         <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
