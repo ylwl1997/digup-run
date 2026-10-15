@@ -1,0 +1,92 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp vs Spotlight — Mac 上何时用哪个"
+  description="Spotlight 找名称、文本与元数据。DigUp 按含义搜照片、PDF 页、音视频时刻与代码——本机 EmbeddingGemma 2。两者可并存。"
+  canonicalPath="/vs-spotlight/"
+  lang="zh"
+  ogImage={DIGUP_UI.hero.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">对比</span> · 非官方</p>
+      <h1>DigUp vs Apple Spotlight</h1>
+      <p class="lead">Spotlight 内置于 macOS，擅长应用、文件名与许多文本/元数据查询。DigUp 是增量能力：按含义搜索照片、PDF 页、录音、视频瞬间与可选代码——本机 EmbeddingGemma 2。</p>
+      <div class="vs-strip" style="margin-top:1.15rem;margin-bottom:0;">
+        <div class="vs-col">
+          <h3>Spotlight 维度</h3>
+          <p>名称、应用、元数据、纯文本 — 「打开 X」/「名叫 Y 的文件」。</p>
+        </div>
+        <div class="vs-mid" aria-hidden="true">vs</div>
+        <div class="vs-col digup">
+          <h3>DigUp 维度</h3>
+          <p><strong>里面有什么</strong> — 描述 → 命中内容 → 页 / 时间戳 / 行。</p>
+        </div>
+      </div>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/install-mac/">Mac 安装 DigUp</a>
+      </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">DigUp 内容搜索（真实界面）</span>
+        <img src={DIGUP_UI.hero.src} width="1200" height="800" alt={DIGUP_UI.hero.altZh} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} Spotlight 找名字；DigUp 为「zebra in a video」打开到 0:42。</figcaption>
+      </figure>
+
+      <h2>并排对比</h2>
+      <table>
+        <thead>
+          <tr><th>能力</th><th>Spotlight</th><th>DigUp</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>按文件名 / 应用名找</strong></td><td>出色，系统级</td><td>非主任务</td></tr>
+          <tr><td><strong>按文件含义 / 描述找</strong></td><td>有限（部分内容，非多模态语义）</td><td>核心功能 — 共享嵌入空间</td></tr>
+          <tr><td><strong>PDF 跳到页</strong></td><td>可打开文件；按含义跳页是 DigUp 角度</td><td>是 — 打开到匹配页</td></tr>
+          <tr><td><strong>音频 / 视频时刻</strong></td><td>非语义时刻搜索</td><td>是 — 打开到接近匹配时间</td></tr>
+          <tr><td><strong>代码搜索</strong></td><td>非代码感知语义索引</td><td>可选 <code>code:</code> 索引</td></tr>
+          <tr><td><strong>云 / 隐私模型</strong></td><td>Apple 系统索引；Siri 建议等另论</td><td>本地优先；模型+索引在本机；无账号</td></tr>
+          <tr><td><strong>范围</strong></td><td>系统默认 + 排除项</td><td>仅你选择的文件夹</td></tr>
+          <tr><td><strong>快捷键</strong></td><td>⌘Space（默认）</td><td>⇧⌘Space</td></tr>
+          <tr><td><strong>成本 / 安装</strong></td><td>内置</td><td>免费 MIT 应用 + 约 865 MB 模型下载</td></tr>
+        </tbody>
+      </table>
+
+      <h2>何时用哪个</h2>
+      <ol class="checklist">
+        <li><strong>用 Spotlight</strong> 启动应用、跳到系统设置面板、按记得的名字找文件，或快速计算器/定义。</li>
+        <li><strong>用 DigUp</strong> 当你记得文件<em>里面</em>有什么：「蓝色咖啡馆的收据」「带 Q3 图表的幻灯片」「讨论定价的那段录音」「红色报错的截图」。</li>
+        <li><strong>两者都用</strong> — DigUp 不替代 Spotlight。⌘Space 做系统搜索，⇧⌘Space 做语义挖掘。</li>
+      </ol>
+
+      <h2>公平说明</h2>
+      <ul class="checklist">
+        <li>按名字查，Spotlight 启动更快；DigUp 的价值是索引后的多模态语义。</li>
+        <li>首次 DigUp 索引时间与库大小、硬件（Apple Silicon Metal）成正比。</li>
+        <li>DigUp 跳过未下载的 iCloud 占位符——文件必须在本地。</li>
+        <li>截至 2026-10-15，Mac DigUp 为 <strong>0.6.1</strong> 稳定；Windows/Linux 为独立测试构建。</li>
+      </ul>
+
+      <h2>有来源的产品事实</h2>
+      <table>
+        <thead><tr><th>事实</th><th>值（2026-10-15）</th></tr></thead>
+        <tbody>
+          <tr><td>上游</td><td><a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a></td></tr>
+          <tr><td>Stars</td><td>约 3,716</td></tr>
+          <tr><td>Mac 版本</td><td>0.6.1 · Apple Silicon · macOS 14+</td></tr>
+          <tr><td>模型</td><td>EmbeddingGemma 2 via llama.cpp · 约 865 MB</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/what-is-digup/">DigUp 是什么？</a>
+        <a class="cta-secondary" href="/zh/embeddinggemma-2/">EmbeddingGemma 2</a>
+      </div>
+    </article>
+  </main>
+</Layout>

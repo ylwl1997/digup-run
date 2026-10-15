@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../lib/site';
 ---
 <Layout
   title="DigUp Guide — On-Device Multimodal Semantic File Search (Unofficial)"
   description="Independent coverage of DigUp (ARahim3/DigUp) — local EmbeddingGemma 2 search for photos, PDFs, audio, video, and code on Mac, Windows, and Linux. Install links to GitHub Releases."
   canonicalPath="/"
+  lang="en"
+  ogImage={DIGUP_UI.hero.src}
 >
   <main>
     <section class="hero wrap">
@@ -23,52 +26,92 @@ import Layout from '../layouts/Layout.astro';
             DigUp is open-source, on-device multimodal semantic file search. Natural language finds what’s <em>inside</em> photos, PDFs, docs, audio, and video (optional code) — private folder indexing, not a cloud drive, not a launcher, not another AI chat. This site is independent coverage; downloads only from GitHub Releases.
           </p>
           <div class="hero-actions">
-            <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
+            <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">Download on GitHub Releases</a>
             <a class="cta-secondary" href="/install-mac/">Mac install guide</a>
           </div>
           <p class="hero-brew">
-            Mac Homebrew: <code>brew install --cask arahim3/tap/digup</code>
+            Mac Homebrew: <code>{SITE.brewCask}</code>
           </p>
           <div class="callout">
-            <strong>Not the official DigUp website.</strong> digup.run is independent keyword / how-to coverage. Upstream project: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a> (MIT). We never host DMG or EXE files.
+            <strong>Not the official DigUp website.</strong> digup.run is independent keyword / how-to coverage. Upstream project: <a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a> (MIT). We never host DMG or EXE files.
           </div>
         </div>
 
-        <aside class="demo-panel" aria-label="Illustrative DigUp search flow (abstract mock)">
-          <span class="demo-label">Illustrative UI</span>
-          <div class="demo-search" role="img" aria-label="Example search query">
-            <span class="q-icon" aria-hidden="true"></span>
-            <span class="query">the clause about pets in the lease<span class="cursor" aria-hidden="true"></span></span>
-          </div>
-          <div class="demo-results">
-            <div class="demo-hit active">
-              <div class="demo-thumb pdf" aria-hidden="true"><span>PDF</span><span>p.12</span></div>
-              <div class="meta">
-                <h3>Lease_2024.pdf</h3>
-                <p>…pets allowed with written notice…</p>
-              </div>
-              <span class="loc">→ page 12</span>
-            </div>
-            <div class="demo-hit">
-              <div class="demo-thumb vid" aria-hidden="true"></div>
-              <div class="meta">
-                <h3>safari_clip.mp4</h3>
-                <p>Match: “zebra crossing the road”</p>
-              </div>
-              <span class="loc">→ 02:14</span>
-            </div>
-            <div class="demo-hit">
-              <div class="demo-thumb img" aria-hidden="true">IMG</div>
-              <div class="meta">
-                <h3>IMG_4821.heic</h3>
-                <p>Dog on the beach at sunset</p>
-              </div>
-              <span class="loc">→ open</span>
-            </div>
-          </div>
-          <p class="demo-caption">Abstract mock of describe → content hit → open to location. Not an official DigUp screenshot.</p>
-        </aside>
+        <figure class="shot-panel">
+          <span class="shot-label">Real DigUp UI · Mac</span>
+          <img
+            src={DIGUP_UI.hero.src}
+            width="1200"
+            height="800"
+            alt={DIGUP_UI.hero.altEn}
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption class="shot-caption">{DIGUP_UI.sourceNoteEn} Query shown: “zebra in a video” → open at 0:42.</figcaption>
+        </figure>
       </div>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">Real UI</p>
+      <h2>Search box → result list → open to page / timestamp</h2>
+      <p class="muted">Stills from the official DigUp <code>docs/demo.gif</code> (ARahim3/DigUp). Compressed WebP for this unofficial guide — not product photography we invented.</p>
+      <div class="shot-gallery">
+        <figure class="shot-panel">
+          <span class="shot-label">Windows · PDF page</span>
+          <img src={DIGUP_UI.pdf.src} width="1200" height="800" alt={DIGUP_UI.pdf.altEn} loading="lazy" decoding="async" />
+          <figcaption>“the clause about pets in the lease” → Lease PDF <strong>p. 4</strong>.</figcaption>
+        </figure>
+        <figure class="shot-panel">
+          <span class="shot-label">Mac · Audio time</span>
+          <img src={DIGUP_UI.audio.src} width="1200" height="800" alt={DIGUP_UI.audio.altEn} loading="lazy" decoding="async" />
+          <figcaption>“where they talk about sleep” → open near <strong>7:55</strong>.</figcaption>
+        </figure>
+        <figure class="shot-panel">
+          <span class="shot-label">Windows · Result list</span>
+          <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altEn} loading="lazy" decoding="async" />
+          <figcaption>“a dog on the beach” — images, video, audio, and a PDF hit in one list.</figcaption>
+        </figure>
+        <figure class="shot-panel">
+          <span class="shot-label">Linux · Code</span>
+          <img src={DIGUP_UI.code.src} width="1200" height="800" alt={DIGUP_UI.code.altEn} loading="lazy" decoding="async" />
+          <figcaption><code>code:</code> retry with backoff — open to the matching line.</figcaption>
+        </figure>
+      </div>
+      <aside class="demo-panel secondary" aria-label="Abstract flow mock (secondary)">
+        <span class="demo-label">Abstract mock (support only)</span>
+        <div class="demo-search" role="img" aria-label="Example search query">
+          <span class="q-icon" aria-hidden="true"></span>
+          <span class="query">the clause about pets in the lease<span class="cursor" aria-hidden="true"></span></span>
+        </div>
+        <div class="demo-results">
+          <div class="demo-hit active">
+            <div class="demo-thumb pdf" aria-hidden="true"><span>PDF</span><span>p.12</span></div>
+            <div class="meta">
+              <h3>Lease_2024.pdf</h3>
+              <p>…pets allowed with written notice…</p>
+            </div>
+            <span class="loc">→ page 12</span>
+          </div>
+          <div class="demo-hit">
+            <div class="demo-thumb vid" aria-hidden="true"></div>
+            <div class="meta">
+              <h3>safari_clip.mp4</h3>
+              <p>Match: “zebra crossing the road”</p>
+            </div>
+            <span class="loc">→ 02:14</span>
+          </div>
+          <div class="demo-hit">
+            <div class="demo-thumb img" aria-hidden="true">IMG</div>
+            <div class="meta">
+              <h3>IMG_4821.heic</h3>
+              <p>Dog on the beach at sunset</p>
+            </div>
+            <span class="loc">→ open</span>
+          </div>
+        </div>
+        <p class="demo-caption">CSS wireframe of the same job — secondary to the real screenshots above. Not an official DigUp chrome replica.</p>
+      </aside>
     </section>
 
     <section class="wrap section-head">
@@ -81,7 +124,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="query-line">the clause about pets in the lease</p>
           <ul class="flow">
             <li><span class="k">Find</span> <span>Meaning match in a long PDF</span></li>
-            <li><span class="k">Open</span> <span><strong>Page 12</strong> in your PDF viewer</span></li>
+            <li><span class="k">Open</span> <span><strong>Page 4</strong> in your PDF viewer</span></li>
           </ul>
         </article>
         <article class="scenario">
@@ -89,7 +132,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="query-line">zebra in a video</p>
           <ul class="flow">
             <li><span class="k">Find</span> <span>Frame + soundtrack window</span></li>
-            <li><span class="k">Open</span> <span>Clip at <strong>02:14</strong></span></li>
+            <li><span class="k">Open</span> <span>Clip at <strong>0:42</strong></span></li>
           </ul>
         </article>
         <article class="scenario">
@@ -223,10 +266,10 @@ import Layout from '../layouts/Layout.astro';
           <h3>FAQ</h3>
           <p>Privacy, Intel Mac, indexing time, code search, beta meaning.</p>
         </a>
-        <a class="card" href="/changelog-notes/">
-          <span class="tag">Notes</span>
-          <h3>Changelog notes</h3>
-          <p>Unofficial summary of 0.6.1 and 0.7.0-beta.1 — verify on GitHub.</p>
+        <a class="card" href="/zh/">
+          <span class="tag">中文</span>
+          <h3>中文指南</h3>
+          <p>首页与安装 / 对比 / FAQ 中文版（/zh/）。</p>
         </a>
       </div>
     </section>
@@ -237,11 +280,12 @@ import Layout from '../layouts/Layout.astro';
       <ul class="checklist">
         <li>People who searched for <strong>DigUp Mac</strong>, brew install, or Windows/Linux beta setup and want a scannable checklist.</li>
         <li>Anyone comparing DigUp to Spotlight on the <strong>content</strong> dimension — photos, PDF pages, audio/video moments — not filenames alone.</li>
-        <li>Readers who want independent English how-tos with outbound links — not another binary mirror or AI chat wrapper.</li>
+        <li>Readers who want independent English / Chinese how-tos with outbound links — not another binary mirror or AI chat wrapper.</li>
       </ul>
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/what-is-digup/">Start with What is DigUp</a>
+        <a class="cta-secondary" href="/zh/">中文首页</a>
       </div>
     </section>
   </main>

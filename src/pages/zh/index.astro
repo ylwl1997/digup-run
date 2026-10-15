@@ -1,0 +1,236 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../lib/site';
+---
+<Layout
+  title="DigUp 指南 — 本地多模态语义文件搜索（非官方）"
+  description="独立介绍 DigUp（ARahim3/DigUp）：用 EmbeddingGemma 2 在本机按含义搜索照片、PDF、音频、视频与可选代码。安装仅链到 GitHub Releases。"
+  canonicalPath="/"
+  lang="zh"
+  ogImage={DIGUP_UI.hero.src}
+>
+  <main>
+    <section class="hero wrap">
+      <div class="hero-split">
+        <div class="hero-copy">
+          <span class="badge">非官方 · 独立介绍</span>
+          <h1>用自然语言描述，在本机把文件「挖」出来。</h1>
+          <ul class="job-steps" aria-label="DigUp 怎么用">
+            <li><span class="n">1</span> 描述</li>
+            <li class="arrow" aria-hidden="true">→</li>
+            <li><span class="n">2</span> 命中内容</li>
+            <li class="arrow" aria-hidden="true">→</li>
+            <li><span class="n">3</span> 打开到页 / 时刻 / 行</li>
+          </ul>
+          <p class="lede">
+            DigUp 是开源、本地优先的多模态语义文件搜索桌面应用。自然语言找的是照片、PDF、文档、录音、视频（以及可选代码）里的<strong>内容</strong>——只索引你选的文件夹，不是网盘，不是启动器，也不是又一个 AI 聊天。本站为独立介绍；安装包只从 GitHub Releases 获取。
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">前往 GitHub Releases 下载</a>
+            <a class="cta-secondary" href="/zh/install-mac/">Mac 安装指南</a>
+          </div>
+          <p class="hero-brew">
+            Mac Homebrew：<code>{SITE.brewCask}</code>
+          </p>
+          <div class="callout">
+            <strong>不是 DigUp 官方网站。</strong> digup.run 是独立关键词 / 操作指南站。上游项目：<a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>（MIT）。我们从不托管 DMG 或 EXE。
+          </div>
+        </div>
+
+        <figure class="shot-panel">
+          <span class="shot-label">真实 DigUp 界面 · Mac</span>
+          <img
+            src={DIGUP_UI.hero.src}
+            width="1200"
+            height="800"
+            alt={DIGUP_UI.hero.altZh}
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} 图中查询：「zebra in a video」→ 打开到 0:42。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">真实界面</p>
+      <h2>搜索框 → 结果列表 → 打开到页码 / 时间戳</h2>
+      <p class="muted">静帧来自官方 DigUp <code>docs/demo.gif</code>（仓库 ARahim3/DigUp），压缩为 WebP 用于本非官方指南。</p>
+      <div class="shot-gallery">
+        <figure class="shot-panel">
+          <span class="shot-label">Windows · PDF 页</span>
+          <img src={DIGUP_UI.pdf.src} width="1200" height="800" alt={DIGUP_UI.pdf.altZh} loading="lazy" decoding="async" />
+          <figcaption>「the clause about pets in the lease」→ 租约 PDF <strong>第 4 页</strong>。</figcaption>
+        </figure>
+        <figure class="shot-panel">
+          <span class="shot-label">Mac · 音频时刻</span>
+          <img src={DIGUP_UI.audio.src} width="1200" height="800" alt={DIGUP_UI.audio.altZh} loading="lazy" decoding="async" />
+          <figcaption>「where they talk about sleep」→ 打开到约 <strong>7:55</strong>。</figcaption>
+        </figure>
+        <figure class="shot-panel">
+          <span class="shot-label">Windows · 结果列表</span>
+          <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altZh} loading="lazy" decoding="async" />
+          <figcaption>「a dog on the beach」—— 图片、视频、音频与 PDF 同屏列出。</figcaption>
+        </figure>
+        <figure class="shot-panel">
+          <span class="shot-label">Linux · 代码</span>
+          <img src={DIGUP_UI.code.src} width="1200" height="800" alt={DIGUP_UI.code.altZh} loading="lazy" decoding="async" />
+          <figcaption><code>code:</code> retry with backoff —— 打开到匹配行。</figcaption>
+        </figure>
+      </div>
+      <aside class="demo-panel secondary" aria-label="抽象流程示意（次要）">
+        <span class="demo-label">抽象示意（仅作辅助）</span>
+        <div class="demo-search" role="img" aria-label="示例查询">
+          <span class="q-icon" aria-hidden="true"></span>
+          <span class="query">租约里关于宠物的条款<span class="cursor" aria-hidden="true"></span></span>
+        </div>
+        <div class="demo-results">
+          <div class="demo-hit active">
+            <div class="demo-thumb pdf" aria-hidden="true"><span>PDF</span><span>p.12</span></div>
+            <div class="meta">
+              <h3>Lease_2024.pdf</h3>
+              <p>…pets allowed with written notice…</p>
+            </div>
+            <span class="loc">→ 第 12 页</span>
+          </div>
+          <div class="demo-hit">
+            <div class="demo-thumb vid" aria-hidden="true"></div>
+            <div class="meta">
+              <h3>safari_clip.mp4</h3>
+              <p>匹配：「斑马过马路」</p>
+            </div>
+            <span class="loc">→ 02:14</span>
+          </div>
+          <div class="demo-hit">
+            <div class="demo-thumb img" aria-hidden="true">IMG</div>
+            <div class="meta">
+              <h3>IMG_4821.heic</h3>
+              <p>日落海滩上的狗</p>
+            </div>
+            <span class="loc">→ 打开</span>
+          </div>
+        </div>
+        <p class="demo-caption">CSS 线框示意同一任务流程，次于上方真实截图。非官方 DigUp 界面复刻。</p>
+      </aside>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">怎么用</p>
+      <h2>三个能说明产品工作的搜索</h2>
+      <p class="muted">每次都一样：说出你记得的内容；DigUp 跳到文件内部位置。</p>
+      <div class="scenarios">
+        <article class="scenario">
+          <span class="mod-pill text">PDF / 文档</span>
+          <p class="query-line">the clause about pets in the lease</p>
+          <ul class="flow">
+            <li><span class="k">找到</span> <span>长 PDF 中的语义匹配</span></li>
+            <li><span class="k">打开</span> <span>阅读器定位到 <strong>第 4 页</strong></span></li>
+          </ul>
+        </article>
+        <article class="scenario">
+          <span class="mod-pill video">视频</span>
+          <p class="query-line">zebra in a video</p>
+          <ul class="flow">
+            <li><span class="k">找到</span> <span>画面帧 + 音轨窗口</span></li>
+            <li><span class="k">打开</span> <span>片段定位 <strong>0:42</strong></span></li>
+          </ul>
+        </article>
+        <article class="scenario">
+          <span class="mod-pill audio">音频</span>
+          <p class="query-line">where they talk about sleep</p>
+          <ul class="flow">
+            <li><span class="k">找到</span> <span>约 30 秒语义音频窗</span></li>
+            <li><span class="k">打开</span> <span>播客定位到该<strong>分钟</strong></span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">搜什么</p>
+      <h2>模态矩阵 —— 内容维度，平台其次</h2>
+      <p class="muted">一眼可扫：你选择索引的文件类型共享同一嵌入空间。平台细节见安装页。</p>
+      <div class="modality-grid">
+        <div class="modality image"><div class="icon" aria-hidden="true">▣</div><h3>图片</h3><p>按画面语义找照片与截图</p></div>
+        <div class="modality text"><div class="icon" aria-hidden="true">¶</div><h3>PDF / 文档</h3><p>页与段落 → 打开到页</p></div>
+        <div class="modality audio"><div class="icon" aria-hidden="true">♫</div><h3>音频</h3><p>~30s 窗语义 → 时间戳</p></div>
+        <div class="modality video"><div class="icon" aria-hidden="true">▶</div><h3>视频</h3><p>帧 + 声音 → 时刻</p></div>
+        <div class="modality code"><div class="icon" aria-hidden="true">&lbrace;&rbrace;</div><h3>代码</h3><p>可选 <code>code:</code> → 编辑器行</p></div>
+        <div class="modality local"><div class="icon" aria-hidden="true">⌂</div><h3>本机</h3><p>自选文件夹 · 无云端索引</p></div>
+      </div>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">对比 Spotlight</p>
+      <h2>不同任务：文件名 vs 内容里有什么</h2>
+      <div class="vs-strip">
+        <div class="vs-col">
+          <h3>Spotlight</h3>
+          <p>应用、文件名、元数据与大量纯文本。适合「打开 X」「找名叫 Y 的文件」。</p>
+        </div>
+        <div class="vs-mid" aria-hidden="true">vs</div>
+        <div class="vs-col digup">
+          <h3>DigUp</h3>
+          <p><strong>内容维度：</strong>描述照片、PDF 页、录音或视频瞬间 — 打开到该位置。本地 EmbeddingGemma 2。</p>
+        </div>
+      </div>
+      <p><a href="/zh/vs-spotlight/">完整 DigUp vs Spotlight 对比 →</a></p>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">安装</p>
+      <h2>安装前在 GitHub 核验</h2>
+      <p class="muted">2026-10-15 经 GitHub API 核对：约 3,716 stars · forks 252 · MIT。平台是次要信息，搜索任务才是主线。</p>
+      <div class="platform-grid">
+        <div class="platform">
+          <h3>macOS</h3>
+          <p class="ver">0.6.1 稳定</p>
+          <p class="muted">Apple Silicon · macOS 14+</p>
+          <p><a href="/zh/install-mac/">Mac 安装 →</a></p>
+        </div>
+        <div class="platform">
+          <h3>Windows</h3>
+          <p class="ver beta">0.7.0-beta.1</p>
+          <p class="muted">64 位 Win 10/11 · 未签名安装包</p>
+          <p><a href="/zh/install-windows/">Windows 安装 →</a></p>
+        </div>
+        <div class="platform">
+          <h3>Linux</h3>
+          <p class="ver beta">0.7.0-beta.1</p>
+          <p class="muted">.deb · AppImage · amd64</p>
+          <p><a href="/zh/install-linux/">Linux 安装 →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section-head">
+      <p class="section-label">指南</p>
+      <h2>本站中文指南</h2>
+      <div class="cards">
+        <a class="card" href="/zh/what-is-digup/"><span class="tag">概览</span><h3>DigUp 是什么？</h3><p>模态、索引方式与系统要求。</p></a>
+        <a class="card" href="/zh/install-mac/"><span class="tag">安装</span><h3>Mac 安装</h3><p>Homebrew / DMG、约 865 MB 模型、⇧⌘Space。</p></a>
+        <a class="card" href="/zh/install-windows/"><span class="tag">测试版</span><h3>Windows 安装</h3><p>x64 安装包、SmartScreen、GPU 说明。</p></a>
+        <a class="card" href="/zh/install-linux/"><span class="tag">测试版</span><h3>Linux 安装</h3><p>.deb / AppImage、Wayland 快捷键。</p></a>
+        <a class="card" href="/zh/vs-spotlight/"><span class="tag">对比</span><h3>对比 Spotlight</h3><p>文件名/元数据 vs 语义内容。</p></a>
+        <a class="card" href="/zh/embeddinggemma-2/"><span class="tag">模型</span><h3>EmbeddingGemma 2</h3><p>本机 llama.cpp 运行约 865 MB 模型。</p></a>
+        <a class="card" href="/zh/faq/"><span class="tag">支持</span><h3>常见问题</h3><p>隐私、Intel Mac、索引时长、代码搜索。</p></a>
+        <a class="card" href="/"><span class="tag">EN</span><h3>English home</h3><p>英文首页与完整指南。</p></a>
+      </div>
+    </section>
+
+    <section class="wrap" style="margin-top:0.5rem;">
+      <p class="section-label">读者</p>
+      <h2 style="margin-top:0;">本站适合谁</h2>
+      <ul class="checklist">
+        <li>搜过 <strong>DigUp Mac</strong>、brew 安装或 Windows/Linux 测试版步骤、需要可扫清单的人。</li>
+        <li>想在<strong>内容</strong>维度对比 DigUp 与 Spotlight 的人——照片、PDF 页、音视频时刻，而不只是文件名。</li>
+        <li>需要独立中英操作指南与外链、而不是二进制镜像或 AI 聊天壳的人。</li>
+      </ul>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/what-is-digup/">从「是什么」开始</a>
+        <a class="cta-secondary" href="/">English</a>
+      </div>
+    </section>
+  </main>
+</Layout>

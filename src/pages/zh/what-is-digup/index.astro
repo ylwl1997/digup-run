@@ -1,0 +1,101 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp 是什么？本地多模态文件搜索说明"
+  description="DigUp 是开源、本地优先的桌面应用：用 EmbeddingGemma 2 按含义搜索照片、PDF、文档、录音、视频与可选代码——不只靠文件名。"
+  canonicalPath="/what-is-digup/"
+  lang="zh"
+  ogImage={DIGUP_UI.multimodal.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">非官方</span> · 独立概览</p>
+      <h1>DigUp 是什么？</h1>
+      <p class="lead">DigUp 是本地优先的多模态语义文件搜索桌面应用。你选择文件夹；它用 EmbeddingGemma 2 嵌入其中内容（照片、PDF 页、文档、音频窗、视频帧、可选代码），再按含义搜索——覆盖 Mac、Windows 与 Linux。</p>
+      <ul class="job-steps" aria-label="产品任务" style="margin-top:1rem;margin-bottom:0.75rem;">
+        <li><span class="n">1</span> 描述</li>
+        <li class="arrow" aria-hidden="true">→</li>
+        <li><span class="n">2</span> 命中内容</li>
+        <li class="arrow" aria-hidden="true">→</li>
+        <li><span class="n">3</span> 打开到位置</li>
+      </ul>
+      <p style="display:flex;flex-wrap:wrap;gap:0.4rem;margin:0;">
+        <span class="mod-pill image">图片</span>
+        <span class="mod-pill text">PDF / 文档</span>
+        <span class="mod-pill audio">音频</span>
+        <span class="mod-pill video">视频</span>
+        <span class="mod-pill code">代码（可选）</span>
+        <span class="mod-pill text">本机</span>
+      </p>
+    </header>
+
+    <article class="wide">
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <strong>独立介绍。</strong> 本页与 ARahim3 无隶属关系。事实来源：<a href={SITE.upstreamRepo} rel="noopener noreferrer">github.com/ARahim3/DigUp</a>。下载仅经 <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a>。
+      </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">真实 DigUp 界面</span>
+        <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altZh} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} 「a dog on the beach」的多模态结果列表。</figcaption>
+      </figure>
+
+      <h2>一句话</h2>
+      <p>说出你记得的文件内容；DigUp 在本机共享嵌入空间中排序匹配——无账号、无云端文件索引。</p>
+
+      <h2>能搜什么（模态）</h2>
+      <table>
+        <thead>
+          <tr><th>模态</th><th>DigUp 索引什么</th><th>打开到</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>照片 / 图片</strong></td><td>视觉内容（Mac 上截图/扫描页还可 OCR 文字）</td><td>文件</td></tr>
+          <tr><td><strong>PDF</strong></td><td>按页语义 + 文本；扫描 PDF 在 Mac 上 OCR（0.6.1+）</td><td>页码</td></tr>
+          <tr><td><strong>文档</strong></td><td>txt、md、rtf、docx、odt、html；.doc 主要 Mac</td><td>文件 / 段落</td></tr>
+          <tr><td><strong>音频</strong></td><td>约 30 秒窗口进入共享向量空间</td><td>时间戳</td></tr>
+          <tr><td><strong>视频</strong></td><td>按描述的帧 / 瞬间</td><td>时间戳</td></tr>
+          <tr><td><strong>代码（可选）</strong></td><td>设置中开启；查询加 <code>code:</code> 前缀</td><td>行号</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Win/Linux 测试版（0.7.0-beta.1）尚无截图 OCR；该 beta 跳过旧 .doc、RAW、SVG——见 <a href="/zh/install-windows/">Windows</a> / <a href="/zh/install-linux/">Linux</a> 指南。</p>
+
+      <h2>工作原理（高层）</h2>
+      <ol class="checklist">
+        <li><strong>你选文件夹</strong> — 不会自动扫整盘；未本地下载的云占位符（iCloud/OneDrive）会跳过。</li>
+        <li><strong>提取 → 嵌入</strong> — 内容变成图/文/声块；EmbeddingGemma 2 经 llama.cpp 本机运行（首次约 865 MB）。</li>
+        <li><strong>SQLite 索引</strong> — 向量 + 精确词加权（发票号、错误码、人名）。</li>
+        <li><strong>搜索</strong> — 查询文本嵌入；近邻 + 关键词权重；快捷键从任意应用打开面板。</li>
+      </ol>
+      <p>模型细节：<a href="/zh/embeddinggemma-2/">DigUp 如何使用 EmbeddingGemma 2</a>。</p>
+
+      <h2>按平台的要求</h2>
+      <table>
+        <thead>
+          <tr><th>平台</th><th>版本（2026-10-15）</th><th>硬件 / 系统</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Mac</strong></td><td>0.6.1</td><td>Apple Silicon，macOS 14+</td><td>稳定</td></tr>
+          <tr><td><strong>Windows</strong></td><td>0.7.0-beta.1</td><td>64 位 Windows 10/11</td><td><strong>测试版</strong></td></tr>
+          <tr><td><strong>Linux</strong></td><td>0.7.0-beta.1</td><td>amd64；.deb 或 AppImage</td><td><strong>测试版</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="muted">GitHub stars 约 3,716（2026-10-15）— 实时数字请看 <a href={SITE.upstreamRepo} rel="noopener noreferrer">仓库</a>。</p>
+
+      <h2>DigUp 不是什么</h2>
+      <ul class="checklist">
+        <li>不是完整的 Spotlight / Windows Search 替代品（可并存）。</li>
+        <li>不是应用启动器（截至调研日）。</li>
+        <li>不是云同步或协作搜索产品。</li>
+        <li>不要从随机镜像装「官方 App Store」包——请用 GitHub Releases。</li>
+      </ul>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/install-mac/">Mac 安装</a>
+        <a class="cta-secondary" href="/zh/vs-spotlight/">对比 Spotlight</a>
+      </div>
+    </article>
+  </main>
+</Layout>

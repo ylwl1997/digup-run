@@ -1,60 +1,102 @@
 ---
 import '../styles/global.css';
+import { SITE, type Lang, pathFor } from '../lib/site';
 
 interface Props {
   title: string;
   description: string;
+  /** Locale-neutral path, e.g. `/` or `/what-is-digup/`. */
   canonicalPath: string;
+  lang?: Lang;
   ogType?: string;
+  ogImage?: string;
 }
 
-const { title, description, canonicalPath, ogType = 'website' } = Astro.props;
-const site = 'https://digup.run';
-const canonical = `${site}${canonicalPath}`;
+const {
+  title,
+  description,
+  canonicalPath,
+  lang = 'en',
+  ogType = 'website',
+  ogImage,
+} = Astro.props;
+
+const site = SITE.url;
+const pagePath = pathFor(lang, canonicalPath);
+const canonical = `${site}${pagePath}`;
+const enUrl = `${site}${pathFor('en', canonicalPath)}`;
+const zhUrl = `${site}${pathFor('zh', canonicalPath)}`;
+const htmlLang = lang === 'zh' ? 'zh-CN' : 'en';
 const path = Astro.url.pathname;
 
-const isCurrent = (p: string) => path === p || path.startsWith(p);
+const isCurrent = (p: string) => {
+  const localized = pathFor(lang, p);
+  if (p === '/') return path === localized || path === localized.replace(/\/$/, '') + '/';
+  return path === localized || path.startsWith(localized);
+};
+
+const label = (en: string, zh: string) => (lang === 'zh' ? zh : en);
+const homeHref = pathFor(lang, '/');
+const ogImageAbs = ogImage
+  ? ogImage.startsWith('http')
+    ? ogImage
+    : `${site}${ogImage}`
+  : `${site}/media/digup/ui-mac-video-zebra.webp`;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="digup.run (unofficial)" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
     <meta name="theme-color" content="#100e0c" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="logo" href="/"><span class="mark" aria-hidden="true"></span>digup.run <span>unofficial</span></a>
-        <nav class="nav" aria-label="Primary">
-          <a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a>
-          <a href="/what-is-digup/" aria-current={isCurrent('/what-is-digup/') ? 'page' : undefined}>What is</a>
+        <a class="logo" href={homeHref}><span class="mark" aria-hidden="true"></span>digup.run <span>{label('unofficial', '非官方')}</span></a>
+        <nav class="nav" aria-label={label('Primary', '主导航')}>
+          <a href={homeHref} aria-current={path === homeHref || path === '/zh' ? 'page' : undefined}>{label('Home', '首页')}</a>
+          <a href={pathFor(lang, '/what-is-digup/')} aria-current={isCurrent('/what-is-digup/') ? 'page' : undefined}>{label('What is', '是什么')}</a>
           <details class="nav-group">
-            <summary>Install</summary>
+            <summary>{label('Install', '安装')}</summary>
             <div class="submenu">
-              <a href="/install-mac/">Mac</a>
-              <a href="/install-windows/">Windows (beta)</a>
-              <a href="/install-linux/">Linux (beta)</a>
+              <a href={pathFor(lang, '/install-mac/')}>Mac</a>
+              <a href={pathFor(lang, '/install-windows/')}>{label('Windows (beta)', 'Windows（测试）')}</a>
+              <a href={pathFor(lang, '/install-linux/')}>{label('Linux (beta)', 'Linux（测试）')}</a>
             </div>
           </details>
-          <a href="/vs-spotlight/" aria-current={isCurrent('/vs-spotlight/') ? 'page' : undefined}>vs Spotlight</a>
-          <a href="/embeddinggemma-2/" aria-current={isCurrent('/embeddinggemma-2/') ? 'page' : undefined}>EmbeddingGemma 2</a>
-          <a href="/faq/" aria-current={isCurrent('/faq/') ? 'page' : undefined}>FAQ</a>
-          <a href="/changelog-notes/" aria-current={isCurrent('/changelog-notes/') ? 'page' : undefined}>Changelog</a>
+          <a href={pathFor(lang, '/vs-spotlight/')} aria-current={isCurrent('/vs-spotlight/') ? 'page' : undefined}>{label('vs Spotlight', '对比 Spotlight')}</a>
+          <a href={pathFor(lang, '/embeddinggemma-2/')} aria-current={isCurrent('/embeddinggemma-2/') ? 'page' : undefined}>EmbeddingGemma 2</a>
+          <a href={pathFor(lang, '/faq/')} aria-current={isCurrent('/faq/') ? 'page' : undefined}>{label('FAQ', '常见问题')}</a>
+          {lang === 'en' && (
+            <a href="/changelog-notes/" aria-current={isCurrent('/changelog-notes/') ? 'page' : undefined}>Changelog</a>
+          )}
         </nav>
-        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <div class="header-end">
+          <div class="lang-switch" role="group" aria-label={label('Language', '语言')}>
+            <a href={pathFor('en', canonicalPath)} class:list={['lang-opt', lang === 'en' && 'is-on']} hreflang="en" lang="en">EN</a>
+            <a href={pathFor('zh', canonicalPath)} class:list={['lang-opt', lang === 'zh' && 'is-on']} hreflang="zh-CN" lang="zh-CN">中文</a>
+          </div>
+          <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">{label('GitHub Releases', 'GitHub Releases')}</a>
+        </div>
       </div>
     </header>
 
@@ -63,19 +105,42 @@ const isCurrent = (p: string) => path === p || path.startsWith(p);
     <footer class="site-footer">
       <div class="wrap">
         <p class="disclaimer">
-          <strong>Unofficial coverage site.</strong> digup.run is an independent informational / keyword site about the open-source DigUp project. It is <strong>not</strong> affiliated with, endorsed by, or operated by ARahim3 or the DigUp maintainers. DigUp is MIT-licensed open source; trademarks and product names belong to their owners. For downloads and support, use the official repository:
-          <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">github.com/ARahim3/DigUp</a>
-          and
-          <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a>.
+          {lang === 'zh' ? (
+            <>
+              <strong>非官方介绍站。</strong> digup.run 是关于开源项目 DigUp 的独立信息 / 关键词站点，与 ARahim3 或 DigUp 维护者<strong>无</strong>隶属、无背书、无运营关系。DigUp 为 MIT 开源；商标与产品名归其权利人所有。下载与支持请使用官方仓库：
+              <a href={SITE.upstreamRepo} rel="noopener noreferrer">github.com/ARahim3/DigUp</a>
+              与
+              <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a>。
+            </>
+          ) : (
+            <>
+              <strong>Unofficial coverage site.</strong> digup.run is an independent informational / keyword site about the open-source DigUp project. It is <strong>not</strong> affiliated with, endorsed by, or operated by ARahim3 or the DigUp maintainers. DigUp is MIT-licensed open source; trademarks and product names belong to their owners. For downloads and support, use the official repository:
+              <a href={SITE.upstreamRepo} rel="noopener noreferrer">github.com/ARahim3/DigUp</a>
+              and
+              <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a>.
+            </>
+          )}
         </p>
         <div class="footer-links">
-          <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
-          <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">Upstream repo</a>
-          <a href="/faq/">FAQ</a>
-          <a href="/changelog-notes/">Changelog notes</a>
-          <span>Unofficial</span>
+          <a href={SITE.upstreamReleases} rel="noopener noreferrer">{label('Download on GitHub Releases', '前往 GitHub Releases 下载')}</a>
+          <a href={SITE.upstreamRepo} rel="noopener noreferrer">{label('Upstream repo', '上游仓库')}</a>
+          <a href={pathFor(lang, '/faq/')}>{label('FAQ', '常见问题')}</a>
+          {lang === 'en' ? (
+            <a href="/changelog-notes/">Changelog notes</a>
+          ) : (
+            <a href="/changelog-notes/" hreflang="en">{label('Changelog (EN)', '更新说明（英文）')}</a>
+          )}
+          <div class="lang-switch" role="group" aria-label={label('Language', '语言')}>
+            <a href={pathFor('en', canonicalPath)} class:list={['lang-opt', lang === 'en' && 'is-on']} hreflang="en">EN</a>
+            <a href={pathFor('zh', canonicalPath)} class:list={['lang-opt', lang === 'zh' && 'is-on']} hreflang="zh-CN">中文</a>
+          </div>
+          <span>{label('Unofficial', '非官方')}</span>
         </div>
-        <p class="tm">DigUp is a project by ARahim3. Gemma / EmbeddingGemma are trademarks of Google LLC. Mac and Spotlight are trademarks of Apple Inc. This site does not host DMG, EXE, or other binaries.</p>
+        <p class="tm">
+          {lang === 'zh'
+            ? 'DigUp 为 ARahim3 的项目。Gemma / EmbeddingGemma 为 Google LLC 商标。Mac 与 Spotlight 为 Apple Inc. 商标。本站不托管 DMG、EXE 或其他二进制文件。'
+            : 'DigUp is a project by ARahim3. Gemma / EmbeddingGemma are trademarks of Google LLC. Mac and Spotlight are trademarks of Apple Inc. This site does not host DMG, EXE, or other binaries.'}
+        </p>
       </div>
     </footer>
   </body>

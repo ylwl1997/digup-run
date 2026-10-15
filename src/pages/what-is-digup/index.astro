@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { DIGUP_UI } from '../../lib/site';
 ---
 <Layout
-  title="What Is DigUp? Local Multimodal File Search Explained"
-  description="DigUp is an open-source, on-device app that finds photos, PDFs, documents, recordings, videos, and optional code by meaning using EmbeddingGemma 2 — not by filename alone."
+  title={'What Is DigUp? Local Multimodal File Search Explained'}
+  description={'DigUp is an open-source, on-device app that finds photos, PDFs, documents, recordings, videos, and optional code by meaning using EmbeddingGemma 2 — not by filename alone.'}
   canonicalPath="/what-is-digup/"
+  lang="en"
+  ogImage={DIGUP_UI.multimodal.src}
 >
   <main class="wrap">
     <header class="page-hero">
@@ -32,6 +35,12 @@ import Layout from '../../layouts/Layout.astro';
       <div class="callout" style="margin-bottom:1.5rem;">
         <strong>Independent coverage.</strong> This page is not affiliated with ARahim3. Source of truth: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">github.com/ARahim3/DigUp</a>. Downloads only via <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a>.
       </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">Real DigUp UI</span>
+        <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altEn} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteEn} Multimodal result list for “a dog on the beach.”</figcaption>
+      </figure>
 
       <h2>In one sentence</h2>
       <p>Describe what you remember about a file’s contents; DigUp ranks matches in a shared embedding space on your machine — no account, no cloud index of your files.</p>

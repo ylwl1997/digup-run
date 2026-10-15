@@ -1,0 +1,104 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../lib/site';
+---
+<Layout
+  title="在 Mac 上安装 DigUp（Apple Silicon）— Homebrew 与 DMG"
+  description="Apple Silicon（macOS 14+）安装 DigUp 步骤：Homebrew cask、GitHub Releases DMG、首次约 865 MB 模型、⇧⌘Space 搜索。"
+  canonicalPath="/install-mac/"
+  lang="zh"
+  ogImage={DIGUP_UI.hero.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Mac · 0.6.1</span> · 非官方指南</p>
+      <h1>在 Mac 上安装 DigUp</h1>
+      <p class="lead">需要 Apple Silicon 与 macOS 14 或更高。可用 Homebrew 或 GitHub Releases 的官方 DMG。本页从不托管二进制文件。</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/install-windows/">Windows（测试）</a>
+        <a class="cta-secondary" href="/zh/install-linux/">Linux（测试）</a>
+      </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">安装后 · Mac 搜索面板</span>
+        <img src={DIGUP_UI.hero.src} width="1200" height="800" alt={DIGUP_UI.hero.altZh} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} 快捷键 ⇧⌘Space 打开此面板。</figcaption>
+      </figure>
+
+      <h2>前置条件</h2>
+      <table>
+        <thead><tr><th>要求</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>芯片</strong></td><td>Apple Silicon（M 系列）。官方 Mac 构建不支持 Intel Mac。</td></tr>
+          <tr><td><strong>系统</strong></td><td>macOS 14（Sonoma）或更高</td></tr>
+          <tr><td><strong>磁盘 / 网络</strong></td><td>首次下载 EmbeddingGemma 2 约 865 MB；需稳定下载通道</td></tr>
+          <tr><td><strong>版本</strong></td><td><strong>0.6.1</strong> 稳定（安装前在 Releases 核验标签）</td></tr>
+        </tbody>
+      </table>
+
+      <h2>方式 A — Homebrew（若已用 brew 推荐）</h2>
+      <ol class="checklist">
+        <li>若无 Homebrew，先装 <a href="https://brew.sh/" rel="noopener noreferrer">brew.sh</a>。</li>
+        <li>运行官方 cask 一行命令：</li>
+      </ol>
+      <pre><code>brew install --cask arahim3/tap/digup</code></pre>
+      <ol class="checklist" start="3">
+        <li>从「应用程序」或用 Spotlight 按名打开 DigUp。</li>
+        <li>首次启动允许模型下载，并选择要索引的文件夹。</li>
+      </ol>
+
+      <h2>方式 B — 从 GitHub Releases 下载 DMG</h2>
+      <ol class="checklist">
+        <li>打开 <a href={SITE.upstreamReleases} rel="noopener noreferrer">github.com/ARahim3/DigUp/releases</a>。</li>
+        <li>下载 <code>DigUp-0.6.1.dmg</code>（或以 Releases 页最新 Mac DMG 为准——始终以 Releases 为准，勿信缓存文件名）。</li>
+        <li>打开 DMG，将 DigUp 拖入「应用程序」。</li>
+        <li>启动 DigUp，完成首次模型下载与文件夹选择。</li>
+      </ol>
+
+      <h2>首次运行清单</h2>
+      <ul class="checklist">
+        <li><strong>模型下载（约 865 MB）</strong> — 仅需一次；留在本机。</li>
+        <li><strong>选择文件夹</strong> — 只索引所选；未下载的云占位符会跳过。</li>
+        <li><strong>时长估计</strong> — DigUp 会在你的 Mac 上测速后估计首遍索引时间。</li>
+        <li><strong>快捷键</strong> — 搜索面板：<strong>⇧⌘Space</strong>（Shift + Command + Space）。</li>
+        <li><strong>关键词加权</strong> — 精确字符串（发票号、错误码）仍有用；照片与 PDF 多用自然语言。</li>
+      </ul>
+
+      <h2>排错</h2>
+      <ul class="checklist">
+        <li><strong>网络挡住模型下载</strong> — 设置 → Storage → <strong>Use Files…</strong>，指向你在别处下载的两个模型文件（0.6.1 起）。DigUp 使用前会校验。</li>
+        <li><strong>输入法 / 组合输入</strong> — 0.6.1 修复了韩文/日文/中文组字破坏搜索框的问题。</li>
+        <li><strong>带重音 / CJK 的文件夹名</strong> — 0.6.1 修复了某一路径含非 ASCII 名时整盘索引停止。</li>
+        <li><strong>更新</strong> — DigUp → Check for Updates…，或从 Releases / <code>brew upgrade</code> 重装。</li>
+      </ul>
+      <p>英文发行说明摘要：<a href="/changelog-notes/" hreflang="en">Changelog notes（英文）</a>。请始终对照官方 release notes。</p>
+
+      <h2>有来源的数字（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>值</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>Mac 版本</td><td>0.6.1</td><td>GitHub Releases</td></tr>
+          <tr><td>模型下载</td><td>约 865 MB</td><td>上游 README / release notes</td></tr>
+          <tr><td>Stars</td><td>约 3,716</td><td>GitHub API</td></tr>
+          <tr><td>许可证</td><td>MIT</td><td>仓库</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/faq/">常见问题</a>
+      </div>
+      <section class="related">
+        <h2>也可安装</h2>
+        <div class="cards">
+          <a class="card" href="/zh/install-windows/"><h3>Windows（测试）</h3><p>0.7.0-beta.1</p></a>
+          <a class="card" href="/zh/install-linux/"><h3>Linux（测试）</h3><p>.deb 与 AppImage</p></a>
+          <a class="card" href="/zh/vs-spotlight/"><h3>对比 Spotlight</h3><p>何时两者并用</p></a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>

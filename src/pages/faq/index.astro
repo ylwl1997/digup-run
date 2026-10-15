@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { DIGUP_UI } from '../../lib/site';
 ---
 <Layout
-  title="DigUp FAQ — Requirements, Privacy, Platforms, Troubleshooting"
-  description="Unofficial DigUp FAQ: Apple Silicon vs Windows/Linux beta, model size, privacy (local-first), brew install, indexing time, code search, and links to official GitHub Releases."
+  title={'DigUp FAQ — Requirements, Privacy, Platforms, Troubleshooting'}
+  description={'Unofficial DigUp FAQ: Apple Silicon vs Windows/Linux beta, model size, privacy (local-first), brew install, indexing time, code search, and links to official GitHub Releases.'}
   canonicalPath="/faq/"
+  lang="en"
+  ogImage={DIGUP_UI.audio.src}
 >
   <main class="wrap">
     <header class="page-hero">
