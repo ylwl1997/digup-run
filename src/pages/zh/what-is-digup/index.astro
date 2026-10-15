@@ -3,7 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../../lib/site';
 ---
 <Layout
-  title="Digup Run 是什么？本地多模态文件搜索说明"
+  title="DigUp 是什么？本地多模态文件搜索说明"
   description="DigUp 是开源、本地优先的桌面应用：用 EmbeddingGemma 2 按含义搜索照片、PDF、文档、录音、视频与可选代码——不只靠文件名。"
   canonicalPath="/what-is-digup/"
   lang="zh"
@@ -12,7 +12,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">概览</span> · 本地语义搜索</p>
-      <h1>Digup Run 是什么？</h1>
+      <h1>DigUp 是什么？</h1>
       <p class="lead">DigUp 是本地优先的多模态语义文件搜索桌面应用。你选择文件夹；它用 EmbeddingGemma 2 嵌入其中内容（照片、PDF 页、文档、音频窗、视频帧、可选代码），再按含义搜索——覆盖 Mac、Windows 与 Linux。</p>
       <ul class="job-steps" aria-label="产品任务" style="margin-top:1rem;margin-bottom:0.75rem;">
         <li><span class="n">1</span> 描述</li>
@@ -36,7 +36,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
       <figure class="shot-panel" style="margin-bottom:1.5rem;">
         <span class="shot-label">真实 DigUp 界面</span>
         <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altZh} loading="lazy" decoding="async" />
-        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} 「a dog on the beach」的多模态结果列表。</figcaption>
+        <figcaption class="shot-caption">「a dog on the beach」的多模态结果列表。</figcaption>
       </figure>
 
       <h2>一句话</h2>
@@ -85,11 +85,11 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
         <li>不是完整的 Spotlight / Windows Search 替代品（可并存）。</li>
         <li>不是应用启动器（截至调研日）。</li>
         <li>不是云同步或协作搜索产品。</li>
-        <li>不要从随机镜像装「官方 App Store」包——请用 GitHub Releases。</li>
+        <li>请从<a href="/zh/#download">首页下载区</a>获取安装包。</li>
       </ul>
 
       <div class="cta-bar">
-        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
         <a class="cta-secondary" href="/zh/install-mac/">Mac 安装</a>
         <a class="cta-secondary" href="/zh/vs-spotlight/">对比 Spotlight</a>
       </div>

@@ -1,33 +1,29 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../lib/site';
 ---
 <Layout
   title="DigUp Release Notes Summary — 0.6.1 & 0.7 Beta"
-  description="Plain-English summary of DigUp 0.6.1 Mac fixes and 0.7.0-beta.1 Windows/Linux launch. Always verify against official GitHub Releases."
+  description="Plain-English summary of DigUp 0.6.1 Mac fixes and 0.7.0-beta.1 Windows/Linux launch."
   canonicalPath="/changelog-notes/"
 >
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Summary</span></p>
       <h1>DigUp changelog notes</h1>
-      <p class="lead">Condensed highlights from official GitHub Releases. This is not a substitute for upstream notes — verify every bullet on GitHub before upgrading or filing bugs.</p>
+      <p class="lead">Condensed highlights for DigUp 0.6.1 (Mac) and 0.7.0-beta.1 (Windows/Linux). Versions cited were current on 2026-10-15.</p>
     </header>
 
     <article class="wide">
-      <div class="callout" style="margin-bottom:1.25rem;">
-        <strong>Verify on GitHub Releases.</strong> Source of truth:
-        <a href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">https://github.com/ylwl1997/digup-run-app/releases</a>.
-        Versions cited below were current on 2026-10-15.
-      </div>
-
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
         <a class="cta-secondary" href="/install-mac/">Mac install</a>
         <a class="cta-secondary" href="/install-windows/">Windows install</a>
       </div>
 
       <h2>0.6.1 — Mac (stable)</h2>
-      <p class="muted">Tag <code>v0.6.1</code> · asset <code>DigupRun-*.dmg (see latest Release assets)</code> · Apple Silicon, macOS 14+</p>
+      <p class="muted">Tag <code>v0.6.1</code> · asset <code>DigUp-0.6.1.dmg</code> · Apple Silicon, macOS 14+</p>
       <table>
         <thead>
           <tr><th>Area</th><th>What changed (summary)</th></tr>
@@ -43,19 +39,18 @@ import Layout from '../../layouts/Layout.astro';
           <tr><td><strong>Offline model</strong></td><td><strong>Use Files…</strong> when network blocks the model download.</td></tr>
         </tbody>
       </table>
-      <p>Full install steps: <a href="/install-mac/">Install Digup Run on Mac</a>.</p>
+      <p>Full install steps: <a href="/install-mac/">Install DigUp on Mac</a>.</p>
 
       <h2>0.7.0-beta.1 — Windows &amp; Linux (beta)</h2>
       <p class="muted">Tag <code>v0.7.0-beta.1</code> · published 2026-10-14 · Mac remains on 0.6.1 in this train</p>
       <ul class="checklist">
-        <li><strong>Windows:</strong> <code>DigupRun_*_x64-setup.exe</code>, per-user, unsigned → SmartScreen Run anyway.</li>
-        <li><strong>Linux:</strong> <code>.deb</code> (package <code>dig-up</code>) for Ubuntu 22.04+ / Debian 12+ / Mint 21+; AppImage elsewhere; <code>chmod +x</code>.</li>
+        <li><strong>Windows:</strong> <code>DigUp_0.7.0-beta.1_x64-setup.exe</code>, per-user, unsigned → SmartScreen Run anyway.</li>
+        <li><strong>Linux:</strong> <code>DigUp_0.7.0-beta.1_amd64.deb</code> / <code>DigUp_0.7.0-beta.1_amd64.AppImage</code>; <code>chmod +x</code> for AppImage.</li>
         <li><strong>Hotkey:</strong> Ctrl+Shift+Space; Wayland GNOME/KDE can register it; other desktops bind manually.</li>
-        <li><strong>GPU/CPU:</strong> automatic choice; check <code>speed.log</code> (<code>%LOCALAPPDATA%\com.ylwl1997.diguprun\logs</code> or <code>~/.local/share/com.ylwl1997.diguprun/logs</code>).</li>
+        <li><strong>GPU/CPU:</strong> automatic choice; check <code>speed.log</code> in DigUp’s local log folder.</li>
         <li><strong>Not yet:</strong> screenshot OCR text; skip .doc / RAW / SVG on this beta.</li>
       </ul>
       <ol class="checklist">
-        <li>Read the official beta release body before installing.</li>
         <li>Follow <a href="/install-windows/">Windows</a> or <a href="/install-linux/">Linux</a> checklists.</li>
         <li>Report issues upstream with the <code>speed.log</code> device line when GPU behavior matters.</li>
       </ol>
@@ -71,10 +66,9 @@ import Layout from '../../layouts/Layout.astro';
           <tr><td>Linux</td><td>0.7.0-beta.1</td><td>Beta</td></tr>
         </tbody>
       </table>
-      <p class="muted">Stars ~3,716 · model ~865 MB · MIT — verify live on GitHub.</p>
 
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href="/#download">All downloads</a>
         <a class="cta-secondary" href="/faq/">FAQ</a>
       </div>
     </article>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { DIGUP_UI } from '../../lib/site';
+import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
   title={'EmbeddingGemma 2 in DigUp — On-Device Multimodal Search'}
@@ -22,7 +22,7 @@ import { DIGUP_UI } from '../../lib/site';
       </div>
 
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
         <a class="cta-secondary" href="/what-is-digup/">What is DigUp?</a>
         <a class="cta-secondary" href="/install-mac/">Install Mac</a>
       </div>
@@ -95,7 +95,7 @@ import { DIGUP_UI } from '../../lib/site';
       </table>
 
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
         <a class="cta-secondary" href="/vs-spotlight/">vs Spotlight</a>
         <a class="cta-secondary" href="/faq/">FAQ</a>
       </div>

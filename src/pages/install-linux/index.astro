@@ -1,10 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { DIGUP_UI } from '../../lib/site';
+import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
-  title={'Install Digup Run on Linux — .deb & AppImage Guide'}
-  description={'Install Digup Run 0.7 beta on Ubuntu/Debian/Mint (.deb) or other distros (AppImage). GPU vs CPU notes, Wayland shortcuts, and first-run indexing checklist.'}
+  title={'Install DigUp on Linux — .deb & AppImage Guide'}
+  description={'Install DigUp 0.7 beta on Ubuntu/Debian/Mint (.deb) or other distros (AppImage). Direct ARahim3/DigUp assets, GPU vs CPU notes, Wayland shortcuts, and first-run indexing checklist.'}
   canonicalPath="/install-linux/"
   lang="en"
   ogImage={DIGUP_UI.code.src}
@@ -12,13 +12,14 @@ import { DIGUP_UI } from '../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Linux · beta</span> · Install guide</p>
-      <h1>Install Digup Run on Linux</h1>
-      <p class="lead">DigUp <strong>0.7.0-beta.1</strong> ships amd64 <code>.deb</code> and AppImage builds. Same on-device EmbeddingGemma 2 search as Mac — labeled beta. Binaries only from GitHub Releases.</p>
+      <h1>Install DigUp on Linux</h1>
+      <p class="lead">DigUp <strong>{SITE.downloads.linuxVersion}</strong> ships amd64 <code>.deb</code> and AppImage builds. Same on-device EmbeddingGemma 2 search as Mac — labeled beta. Direct Release asset downloads.</p>
     </header>
 
     <article class="wide">
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Download DigUp (.deb)</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a>
         <a class="cta-secondary" href="/install-mac/">Mac</a>
         <a class="cta-secondary" href="/install-windows/">Windows (beta)</a>
       </div>
@@ -32,41 +33,39 @@ import { DIGUP_UI } from '../../lib/site';
           <tr><td><strong>CPU</strong></td><td>64-bit Intel/AMD (amd64)</td></tr>
           <tr><td><strong>.deb targets</strong></td><td>Ubuntu 22.04+, Debian 12+, Linux Mint 21+</td></tr>
           <tr><td><strong>Other distros</strong></td><td>AppImage</td></tr>
-          <tr><td><strong>Package name (.deb)</strong></td><td><code>dig-up</code></td></tr>
-          <tr><td><strong>Version</strong></td><td>0.7.0-beta.1 — verify on Releases</td></tr>
+          <tr><td><strong>Assets</strong></td><td><code>DigUp_0.7.0-beta.1_amd64.deb</code> · <code>DigUp_0.7.0-beta.1_amd64.AppImage</code></td></tr>
+          <tr><td><strong>Version</strong></td><td>0.7.0-beta.1</td></tr>
         </tbody>
       </table>
 
       <h2>Install with .deb</h2>
       <ol class="checklist">
-        <li>Download <code>digup-run_*.deb</code> (or newer) from <a href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">Releases</a>.</li>
+        <li>Download <a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.1_amd64.deb</code></a>.</li>
         <li>Install from the download directory:</li>
       </ol>
-      <pre><code>sudo apt install ./digup-run_*.deb
-# Exact filename: check ylwl1997/digup-run-app Releases assets</code></pre>
+      <pre><code>sudo apt install ./DigUp_0.7.0-beta.1_amd64.deb</code></pre>
       <ol class="checklist" start="3">
-        <li>Launch Digup Run from your app menu; complete model download (~865 MB) and folder picks.</li>
+        <li>Launch DigUp from your app menu; complete model download (~865 MB) and folder picks.</li>
         <li>Hotkey: <strong>Ctrl+Shift+Space</strong>.</li>
       </ol>
-      <p class="muted">Filenames change with versions — always copy the exact name from the Releases asset list.</p>
 
       <h2>Install with AppImage</h2>
       <ol class="checklist">
-        <li>Download <code>Digup_Run_*_amd64.AppImage</code> from Releases.</li>
+        <li>Download <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.1_amd64.AppImage</code></a>.</li>
         <li>Make it executable and run:</li>
       </ol>
-      <pre><code>chmod +x Digup_Run_*.AppImage
-./Digup_Run_*.AppImage</code></pre>
+      <pre><code>chmod +x DigUp_0.7.0-beta.1_amd64.AppImage
+./DigUp_0.7.0-beta.1_amd64.AppImage</code></pre>
 
       <h2>Wayland shortcuts</h2>
       <ul class="checklist">
-        <li><strong>GNOME and KDE under Wayland:</strong> Digup Run can add Ctrl+Shift+Space to the desktop’s keyboard shortcuts during setup.</li>
+        <li><strong>GNOME and KDE under Wayland:</strong> DigUp can add Ctrl+Shift+Space to the desktop’s keyboard shortcuts during setup.</li>
         <li><strong>Other Wayland desktops:</strong> Settings shows the command to bind manually to a shortcut.</li>
       </ul>
 
       <h2>GPU, logs, and beta caveats</h2>
-      <p>Same GPU-vs-CPU selection as Windows. Check:</p>
-      <pre><code>~/.local/share/com.ylwl1997.diguprun/logs/speed.log</code></pre>
+      <p>Same GPU-vs-CPU selection as Windows. Check DigUp’s local logs (path may vary by package):</p>
+      <pre><code>~/.local/share/com.arahim3.digup/logs/speed.log</code></pre>
       <ul class="checklist">
         <li>Last line should show <code>"device": "gpu"</code> or <code>"cpu"</code>.</li>
         <li><strong>Not in 0.7.0-beta.1 yet:</strong> screenshot OCR text; old <code>.doc</code>, RAW, SVG are skipped.</li>
@@ -75,7 +74,7 @@ import { DIGUP_UI } from '../../lib/site';
 
       <h2>First-run checklist</h2>
       <ol class="checklist">
-        <li>Confirm you installed from <strong>ARahim3/DigUp</strong> Releases only.</li>
+        <li>Confirm you installed from <strong>ARahim3/DigUp</strong> Release assets only.</li>
         <li>Wait for the ~865 MB model (or use offline files if documented for your build).</li>
         <li>Select local folders (not undownloaded cloud placeholders).</li>
         <li>Test Ctrl+Shift+Space and a natural-language photo/PDF query.</li>
@@ -83,7 +82,8 @@ import { DIGUP_UI } from '../../lib/site';
       </ol>
 
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Download .deb</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a>
         <a class="cta-secondary" href="/faq/">FAQ</a>
         <a class="cta-secondary" href="/changelog-notes/">Changelog notes</a>
       </div>

@@ -1,4 +1,4 @@
-/* Digup Run — Studio Ink (v2 rebuild). Not paper polish. Dig-teal #0d7a75 as accent seed. */
+/* DigUp — Studio Ink (v2 rebuild). Not paper polish. Dig-teal #0d7a75 as accent seed. */
 :root {
   --bg: #070a0b;
   --bg-elevated: #0d1112;
@@ -411,6 +411,14 @@ a:focus-visible {
   transform: translateY(-1px);
 }
 .dl-pill .os-ico { opacity: 0.8; font-size: 0.95rem; }
+.dl-pill .ver-chip,
+.dl-primary .ver {
+  font-style: normal;
+  font-size: 0.7em;
+  opacity: 0.75;
+  margin-left: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
 .dl-pill em {
   font-style: normal;
   font-size: 0.72rem;
@@ -1308,14 +1316,11 @@ pre code {
   background: var(--bg-elevated);
 }
 .site-footer .disclaimer {
-  max-width: 72ch;
-  margin-bottom: 1rem;
-  line-height: 1.5;
-  padding: 0;
-  background: none;
-  border: none;
-  font-size: 0.78rem;
-  color: var(--faint);
+  margin: 1.25rem 0 0;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--muted);
+  opacity: 0.55;
 }
 .site-footer .footer-links {
   display: flex;
@@ -1545,4 +1550,40 @@ pre code {
   .modality-grid { grid-template-columns: repeat(2, 1fr); }
   .stage h1 { max-width: 18ch; }
   .dl-primary { width: 100%; }
+}
+
+
+/* Real demo (self-hosted @xiaohu clip) */
+.real-demo {
+  margin: 2.5rem auto 0;
+  max-width: 980px;
+}
+.real-demo-head {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.real-demo-head h2 {
+  margin: 0.25rem 0 0.4rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+}
+.real-demo-head .muted {
+  margin: 0;
+  max-width: 52ch;
+}
+.real-demo-stage {
+  margin: 0;
+}
+.real-demo-stage .demo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+.real-demo-stage .app-caption a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.real-demo-stage .app-caption a:hover {
+  color: var(--accent-bright);
 }

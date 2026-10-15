@@ -1,18 +1,26 @@
 export const SITE = {
-  name: 'Digup Run',
+  /** Software product display name (upstream DigUp). */
+  name: 'DigUp',
   shortName: 'digup.run',
   url: 'https://digup.run',
-  /** Our product app repo (binaries). */
-  appRepo: 'https://github.com/ylwl1997/digup-run-app',
-  appReleases: 'https://github.com/ylwl1997/digup-run-app/releases',
-  appReleasesLatest: 'https://github.com/ylwl1997/digup-run-app/releases/latest',
-  /** Upstream DigUp (MIT source) — attribution only, not download target. */
+  /** Upstream DigUp (MIT) — source repo + Release assets. */
   upstreamRepo: 'https://github.com/ARahim3/DigUp',
-  brewCask: 'Homebrew cask not published yet — use the Mac DMG from Releases',
-  disclaimerEn:
-    'Digup Run is based on DigUp (MIT, Copyright (c) 2026 Abdur Rahim). Not an official DigUp / ARahim3 product. Downloads via our GitHub Releases only; this site hosts no binaries.',
-  disclaimerZh:
-    'Digup Run 基于 DigUp（MIT，Copyright (c) 2026 Abdur Rahim）衍生。非官方 DigUp / ARahim3 产品。安装包仅经我们的 GitHub Releases；本站不托管二进制文件。',
+  brewCask: 'Homebrew cask not published yet — use the Mac DMG download',
+  /** Direct browser_download_url assets (file download starts on click). */
+  downloads: {
+    mac: 'https://github.com/ARahim3/DigUp/releases/download/v0.6.1/DigUp-0.6.1.dmg',
+    macVersion: '0.6.1',
+    windows:
+      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.1/DigUp_0.7.0-beta.1_x64-setup.exe',
+    windowsVersion: '0.7.0-beta.1',
+    linuxDeb:
+      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.1/DigUp_0.7.0-beta.1_amd64.deb',
+    linuxAppImage:
+      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.1/DigUp_0.7.0-beta.1_amd64.AppImage',
+    linuxVersion: '0.7.0-beta.1',
+  },
+  disclaimerEn: 'Based on DigUp (MIT). Not affiliated.',
+  disclaimerZh: '基于 DigUp（MIT）。非官方关联。',
 } as const;
 
 export type Lang = 'en' | 'zh';
@@ -47,68 +55,61 @@ export const NAV = [
   { href: '/changelog-notes/', labelEn: 'Changelog', labelZh: '更新说明', enOnly: true },
 ] as const;
 
-/**
- * UI stills from upstream DigUp demo.gif (ARahim3/DigUp) — illustrative of the
- * Digup Run experience (same engine lineage). Not an official DigUp endorsement.
- */
+/** UI stills from DigUp demo.gif (ARahim3/DigUp, MIT). */
 export const DIGUP_UI = {
-  /** Upstream DigUp docs/demo.gif mirrored locally (MIT) — primary homepage proof. */
+  /** DigUp docs/demo.gif mirrored locally (MIT) — primary homepage proof. */
   demo: {
     gif: '/media/digup/demo.gif',
     webm: '/media/digup/demo.webm',
     mp4: '/media/digup/demo.mp4',
     poster: '/media/digup/ui-win-multimodal-dog.webp',
     altEn:
-      'DigUp-lineage demo (MIT): search across Mac, Windows, and Linux — zebra in a video, podcast minute, lease PDF clause, dog on the beach, and code. Illustrative for Digup Run; not an official DigUp endorsement.',
+      'DigUp demo (MIT): search across Mac, Windows, and Linux — zebra in a video, podcast minute, lease PDF clause, dog on the beach, and code.',
     altZh:
-      'DigUp 同源演示（MIT）：Mac / Windows / Linux 上的内容搜索——视频斑马、播客分钟、租约 PDF、海滩上的狗、代码。用于 Digup Run 示意；非官方 DigUp 背书。',
-    captionEn:
-      'Demo from DigUp docs/demo.gif (ARahim3/DigUp, MIT), self-hosted here. Shows content search across platforms — not DigUp trademark use.',
-    captionZh:
-      '演示取自 DigUp docs/demo.gif（ARahim3/DigUp，MIT），由本站自托管。展示跨平台内容搜索——非 DigUp 商标使用。',
+      'DigUp 演示（MIT）：Mac / Windows / Linux 上的内容搜索——视频斑马、播客分钟、租约 PDF、海滩上的狗、代码。',
+    captionEn: 'DigUp demo — content search across platforms.',
+    captionZh: 'DigUp 演示——跨平台内容搜索。',
   },
   hero: {
     src: '/media/digup/ui-mac-video-zebra.webp',
     altEn:
-      'Digup Run (DigUp-lineage) Mac search panel: query “zebra in a video”, result with video at 0:42 — still from upstream DigUp docs/demo.gif.',
+      'DigUp Mac search panel: query “zebra in a video”, result with video at 0:42 — still from DigUp docs/demo.gif.',
     altZh:
-      'Digup Run（DigUp 同源）Mac 搜索面板：查询「zebra in a video」，视频定位 0:42 — 取自上游 DigUp docs/demo.gif 静帧。',
+      'DigUp Mac 搜索面板：查询「zebra in a video」，视频定位 0:42 — 取自 DigUp docs/demo.gif 静帧。',
   },
   audio: {
     src: '/media/digup/ui-mac-audio-sleep.webp',
     altEn:
-      'Mac UI: query “where they talk about sleep”, audio near 7:55 — still from ARahim3/DigUp docs/demo.gif (illustrative for Digup Run).',
+      'Mac UI: query “where they talk about sleep”, audio near 7:55 — still from ARahim3/DigUp docs/demo.gif.',
     altZh:
-      'Mac 界面：查询「where they talk about sleep」，音频约 7:55 — 取自 ARahim3/DigUp docs/demo.gif（Digup Run 示意）。',
+      'Mac 界面：查询「where they talk about sleep」，音频约 7:55 — 取自 ARahim3/DigUp docs/demo.gif。',
   },
   pdf: {
     src: '/media/digup/ui-win-pdf-lease.webp',
     altEn:
-      'Windows UI: “the clause about pets in the lease”, PDF page 4 — still from upstream DigUp demo.gif (illustrative for Digup Run).',
+      'Windows UI: “the clause about pets in the lease”, PDF page 4 — still from DigUp demo.gif.',
     altZh:
-      'Windows 界面：「the clause about pets in the lease」，PDF 第 4 页 — 取自上游 DigUp demo.gif（Digup Run 示意）。',
+      'Windows 界面：「the clause about pets in the lease」，PDF 第 4 页 — 取自 DigUp demo.gif。',
   },
   multimodal: {
     src: '/media/digup/ui-win-multimodal-dog.webp',
     altEn:
-      'Windows search UI: results sidebar grouped by VIDEO / IMAGES / AUDIO / DOCUMENTS, preview pane for content match — still from DigUp demo.gif (illustrative for Digup Run).',
+      'Windows search UI: results sidebar grouped by VIDEO / IMAGES / AUDIO / DOCUMENTS, preview pane for content match — still from DigUp demo.gif.',
     altZh:
-      'Windows 搜索界面：侧栏按 VIDEO / IMAGES / AUDIO / DOCUMENTS 分组，右侧预览命中内容 — 取自 DigUp demo.gif（Digup Run 示意）。',
+      'Windows 搜索界面：侧栏按 VIDEO / IMAGES / AUDIO / DOCUMENTS 分组，右侧预览命中内容 — 取自 DigUp demo.gif。',
   },
   code: {
     src: '/media/digup/ui-linux-code-search.webp',
     altEn:
-      'Linux UI: code: retry with backoff — still from upstream DigUp demo.gif (illustrative for Digup Run).',
+      'Linux UI: code: retry with backoff — still from DigUp demo.gif.',
     altZh:
-      'Linux 界面：code: retry with backoff — 取自上游 DigUp demo.gif（Digup Run 示意）。',
+      'Linux 界面：code: retry with backoff — 取自 DigUp demo.gif。',
   },
   logo: {
     src: '/logo.svg',
-    altEn: 'Digup Run mark (digup.run) — original site artwork, not the DigUp trademark logo.',
-    altZh: 'Digup Run 标志（digup.run）— 本站原创，非 DigUp 商标标识。',
+    altEn: 'digup.run',
+    altZh: 'digup.run',
   },
-  sourceNoteEn:
-    'Demo video and UI stills from DigUp docs/demo.gif (ARahim3/DigUp, MIT), self-hosted on digup.run. Illustrative for Digup Run; not an official DigUp endorsement.',
-  sourceNoteZh:
-    '演示视频与界面静帧取自 DigUp docs/demo.gif（ARahim3/DigUp，MIT），由 digup.run 自托管。用于 Digup Run 示意；非官方 DigUp 背书。',
+  sourceNoteEn: '',
+  sourceNoteZh: '',
 } as const;
