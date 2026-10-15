@@ -1,0 +1,60 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp for Office Clerks — Find Forms, Scans &amp; Emails by Meaning"
+  description="Office admin workflow with DigUp: scanned PDFs, forms, policy docs, and audio notes — on-device EmbeddingGemma 2 search without renaming everything."
+  canonicalPath="/guides/use-cases/office-clerk/"
+  lang="en"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Use case</span> · Office clerks &amp; admins</p>
+      <h1>DigUp for office clerks &amp; admins</h1>
+      <p class="lead">Filing systems fail when names are vague (scan001.pdf). DigUp + EmbeddingGemma 2 finds pages and photos by what they say or show — locally. Community site digup.run — not affiliated.</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href="/embeddinggemma-2/">EmbeddingGemma 2</a>
+        <a class="cta-secondary" href="/guides/use-cases/">All roles</a>
+      </div>
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">On-device flow</span>
+        <img src="/media/use-cases/office-clerk.svg" width="960" height="540" alt="Schematic: DigUp uses EmbeddingGemma 2 for Office clerks and admins local search" loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">Original schematic — DigUp indexes local files with EmbeddingGemma 2 (llama.cpp).</figcaption>
+      </figure>
+      
+      <h2>Sourced snapshot (2026-10-15)</h2>
+      <table>
+        <thead><tr><th>Fact</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Model</td><td>EmbeddingGemma 2 · ~740M params · ~865 MB Q8 via llama.cpp</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI</a> · DigUp README</td></tr>
+          <tr><td>Vector space</td><td>768-d shared multimodal space</td><td>Google AI · DigUp README</td></tr>
+          <tr><td>Mac / Win·Linux</td><td>0.6.1 · 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars / forks</td><td>~3,768 / ~254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+      <h2>Pain → DigUp workflow → tip</h2>
+      <table><thead><tr><th>Pain</th><th>DigUp + EmbeddingGemma 2 workflow</th><th>Tip</th></tr></thead><tbody><tr><td>Which PDF has the leave form?</td><td>Index HR/forms folders; query “annual leave application”</td><td>Opens at the matching page</td></tr><tr><td>Phone photo of a stamped receipt</td><td>Index camera roll / work Photos export</td><td>Find by what’s depicted — not filename</td></tr><tr><td>Policy buried in a 200-page handbook</td><td>PDF page embeddings + keyword boost</td><td>Long PDFs: first 30 pages fast, up to 5,000/file (README)</td></tr><tr><td>Voice memo of a manager request</td><td>Audio ~30s windows in shared space</td><td>Jump near the spoken moment</td></tr></tbody></table>
+      <h2>Numbered checklist</h2>
+      <ol class="checklist"><li>Download DigUp for your OS; complete the ~865 MB EmbeddingGemma 2 first run.</li><li>Add only work folders you are allowed to index (skip personal cloud placeholders).</li><li>Grant Full Disk Access on Mac if Desktop/Documents stay empty.</li><li>Search in plain language; keep exact form numbers as keywords too.</li><li>Use overnight indexing hours so daytime stays responsive.</li></ol>
+      <h2>Why EmbeddingGemma 2 matters here</h2>
+      <p>Google’s <a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">EmbeddingGemma 2</a> (~740M, unified 768-d multimodal space) is what DigUp runs via llama.cpp (~865 MB Q8 package). One query can rank images, PDF pages, audio windows, video frames, and optional code — see the <a href="/guides/embeddinggemma-2-local-multimodal-search/">local multimodal guide</a> and <a href="/embeddinggemma-2/">model page</a>. digup.run is not Google-official.</p>
+      <h2>Downloads &amp; installs</h2>
+      <ul class="checklist">
+        <li><a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG {SITE.downloads.macVersion}</a> · <a href="/install-mac/">Mac install</a></li>
+        <li><a href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows {SITE.downloads.windowsVersion}</a> · <a href="/install-windows/">Windows install</a></li>
+        <li><a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Linux .deb</a> / <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a> · <a href="/install-linux/">Linux install</a></li>
+        <li><a href="/faq/">FAQ</a> · <a href="/faq/#model-size">Model size / Use Files…</a></li>
+      </ul>
+      <h2>Related</h2>
+      <div class="cards"><a class="card" href="/guides/use-cases/"><h3>All roles hub</h3><p>Browse every use case</p></a><a class="card" href="/embeddinggemma-2/"><h3>EmbeddingGemma 2</h3><p>Model size &amp; runtime</p></a><a class="card" href="/guides/embeddinggemma-2-local-multimodal-search/"><h3>Multimodal guide</h3><p>Photos · PDF · audio · video · code</p></a><a class="card" href="/guides/use-cases/developer/"><h3>Developers &amp; programmers</h3><p>Role playbook</p></a><a class="card" href="/guides/use-cases/accountant/"><h3>Finance &amp; accountants</h3><p>Role playbook</p></a><a class="card" href="/guides/use-cases/student/"><h3>Students</h3><p>Role playbook</p></a></div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>
