@@ -1,0 +1,94 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp Windows & Linux Beta First-Week Guide — SmartScreen, Gaps, GPU"
+  description="DigUp v0.7.0-beta.1 on Windows and Linux: SmartScreen, capability gaps vs Mac 0.6.1, speed.log GPU check, download counts. Community guide — not affiliated."
+  canonicalPath="/guides/win-linux-beta/"
+  lang="en"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Guide</span> · Beta · {SITE.downloads.windowsVersion}</p>
+      <h1>DigUp on Windows &amp; Linux beta — first week</h1>
+      <p class="lead">Official <strong>v0.7.0-beta.1</strong> packages ship a Tauri shell with the same EmbeddingGemma 2 idea as Mac — far less field time. Use this page before you install, then the platform install guides. Tracking: <a href="https://github.com/ARahim3/DigUp/issues/63" rel="noopener noreferrer">#63</a>, <a href="https://github.com/ARahim3/DigUp/issues/1" rel="noopener noreferrer">#1</a>, <a href="https://github.com/ARahim3/DigUp/issues/5" rel="noopener noreferrer">#5</a>. Not affiliated.</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows setup</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Linux .deb</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a>
+      </div>
+
+      <h2>Sourced download counts (2026-10-15 scan)</h2>
+      <table>
+        <thead><tr><th>Asset</th><th>Downloads</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Mac <code>DigUp-0.6.1.dmg</code></td><td>~4,689</td><td>Stable channel</td></tr>
+          <tr><td>Windows x64 setup</td><td>~135</td><td>Prerelease</td></tr>
+          <tr><td>Linux AppImage</td><td>~56</td><td>Prerelease</td></tr>
+          <tr><td>Linux .deb</td><td>~18</td><td>Prerelease</td></tr>
+          <tr><td>Stars / forks</td><td>~3,768 / ~254</td><td>Repo ~7 days old at scan</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Platform × version × gaps</h2>
+      <table>
+        <thead><tr><th>Platform</th><th>Version</th><th>Gaps on this beta</th></tr></thead>
+        <tbody>
+          <tr><td>macOS</td><td>0.6.1 stable</td><td>Apple Silicon only</td></tr>
+          <tr><td>Windows 10/11 x64</td><td>0.7.0-beta.1</td><td>Unsigned → SmartScreen; no screenshot OCR text yet; skip .doc / RAW / SVG</td></tr>
+          <tr><td>Linux amd64</td><td>0.7.0-beta.1</td><td>Same capability gaps; .deb package name <code>dig-up</code>; Wayland shortcut quirks</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Windows: SmartScreen</h2>
+      <ol class="checklist">
+        <li>Download only via <a href={SITE.downloads.windows} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.1_x64-setup.exe</code></a>.</li>
+        <li>If SmartScreen appears: <strong>More info</strong> → <strong>Run anyway</strong> (unsigned beta).</li>
+        <li>Per-user install; no admin required.</li>
+        <li>First launch: ~865 MB model; pick folders; hotkey <strong>Ctrl+Shift+Space</strong>.</li>
+      </ol>
+      <p>Full steps: <a href="/install-windows/">Install DigUp on Windows</a>.</p>
+
+      <h2>Linux: .deb vs AppImage</h2>
+      <ol class="checklist">
+        <li>Ubuntu 22.04+ / Debian 12+ / Mint 21+: <a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a> → <code>sudo apt install ./DigUp_0.7.0-beta.1_amd64.deb</code>.</li>
+        <li>Other distros: <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a> → <code>chmod +x</code> then run.</li>
+        <li>Hotkey Ctrl+Shift+Space; GNOME/KDE Wayland may register during setup.</li>
+      </ol>
+      <p>Full steps: <a href="/install-linux/">Install DigUp on Linux</a>.</p>
+
+      <h2>GPU vs CPU — read <code>speed.log</code></h2>
+      <p>DigUp picks GPU when faster with matching results; otherwise CPU. Check the last line:</p>
+      <pre><code># Windows (path may vary by build)
+%LOCALAPPDATA%\…\logs\speed.log
+
+# Linux (path may vary by package)
+~/.local/share/…/logs/speed.log
+
+# Look for: "device": "gpu"  or  "device": "cpu"</code></pre>
+      <p class="muted">Exact folder names follow DigUp’s release notes for your build — open Settings / docs if the path differs.</p>
+
+      <h2>When to file upstream</h2>
+      <ul class="checklist">
+        <li>Include OS, GPU/CPU, DigUp version, and the <code>speed.log</code> device line.</li>
+        <li>Prefer existing trackers (#63 / #1 / #5) over duplicate “port please” issues.</li>
+      </ul>
+
+      <div class="cards">
+        <a class="card" href="/install-windows/"><h3>Windows install</h3><p>Checklist + SmartScreen</p></a>
+        <a class="card" href="/install-linux/"><h3>Linux install</h3><p>.deb &amp; AppImage</p></a>
+        <a class="card" href="/guides/zero-files-indexed/"><h3>0 files indexed</h3><p>Also applies on beta</p></a>
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a>
+        <a class="cta-secondary" href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>
+      </div>
+    </article>
+  </main>
+</Layout>

@@ -69,6 +69,17 @@ const ogImageAbs = ogImage
     <meta name="theme-color" content="#070a0b" />
     <meta name="color-scheme" content="dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {SITE.ga4Id && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga4Id}`}></script>
+        <script is:inline define:vars={{ ga4Id: SITE.ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', ga4Id);
+        </script>
+      </>
+    )}
   </head>
   <body>
     <header class="site-header">
@@ -87,6 +98,14 @@ const ogImageAbs = ogImage
           </details>
           <a href={pathFor(lang, '/vs-spotlight/')} aria-current={isCurrent('/vs-spotlight/') ? 'page' : undefined}>{label('vs Spotlight', '对比 Spotlight')}</a>
           <a href={pathFor(lang, '/embeddinggemma-2/')} aria-current={isCurrent('/embeddinggemma-2/') ? 'page' : undefined}>EmbeddingGemma 2</a>
+          <details class="nav-group">
+            <summary>{label('Guides', '指南')}</summary>
+            <div class="submenu">
+              <a href={pathFor(lang, '/guides/zero-files-indexed/')}>{label('0 files indexed', '索引为 0')}</a>
+              <a href={pathFor(lang, '/guides/battery-and-indexing-hours/')}>{label('Battery & hours', '耗电与时段')}</a>
+              <a href={pathFor(lang, '/guides/win-linux-beta/')}>{label('Win/Linux beta', 'Win/Linux 测试')}</a>
+            </div>
+          </details>
           <a href={pathFor(lang, '/faq/')} aria-current={isCurrent('/faq/') ? 'page' : undefined}>{label('FAQ', '常见问题')}</a>
           {lang === 'en' && (
             <a href="/changelog-notes/" aria-current={isCurrent('/changelog-notes/') ? 'page' : undefined}>Changelog</a>

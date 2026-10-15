@@ -5,7 +5,9 @@ export const SITE = {
   url: 'https://digup.run',
   /** Upstream DigUp (MIT) — source repo + Release assets. */
   upstreamRepo: 'https://github.com/ARahim3/DigUp',
-  brewCask: 'Homebrew cask not published yet — use the Mac DMG download',
+  brewCommand: 'brew install --cask arahim3/tap/digup',
+  /** Empty until a real GA4 property exists — do not invent a G- ID. */
+  ga4Id: 'G-XVYGCNK3EP',
   /** Direct browser_download_url assets (file download starts on click). */
   downloads: {
     mac: 'https://github.com/ARahim3/DigUp/releases/download/v0.6.1/DigUp-0.6.1.dmg',
@@ -51,6 +53,16 @@ export const NAV = [
   },
   { href: '/vs-spotlight/', labelEn: 'vs Spotlight', labelZh: '对比 Spotlight' },
   { href: '/embeddinggemma-2/', labelEn: 'EmbeddingGemma 2', labelZh: 'EmbeddingGemma 2' },
+  {
+    href: '/guides/zero-files-indexed/',
+    labelEn: 'Guides',
+    labelZh: '指南',
+    children: [
+      { href: '/guides/zero-files-indexed/', labelEn: '0 files indexed', labelZh: '索引为 0' },
+      { href: '/guides/battery-and-indexing-hours/', labelEn: 'Battery & hours', labelZh: '耗电与时段' },
+      { href: '/guides/win-linux-beta/', labelEn: 'Win/Linux beta', labelZh: 'Win/Linux 测试' },
+    ],
+  },
   { href: '/faq/', labelEn: 'FAQ', labelZh: '常见问题' },
   { href: '/changelog-notes/', labelEn: 'Changelog', labelZh: '更新说明', enOnly: true },
 ] as const;

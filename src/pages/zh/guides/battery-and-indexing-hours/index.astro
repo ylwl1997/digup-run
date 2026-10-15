@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp 耗电与夜间索引时段 — 暂停、计划、Helper"
+  description="减轻 DigUp Mac 耗电：仅在设定时段索引（#26）、电池上暂停、首次索引 vs 空闲、Force Quit helper（#22/#3）。社区指南——非官方关联。"
+  canonicalPath="/guides/battery-and-indexing-hours/"
+  lang="zh"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">指南</span> · Mac · 0.6.1</p>
+      <h1>耗电、风扇与夜间索引</h1>
+      <p class="lead">给每张照片和 PDF 做嵌入很重——<em>首次</em>索引时风扇与能耗偏高是预期现象。0.6.1 提供索引时段与暂停，让你白天能搜、不必整天在索引。依据 <a href="https://github.com/ARahim3/DigUp/issues/68" rel="noopener noreferrer">#68</a>、<a href="https://github.com/ARahim3/DigUp/issues/3" rel="noopener noreferrer">#3</a>、<a href="https://github.com/ARahim3/DigUp/issues/22" rel="noopener noreferrer">#22</a>、已关闭 <a href="https://github.com/ARahim3/DigUp/issues/26" rel="noopener noreferrer">#26</a>。非官方关联。</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href="/zh/faq/#battery">常见问题</a>
+        <a class="cta-secondary" href="/changelog-notes/" hreflang="en">更新说明（EN）</a>
+      </div>
+
+      <h2>数据快照（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>数值</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>Stars</td><td>约 3,768</td><td>GitHub API</td></tr>
+          <tr><td>Mac 稳定版</td><td>0.6.1（已含时段索引）</td><td>发行说明 / #26</td></tr>
+          <tr><td>默认窗口</td><td>常见为夜间约 1:00–7:00 — 以设置为准</td><td>#26 / 发行说明</td></tr>
+        </tbody>
+      </table>
+
+      <h2>首次索引 vs 空闲</h2>
+      <table>
+        <thead><tr><th>状态</th><th>预期</th><th>做法</th></tr></thead>
+        <tbody>
+          <tr><td><strong>首次 / 新增大文件夹</strong></td><td>CPU、风扇、能耗高</td><td>尽量接电；或暂停；或限制到夜间时段</td></tr>
+          <tr><td><strong>安静、无新文件</strong></td><td>应回落。若主索引后能耗仍很高（#68）</td><td>确认时段已开；暂停；查残留 helper（#22）</td></tr>
+          <tr><td><strong>PDF helper 失控</strong></td><td>内存/CPU 飙高（#3）</td><td>见 #3 维护者建议；升级到 0.6.1+</td></tr>
+        </tbody>
+      </table>
+
+      <h2>步骤</h2>
+      <ol class="checklist">
+        <li>升级到 <strong>0.6.1+</strong>（<code>{SITE.brewCommand}</code> 或 <a href={SITE.downloads.mac} rel="noopener noreferrer" download>DMG</a>）。</li>
+        <li>Settings → Folders → 开启<strong>仅在设定时段索引</strong>。</li>
+        <li>用电池时：菜单栏 <strong>Pause</strong>。</li>
+        <li>大索引结束后，确认已空闲再判断「一直很耗电」。</li>
+        <li>退出后 helper 仍占 CPU：Activity Monitor 结束相关进程后干净重开。</li>
+        <li>仍异常：在 <a href="https://github.com/ARahim3/DigUp/issues/68" rel="noopener noreferrer">#68</a> / <a href="https://github.com/ARahim3/DigUp/issues/3" rel="noopener noreferrer">#3</a> 附上采样（打码路径）。</li>
+      </ol>
+
+      <div class="cards">
+        <a class="card" href="/zh/guides/zero-files-indexed/"><h3>索引为 0</h3><p>云占位与完全磁盘访问</p></a>
+        <a class="card" href="/zh/install-mac/"><h3>Mac 安装</h3><p>Homebrew + DMG</p></a>
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

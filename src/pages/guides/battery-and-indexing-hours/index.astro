@@ -1,0 +1,77 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp Battery Drain & Overnight Indexing Hours — Pause, Schedule, Helpers"
+  description="Reduce DigUp Mac battery drain: index only set hours (issue #26), pause on battery, first-pass vs idle, Force Quit helpers (#22/#3). Community guide — not affiliated."
+  canonicalPath="/guides/battery-and-indexing-hours/"
+  lang="en"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Guide</span> · Mac · 0.6.1</p>
+      <h1>Battery, fans, and overnight indexing</h1>
+      <p class="lead">Embedding every photo and PDF is heavy — fans and energy impact during the <em>first</em> pass are expected. DigUp 0.6.1 ships scheduled indexing hours and pause controls so you can keep search all day without indexing all day. Sourced from <a href="https://github.com/ARahim3/DigUp/issues/68" rel="noopener noreferrer">#68</a>, <a href="https://github.com/ARahim3/DigUp/issues/3" rel="noopener noreferrer">#3</a>, <a href="https://github.com/ARahim3/DigUp/issues/22" rel="noopener noreferrer">#22</a>, closed <a href="https://github.com/ARahim3/DigUp/issues/26" rel="noopener noreferrer">#26</a>. Not affiliated.</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href="/faq/#battery">FAQ</a>
+        <a class="cta-secondary" href="/changelog-notes/">Changelog notes</a>
+      </div>
+
+      <h2>Sourced snapshot (2026-10-15)</h2>
+      <table>
+        <thead><tr><th>Fact</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Stars</td><td>~3,768</td><td>GitHub API</td></tr>
+          <tr><td>Mac stable</td><td>0.6.1 (scheduled hours shipped)</td><td>Release notes / #26</td></tr>
+          <tr><td>Default window (docs)</td><td>Often overnight ~1:00–7:00 — verify in Settings</td><td>#26 / release notes</td></tr>
+          <tr><td>Model</td><td>~865 MB once</td><td>README</td></tr>
+        </tbody>
+      </table>
+
+      <h2>During first pass vs idle</h2>
+      <table>
+        <thead><tr><th>State</th><th>What to expect</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td><strong>First index / big folder add</strong></td><td>High CPU, fans, Activity Monitor energy impact — embeddings + media.</td><td>Plug in if possible; or pause; or restrict to overnight hours.</td></tr>
+          <tr><td><strong>Quiet / no new files</strong></td><td>Should settle. If energy stays 500+ after main pass (#68), gather samples for upstream.</td><td>Confirm schedule is on; pause; check leftover helpers (#22).</td></tr>
+          <tr><td><strong>PDF helper runaway</strong></td><td>Memory/CPU on PDF stacks (#3).</td><td>Maintainer tips in #3 (e.g. skip-pdf workaround while syncing); update to 0.6.1+.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Controls: schedule vs pause</h2>
+      <table>
+        <thead><tr><th>Control</th><th>Where</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Index only set hours</strong></td><td>Settings → Folders (0.6.1)</td><td>Indexing runs in the window; search still works all day.</td></tr>
+          <tr><td><strong>Pause indexing</strong></td><td>Menu bar DigUp</td><td>Stops the current pass — useful on battery.</td></tr>
+          <tr><td><strong>Force Quit helpers</strong></td><td>Activity Monitor</td><td>If DigUp quit but helpers keep CPU (#22); then reopen DigUp cleanly.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Numbered steps</h2>
+      <ol class="checklist">
+        <li>Update to DigUp <strong>0.6.1+</strong> (<code>{SITE.brewCommand}</code> or <a href={SITE.downloads.mac} rel="noopener noreferrer" download>DMG</a>).</li>
+        <li>Open Settings → Folders → enable <strong>index only during set hours</strong> (pick an overnight window that fits you).</li>
+        <li>On battery: use menu-bar <strong>Pause</strong> during meetings or travel.</li>
+        <li>After a large first pass finishes, leave DigUp open but confirm indexing is idle before judging “always drains.”</li>
+        <li>If helpers stay hot after quit: Activity Monitor → quit DigUp-related processes → relaunch once.</li>
+        <li>Still abnormal after a quiet night? Attach energy samples / logs on <a href="https://github.com/ARahim3/DigUp/issues/68" rel="noopener noreferrer">#68</a> or <a href="https://github.com/ARahim3/DigUp/issues/3" rel="noopener noreferrer">#3</a> (redact paths).</li>
+      </ol>
+
+      <div class="cards">
+        <a class="card" href="/guides/zero-files-indexed/"><h3>0 files indexed</h3><p>Cloud placeholders &amp; FDA</p></a>
+        <a class="card" href="/install-mac/"><h3>Mac install</h3><p>Homebrew + DMG</p></a>
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

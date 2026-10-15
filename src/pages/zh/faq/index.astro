@@ -53,12 +53,22 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 
       <div class="faq-item" id="brew">
         <h2>Mac 上用 Homebrew 还是 DMG？</h2>
-        <p>请<a href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 Mac DMG</a>（Homebrew cask 尚未发布）。步骤：<a href="/zh/install-mac/">在 Mac 上安装 DigUp</a>。</p>
+        <p>推荐：<code>{SITE.brewCommand}</code>（ARahim3 tap；议题 <a href="https://github.com/ARahim3/DigUp/issues/2" rel="noopener noreferrer">#2</a>）。进入 core <code>homebrew/cask</code> 约需仓库满 30 天（约 2026-11-07）——tap 现已可用。备选：<a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>。步骤：<a href="/zh/install-mac/">在 Mac 上安装 DigUp</a>。</p>
+      </div>
+
+      <div class="faq-item" id="empty-index">
+        <h2>为什么显示索引了 0 个文件？</h2>
+        <p>常见是云占位（iCloud / OneDrive）、完全磁盘访问，或代码目录需单独开启——见 <a href="https://github.com/ARahim3/DigUp/issues/67" rel="noopener noreferrer">#67</a>、<a href="https://github.com/ARahim3/DigUp/issues/61" rel="noopener noreferrer">#61</a>、<a href="https://github.com/ARahim3/DigUp/issues/21" rel="noopener noreferrer">#21</a>。详解：<a href="/zh/guides/zero-files-indexed/">索引为 0 指南</a>。</p>
+      </div>
+
+      <div class="faq-item" id="battery">
+        <h2>DigUp 很耗 Mac 电怎么办？</h2>
+        <p>首次索引很重（预期）。0.6.1 可在 Settings → Folders 开启<strong>仅在设定时段索引</strong>（<a href="https://github.com/ARahim3/DigUp/issues/26" rel="noopener noreferrer">#26</a>），电池上用菜单栏 Pause。见 <a href="https://github.com/ARahim3/DigUp/issues/68" rel="noopener noreferrer">#68</a>。详解：<a href="/zh/guides/battery-and-indexing-hours/">耗电与索引时段</a>。</p>
       </div>
 
       <div class="faq-item" id="beta">
-        <h2>Windows / Linux 的「测试版」是什么意思？</h2>
-        <p>0.7.0-beta.1 能用，但实战时间远少于 Mac。预期有毛边。截图 OCR 文字尚未加入；.doc / RAW / SVG 在该 beta 会跳过。建议向上游提 issue 并附日志（如 <code>speed.log</code> 的 device 行）。</p>
+        <h2>Windows / Linux「测试版」是什么意思？</h2>
+        <p>0.7.0-beta.1 可用，但实战远少于 Mac。可能有粗糙处；尚无截图 OCR 文本；该测试版跳过 .doc / RAW / SVG。向上游反馈请附 <code>speed.log</code> 设备行。详解：<a href="/zh/guides/win-linux-beta/">Win/Linux 测试版一周指南</a>。</p>
       </div>
 
       <div class="faq-item" id="code">
@@ -78,7 +88,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 
       <div class="faq-item" id="stars">
         <h2>项目有多热？</h2>
-        <p>截至 2026-10-15，GitHub API 约报 <strong>3,716</strong> stars、252 forks，已发布 Mac 0.6.1 与 Win/Linux 0.7.0-beta.1。实时数字请看仓库。</p>
+        <p>截至 2026-10-15，GitHub API 约报 <strong>3,768</strong> stars、254 forks，已发布 Mac 0.6.1 与 Win/Linux 0.7.0-beta.1。实时数字请看仓库。</p>
       </div>
 
       <h2 style="margin-top:2rem;">快速要求表</h2>

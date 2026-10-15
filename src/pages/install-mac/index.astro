@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
-  title={'Install DigUp on Mac (Apple Silicon) — DMG'}
-  description={'Step-by-step DigUp Mac install for Apple Silicon (macOS 14+): DigUp-0.6.1.dmg from ARahim3/DigUp Releases, first-run model (~865 MB), and Shift-Cmd-Space search.'}
+  title={'Install DigUp on Mac (Apple Silicon) — Homebrew & DMG'}
+  description={'Install DigUp on Apple Silicon (macOS 14+): brew install --cask arahim3/tap/digup, or DigUp-0.6.1.dmg. First-run model (~865 MB) and ⇧⌘Space.'}
   canonicalPath="/install-mac/"
   lang="en"
   ogImage={DIGUP_UI.hero.src}
@@ -13,7 +13,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Mac · {SITE.downloads.macVersion}</span> · Install guide</p>
       <h1>Install DigUp on Mac</h1>
-      <p class="lead">Apple Silicon Macs on macOS 14 or later. Download the DigUp DMG and follow the steps below.</p>
+      <p class="lead">Apple Silicon Macs on macOS 14 or later. Prefer Homebrew (tap), or download the DigUp DMG.</p>
     </header>
 
     <article class="wide">
@@ -42,8 +42,16 @@ import { DIGUP_UI, SITE } from '../../lib/site';
         </tbody>
       </table>
 
-      <h2>DMG from ARahim3/DigUp Releases</h2>
-      <p class="muted">A Homebrew cask is not published yet. Use the Mac DMG download below.</p>
+      <h2>Install with Homebrew (recommended)</h2>
+      <p class="muted">Official tap from ARahim3 (issue <a href="https://github.com/ARahim3/DigUp/issues/2" rel="noopener noreferrer">#2</a>). Core <code>homebrew/cask</code> listing is expected after DigUp’s repo is ~30 days old (~Nov 7, 2026). The tap works now.</p>
+      <pre><code>{SITE.brewCommand}</code></pre>
+      <ol class="checklist">
+        <li>Run the command above in Terminal.</li>
+        <li>Launch DigUp from Applications / Spotlight; complete first-run model download (~865 MB) and folder picks.</li>
+        <li>Hotkey: <strong>⇧⌘Space</strong>.</li>
+      </ol>
+
+      <h2>Alternate: DMG download</h2>
       <ol class="checklist">
         <li>Download <a href={SITE.downloads.mac} rel="noopener noreferrer" download><code>DigUp-0.6.1.dmg</code></a> (direct Release asset).</li>
         <li>Open the DMG and drag DigUp to Applications.</li>
