@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
-  title="DigUp 指南 — 本地多模态语义文件搜索（非官方）"
+  title="DigUp 指南 — 本地多模态语义文件搜索"
   description="独立介绍 DigUp（ARahim3/DigUp）：用 EmbeddingGemma 2 在本机按含义搜索照片、PDF、音频、视频与可选代码。安装仅链到 GitHub Releases。"
   canonicalPath="/"
   lang="zh"
@@ -13,7 +13,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
     <section class="hero wrap">
       <div class="hero-split">
         <div class="hero-copy">
-          <span class="badge">非官方 · 独立介绍</span>
+          <span class="badge">本地 · 多模态</span>
           <h1>用自然语言描述，在本机把文件「挖」出来。</h1>
           <ul class="job-steps" aria-label="DigUp 怎么用">
             <li><span class="n">1</span> 描述</li>
@@ -32,9 +32,6 @@ import { DIGUP_UI, SITE } from '../../lib/site';
           <p class="hero-brew">
             Mac Homebrew：<code>{SITE.brewCask}</code>
           </p>
-          <div class="callout">
-            <strong>不是 DigUp 官方网站。</strong> digup.run 是独立关键词 / 操作指南站。上游项目：<a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>（MIT）。我们从不托管 DMG 或 EXE。
-          </div>
         </div>
 
         <figure class="shot-panel">
@@ -55,7 +52,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
     <section class="wrap section-head">
       <p class="section-label">真实界面</p>
       <h2>搜索框 → 结果列表 → 打开到页码 / 时间戳</h2>
-      <p class="muted">静帧来自官方 DigUp <code>docs/demo.gif</code>（仓库 ARahim3/DigUp），压缩为 WebP 用于本非官方指南。</p>
+      <p class="muted">静帧来自官方 DigUp <code>docs/demo.gif</code>（仓库 ARahim3/DigUp），压缩为 WebP 用于本指南。</p>
       <div class="shot-gallery">
         <figure class="shot-panel">
           <span class="shot-label">Windows · PDF 页</span>
@@ -110,7 +107,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
             <span class="loc">→ 打开</span>
           </div>
         </div>
-        <p class="demo-caption">CSS 线框示意同一任务流程，次于上方真实截图。非官方 DigUp 界面复刻。</p>
+        <p class="demo-caption">CSS 线框示意同一任务流程，次于上方真实截图。</p>
       </aside>
     </section>
 

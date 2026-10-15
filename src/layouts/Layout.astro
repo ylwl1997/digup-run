@@ -65,13 +65,13 @@ const ogImageAbs = ogImage
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
-    <meta name="theme-color" content="#100e0c" />
+    <meta name="theme-color" content="#0d7a75" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="logo" href={homeHref}><span class="mark" aria-hidden="true"></span>digup.run <span>{label('unofficial', '非官方')}</span></a>
+        <a class="logo" href={homeHref}><img class="mark" src="/logo.svg" width="28" height="28" alt="" />digup.run</a>
         <nav class="nav" aria-label={label('Primary', '主导航')}>
           <a href={homeHref} aria-current={path === homeHref || path === '/zh' ? 'page' : undefined}>{label('Home', '首页')}</a>
           <a href={pathFor(lang, '/what-is-digup/')} aria-current={isCurrent('/what-is-digup/') ? 'page' : undefined}>{label('What is', '是什么')}</a>
@@ -105,21 +105,11 @@ const ogImageAbs = ogImage
     <footer class="site-footer">
       <div class="wrap">
         <p class="disclaimer">
-          {lang === 'zh' ? (
-            <>
-              <strong>非官方介绍站。</strong> digup.run 是关于开源项目 DigUp 的独立信息 / 关键词站点，与 ARahim3 或 DigUp 维护者<strong>无</strong>隶属、无背书、无运营关系。DigUp 为 MIT 开源；商标与产品名归其权利人所有。下载与支持请使用官方仓库：
-              <a href={SITE.upstreamRepo} rel="noopener noreferrer">github.com/ARahim3/DigUp</a>
-              与
-              <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a>。
-            </>
-          ) : (
-            <>
-              <strong>Unofficial coverage site.</strong> digup.run is an independent informational / keyword site about the open-source DigUp project. It is <strong>not</strong> affiliated with, endorsed by, or operated by ARahim3 or the DigUp maintainers. DigUp is MIT-licensed open source; trademarks and product names belong to their owners. For downloads and support, use the official repository:
-              <a href={SITE.upstreamRepo} rel="noopener noreferrer">github.com/ARahim3/DigUp</a>
-              and
-              <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a>.
-            </>
-          )}
+          {lang === 'zh' ? SITE.disclaimerZh : SITE.disclaimerEn}
+          {' '}
+          <a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+          {' · '}
+          <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a>
         </p>
         <div class="footer-links">
           <a href={SITE.upstreamReleases} rel="noopener noreferrer">{label('Download on GitHub Releases', '前往 GitHub Releases 下载')}</a>
@@ -134,7 +124,6 @@ const ogImageAbs = ogImage
             <a href={pathFor('en', canonicalPath)} class:list={['lang-opt', lang === 'en' && 'is-on']} hreflang="en">EN</a>
             <a href={pathFor('zh', canonicalPath)} class:list={['lang-opt', lang === 'zh' && 'is-on']} hreflang="zh-CN">中文</a>
           </div>
-          <span>{label('Unofficial', '非官方')}</span>
         </div>
         <p class="tm">
           {lang === 'zh'
