@@ -1,5 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#1c1915"/>
-  <circle cx="14" cy="14" r="7" stroke="#e8a54b" stroke-width="2.5"/>
-  <path d="M19.5 19.5L25 25" stroke="#d4785a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- digup.run site mark: dig strata + find-lens (original; not DigUp product logo) -->
+  <rect width="32" height="32" rx="8" fill="#0d7a75"/>
+  <!-- soil / file strata -->
+  <path d="M6 22.5h12.5M6 19h10M6 15.5h7.5" stroke="#b8e8e4" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
+  <!-- lifted file corner -->
+  <path d="M7.5 12.5 L12 8.5 L15.5 11.5" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 8.5 V12.2 H15.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <!-- find lens -->
+  <circle cx="20.5" cy="14" r="5.2" stroke="#fff" stroke-width="2.1"/>
+  <path d="M24.4 17.9 L28 21.5" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/>
 </svg>

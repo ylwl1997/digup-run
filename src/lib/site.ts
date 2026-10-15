@@ -1,13 +1,14 @@
 export const SITE = {
-  name: 'digup.run (unofficial)',
+  name: 'digup.run',
   url: 'https://digup.run',
   upstreamRepo: 'https://github.com/ARahim3/DigUp',
   upstreamReleases: 'https://github.com/ARahim3/DigUp/releases',
   brewCask: 'brew install --cask arahim3/tap/digup',
+  /** Single subtle footer line (EN / ZH). Keep prominent UI free of Unofficial badges. */
   disclaimerEn:
-    'Unofficial coverage site. digup.run is an independent informational / keyword site about the open-source DigUp project. It is not affiliated with, endorsed by, or operated by ARahim3 or the DigUp maintainers. DigUp is MIT-licensed open source; trademarks and product names belong to their owners. For downloads and support, use the official repository: github.com/ARahim3/DigUp and Releases. This site does not host DMG, EXE, or other binaries.',
+    'Independent guide to DigUp (open source). Not affiliated with ARahim3 — downloads via GitHub Releases only; this site hosts no binaries.',
   disclaimerZh:
-    '非官方介绍站。digup.run 是关于开源项目 DigUp 的独立信息 / 关键词站点，与 ARahim3 或 DigUp 维护者无隶属、无背书、无运营关系。DigUp 为 MIT 开源；商标与产品名归其权利人所有。下载与支持请前往官方仓库 github.com/ARahim3/DigUp 与 Releases。本站不托管 DMG、EXE 或其他二进制安装包。',
+    'DigUp 开源项目的独立指南站，与 ARahim3 无隶属关系；安装包仅经 GitHub Releases，本站不托管二进制文件。',
 } as const;
 
 export type Lang = 'en' | 'zh';
@@ -47,9 +48,9 @@ export const DIGUP_UI = {
   hero: {
     src: '/media/digup/ui-mac-video-zebra.webp',
     altEn:
-      'DigUp search panel on Mac: query “zebra in a video”, result list with Masai Mara video at 0:42 and Open at 0:42 — still from official upstream demo.gif (unofficial site).',
+      'DigUp search panel on Mac: query “zebra in a video”, result list with Masai Mara video at 0:42 and Open at 0:42 — still from official upstream demo.gif.',
     altZh:
-      'DigUp Mac 搜索面板：查询「zebra in a video」，结果列表含 Masai Mara 视频定位到 0:42，并显示 Open at 0:42 — 取自官方上游 demo.gif 静帧（本站非官方）。',
+      'DigUp Mac 搜索面板：查询「zebra in a video」，结果列表含 Masai Mara 视频定位到 0:42，并显示 Open at 0:42 — 取自官方上游 demo.gif 静帧。',
   },
   audio: {
     src: '/media/digup/ui-mac-audio-sleep.webp',
@@ -81,11 +82,11 @@ export const DIGUP_UI = {
   },
   logo: {
     src: '/media/digup/logo.webp',
-    altEn: 'DigUp logo from official ARahim3/DigUp docs/logo.png (unofficial coverage site).',
-    altZh: 'DigUp 标志，来自官方 ARahim3/DigUp docs/logo.png（本站为非官方介绍）。',
+    altEn: 'DigUp product mark from official ARahim3/DigUp docs/logo.png (illustrative).',
+    altZh: 'DigUp 产品标志，来自官方 ARahim3/DigUp docs/logo.png（示意）。',
   },
   sourceNoteEn:
-    'UI stills extracted from the official DigUp demo (docs/demo.gif) and logo (docs/logo.png) in ARahim3/DigUp. Illustrative; digup.run is unofficial.',
+    'UI stills from the official DigUp demo (docs/demo.gif) in ARahim3/DigUp. Illustrative screenshots for this guide.',
   sourceNoteZh:
-    '界面静帧取自官方 DigUp 演示（docs/demo.gif）与标志（docs/logo.png，仓库 ARahim3/DigUp）。仅作示意；digup.run 为非官方站点。',
+    '界面静帧取自官方 DigUp 演示（docs/demo.gif，仓库 ARahim3/DigUp）。本站指南示意截图。',
 } as const;
