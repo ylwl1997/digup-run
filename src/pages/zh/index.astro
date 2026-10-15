@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
-  title="Digup Run — 下载本地多模态语义文件搜索"
-  description="下载 Digup Run（Mac / Windows / Linux）。本地 EmbeddingGemma 2 搜索照片、PDF、音频、视频与可选代码。安装包来自 ylwl1997/digup-run-app Releases，本站不托管二进制。"
+  title="DigUp — 下载本地多模态语义文件搜索"
+  description="下载 DigUp（Mac / Windows / Linux）。本地 EmbeddingGemma 2 搜索照片、PDF、音频、视频与可选代码。"
   canonicalPath="/"
   lang="zh"
   ogImage={DIGUP_UI.hero.src}
@@ -14,40 +14,44 @@ import { DIGUP_UI, SITE } from '../../lib/site';
       <p class="stage-eyebrow">本地多模态搜索 · digup.run</p>
       <h1>用自然语言描述，在本机把文件「挖」出来。</h1>
       <p class="stage-lede">
-        Digup Run 找的是照片、PDF、文档、录音、视频里的<strong>内容</strong>——
+        DigUp 找的是照片、PDF、文档、录音、视频里的<strong>内容</strong>——
         用 EmbeddingGemma 2 做私有文件夹索引。不是网盘，也不是启动器。
       </p>
 
-      <div class="dl-arch" aria-label="下载 Digup Run">
-        <a class="dl-primary" href={SITE.appReleasesLatest} rel="noopener noreferrer">
+      <div class="dl-arch" id="download" aria-label="下载 DigUp">
+        <a class="dl-primary" href={SITE.downloads.mac} rel="noopener noreferrer" download>
           <span class="dl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 15 2.94 10.53 4.7 7.5c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.22-2 1.08-3.15-1.05.04-2.31.72-3.05 1.58-.66.76-1.23 1.98-1.08 3.14 1.14.09 2.32-.65 3.05-1.57"/></svg></span>
           <span class="dl-copy">
-            <strong>下载 Mac 版</strong>
-            <span>Apple Silicon · macOS 14+ · DMG</span>
+            <strong>下载 DigUp（Mac）</strong>
+            <span>Apple Silicon · macOS 14+ · DMG · <em class="ver">{SITE.downloads.macVersion}</em></span>
           </span>
         </a>
         <div class="dl-secondary">
-          <a class="dl-pill" href={SITE.appReleases} rel="noopener noreferrer">
+          <a class="dl-pill" href={SITE.downloads.windows} rel="noopener noreferrer" download>
             <span class="os-ico" aria-hidden="true">▦</span>
             Windows <em>测试</em>
+            <span class="ver-chip">{SITE.downloads.windowsVersion}</span>
           </a>
-          <a class="dl-pill" href={SITE.appReleases} rel="noopener noreferrer">
+          <a class="dl-pill" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>
             <span class="os-ico" aria-hidden="true">⬡</span>
-            Linux <em>测试</em>
+            Linux .deb
+            <span class="ver-chip">{SITE.downloads.linuxVersion}</span>
+          </a>
+          <a class="dl-pill" href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>
+            <span class="os-ico" aria-hidden="true">⬡</span>
+            Linux AppImage
+            <span class="ver-chip">{SITE.downloads.linuxVersion}</span>
           </a>
         </div>
       </div>
       <p class="stage-note">
-        安装包仅来自
-        <a href={SITE.appReleases} rel="noopener noreferrer">ylwl1997/digup-run-app Releases</a>——
-        本站从不托管二进制。
         指南：<a href="/zh/install-mac/">Mac</a> · <a href="/zh/install-windows/">Windows</a> · <a href="/zh/install-linux/">Linux</a>
       </p>
 
       <figure class="app-window demo-stage">
         <div class="app-chrome" aria-hidden="true">
           <div class="app-dots"><i></i><i></i><i></i></div>
-          <div class="app-chrome-title">Digup Run · 演示</div>
+          <div class="app-chrome-title">DigUp · 演示</div>
         </div>
         <div class="demo-media">
           <video
@@ -67,9 +71,6 @@ import { DIGUP_UI, SITE } from '../../lib/site';
             <img src={DIGUP_UI.demo.gif} width="1200" height="800" alt={DIGUP_UI.demo.altZh} />
           </video>
         </div>
-        <figcaption class="app-caption">
-          {DIGUP_UI.demo.captionZh}
-        </figcaption>
       </figure>
 
       <div class="proof-split">
@@ -111,8 +112,8 @@ import { DIGUP_UI, SITE } from '../../lib/site';
           <span>直达页码、时间戳或代码行——不只是文件本身。</span>
         </div>
         <div class="trust-item" role="listitem">
-          <strong>DigUp 同源</strong>
-          <span>基于 DigUp（MIT）衍生。非官方 DigUp 产品。</span>
+          <strong>开源</strong>
+          <span>MIT 许可的本机文件夹搜索应用。</span>
         </div>
       </div>
     </section>
@@ -149,7 +150,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
         <div class="band-head">
           <p class="kicker">界面</p>
           <h2>搜索 → 结果 → 打开到页 / 时刻</h2>
-          <p>DigUp 同源界面静帧——用于 Digup Run 示意。</p>
+          <p>Mac / Windows / Linux 搜索界面。</p>
         </div>
         <div class="filmstrip">
           <figure class="film-main">
@@ -167,7 +168,6 @@ import { DIGUP_UI, SITE } from '../../lib/site';
             </figure>
           </div>
         </div>
-        <p class="film-note">{DIGUP_UI.sourceNoteZh}</p>
       </div>
     </section>
 
@@ -193,8 +193,8 @@ import { DIGUP_UI, SITE } from '../../lib/site';
       <div class="wrap">
         <div class="band-head">
           <p class="kicker">指南</p>
-          <h2>安装与了解 Digup Run</h2>
-          <p>安装说明与 digup 关键词指南——下载仍指向 GitHub Releases。</p>
+          <h2>安装与了解 DigUp</h2>
+          <p>安装说明与 digup 关键词指南。</p>
         </div>
         <div class="guide-list">
           <a class="guide-link" href="/zh/install-mac/">
@@ -210,7 +210,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
             <span class="gl-arrow" aria-hidden="true">→</span>
           </a>
           <a class="guide-link" href="/zh/what-is-digup/">
-            <span class="gl-meta"><span class="gl-tag">概述</span><span class="gl-title">Digup Run 是什么？</span></span>
+            <span class="gl-meta"><span class="gl-tag">概述</span><span class="gl-title">DigUp 是什么？</span></span>
             <span class="gl-arrow" aria-hidden="true">→</span>
           </a>
           <a class="guide-link" href="/zh/vs-spotlight/">
@@ -232,11 +232,11 @@ import { DIGUP_UI, SITE } from '../../lib/site';
         </div>
 
         <div class="bottom-cta">
-          <p><strong>开始挖掘？</strong>从我们的 GitHub Releases 获取 Digup Run。基于 DigUp（MIT）。</p>
+          <p><strong>开始挖掘？</strong>按平台下载 DigUp。</p>
           <div class="actions">
-            <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
-            <a class="cta-secondary" href={SITE.appRepo} rel="noopener noreferrer">应用源码</a>
-            <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">上游 DigUp</a>
+            <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>
+            <a class="cta-secondary" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
+            <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
           </div>
         </div>
       </div>

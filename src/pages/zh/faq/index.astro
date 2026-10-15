@@ -4,7 +4,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 ---
 <Layout
   title="DigUp 常见问题 — 要求、隐私、平台与排错"
-  description="DigUp FAQ：Apple Silicon vs Windows/Linux 测试版、模型大小、隐私（本地优先）、brew 安装、索引时长、代码搜索，以及官方 GitHub Releases 链接。"
+  description="DigUp FAQ：Apple Silicon vs Windows/Linux 测试版、模型大小、隐私（本地优先）、brew 安装、索引时长、代码搜索与下载。"
   canonicalPath="/faq/"
   lang="zh"
   ogImage={DIGUP_UI.audio.src}
@@ -13,27 +13,27 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
     <header class="page-hero">
       <p class="meta-line"><span class="badge">FAQ</span> · 常见问题</p>
       <h1>DigUp 常见问题</h1>
-      <p class="lead">短答 + 链到更厚指南。任何冲突以官方 GitHub README 与 Releases 为准。</p>
+      <p class="lead">短答 + 链到更厚指南与安装页。</p>
     </header>
     <article class="wide">
       <div class="cta-bar">
-        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
         <a class="cta-secondary" href="/zh/what-is-digup/">DigUp 是什么？</a>
       </div>
 
-      <div class="faq-item" id="official">
-        <h2>digup.run 是 DigUp 官方网站吗？</h2>
-        <p><strong>不是。</strong> digup.run 是 Digup Run 产品站（非官方 DigUp）。下载来自我们的 fork Releases；上游 DigUp 仍在 <a href={SITE.upstreamRepo} rel="noopener noreferrer">github.com/ARahim3/DigUp</a> 与 <a href={SITE.appReleases} rel="noopener noreferrer">Releases</a>。</p>
+      <div class="faq-item" id="download">
+        <h2>从哪里下载 DigUp？</h2>
+        <p>请用<a href="/zh/#download">首页下载区</a>的平台按钮：Mac DMG（0.6.1）、Windows 安装包与 Linux <code>.deb</code> / AppImage（0.7.0-beta.1）。指南：<a href="/zh/install-mac/">Mac</a>、<a href="/zh/install-windows/">Windows</a>、<a href="/zh/install-linux/">Linux</a>。</p>
       </div>
 
       <div class="faq-item" id="platforms">
         <h2>支持哪些平台？</h2>
-        <p>Mac：<strong>0.6.1</strong> 稳定，Apple Silicon，macOS 14+。Windows 与 Linux：<strong>0.7.0-beta.1</strong> 测试版，64 位 Intel/AMD。见 <a href="/zh/install-mac/">Mac</a>、<a href="/zh/install-windows/">Windows</a>、<a href="/zh/install-linux/">Linux</a> 指南。安装前再核验 Releases。</p>
+        <p>Mac：<strong>0.6.1</strong> 稳定，Apple Silicon，macOS 14+。Windows 与 Linux：<strong>0.7.0-beta.1</strong> 测试版，64 位 Intel/AMD。见 <a href="/zh/install-mac/">Mac</a>、<a href="/zh/install-windows/">Windows</a>、<a href="/zh/install-linux/">Linux</a> 指南。安装前请再确认版本号。</p>
       </div>
 
       <div class="faq-item" id="intel-mac">
         <h2>Intel Mac 能跑 DigUp 吗？</h2>
-        <p>官方 Mac 构建仅面向 <strong>Apple Silicon</strong>。Intel Mac 不受该构建支持。若需要 PC 平台，改用兼容机上的 Windows/Linux 测试版。</p>
+        <p>DigUp Mac 构建仅面向 <strong>Apple Silicon</strong>。Intel Mac 不受该构建支持。若需要 PC 平台，改用兼容机上的 Windows/Linux 测试版。</p>
       </div>
 
       <div class="faq-item" id="privacy">
@@ -53,7 +53,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 
       <div class="faq-item" id="brew">
         <h2>Mac 上用 Homebrew 还是 DMG？</h2>
-        <p>请从 <a href="https://github.com/ylwl1997/digup-run-app/releases">ylwl1997/digup-run-app Releases</a> 下载 Mac DMG（Homebrew cask 尚未发布）。步骤：<a href="/zh/install-mac/">在 Mac 上安装 Digup Run</a>。</p>
+        <p>请<a href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 Mac DMG</a>（Homebrew cask 尚未发布）。步骤：<a href="/zh/install-mac/">在 Mac 上安装 DigUp</a>。</p>
       </div>
 
       <div class="faq-item" id="beta">
@@ -73,7 +73,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
 
       <div class="faq-item" id="smartscreen">
         <h2>Windows 说无法识别 DigUp，正常吗？</h2>
-        <p>测试版安装包<strong>未签名</strong>。SmartScreen 可能要求「更多信息」→「仍要运行」。请仅对从官方 ARahim3 Releases 下载的 EXE 这样做。指南：<a href="/zh/install-windows/">Windows 安装</a>。</p>
+        <p>测试版安装包<strong>未签名</strong>。SmartScreen 可能要求「更多信息」→「仍要运行」。请仅对本站 Windows 下载按钮获取的 EXE 这样做。指南：<a href="/zh/install-windows/">Windows 安装</a>。</p>
       </div>
 
       <div class="faq-item" id="stars">
@@ -92,7 +92,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
       </table>
 
       <div class="cta-bar">
-        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
         <a class="cta-secondary" href="/changelog-notes/" hreflang="en">Changelog notes（英文）</a>
       </div>
     </article>

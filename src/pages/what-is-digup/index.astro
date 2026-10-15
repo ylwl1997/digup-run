@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { DIGUP_UI } from '../../lib/site';
+import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
   title={'What Is DigUp? Local Multimodal File Search Explained'}
@@ -12,7 +12,7 @@ import { DIGUP_UI } from '../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Overview</span> · On-device semantic search</p>
-      <h1>What is Digup Run?</h1>
+      <h1>What is DigUp?</h1>
       <p class="lead">DigUp is a local-first multimodal semantic file search desktop app. You pick folders; it embeds what’s inside (photos, PDF pages, docs, audio windows, video frames, optional code) with EmbeddingGemma 2 and lets you search by meaning — on Mac, Windows, and Linux.</p>
       <ul class="job-steps" aria-label="Product job" style="margin-top:1rem;margin-bottom:0.75rem;">
         <li><span class="n">1</span> Describe</li>
@@ -36,7 +36,7 @@ import { DIGUP_UI } from '../../lib/site';
       <figure class="shot-panel" style="margin-bottom:1.5rem;">
         <span class="shot-label">Real DigUp UI</span>
         <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altEn} loading="lazy" decoding="async" />
-        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteEn} Multimodal result list for “a dog on the beach.”</figcaption>
+        <figcaption class="shot-caption">Multimodal result list for “a dog on the beach.”</figcaption>
       </figure>
 
       <h2>In one sentence</h2>
@@ -133,11 +133,11 @@ import { DIGUP_UI } from '../../lib/site';
         <li>Not a full Spotlight / Windows Search replacement (it can sit beside them).</li>
         <li>Not an app launcher (as of research date).</li>
         <li>Not a cloud sync or collaboration search product.</li>
-        <li>Not available as an official App Store listing you should trust from random mirrors — use GitHub Releases.</li>
+        <li>Download DigUp from the <a href="/#download">home download section</a>.</li>
       </ul>
 
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
         <a class="cta-secondary" href="/install-mac/">Mac install</a>
         <a class="cta-secondary" href="/vs-spotlight/">vs Spotlight</a>
       </div>

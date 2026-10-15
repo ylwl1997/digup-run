@@ -1,10 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { DIGUP_UI } from '../../lib/site';
+import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
   title={'DigUp FAQ — Requirements, Privacy, Platforms, Troubleshooting'}
-  description={'DigUp FAQ: Apple Silicon vs Windows/Linux beta, model size, privacy (local-first), brew install, indexing time, code search, and links to official GitHub Releases.'}
+  description={'DigUp FAQ: Apple Silicon vs Windows/Linux beta, model size, privacy (local-first), brew install, indexing time, code search, and download links.'}
   canonicalPath="/faq/"
   lang="en"
   ogImage={DIGUP_UI.audio.src}
@@ -13,18 +13,18 @@ import { DIGUP_UI } from '../../lib/site';
     <header class="page-hero">
       <p class="meta-line"><span class="badge">FAQ</span> · Common questions</p>
       <h1>DigUp FAQ</h1>
-      <p class="lead">Short answers with links to thicker guides. Always prefer official GitHub README and Releases when anything conflicts.</p>
+      <p class="lead">Short answers with links to thicker guides and install pages.</p>
     </header>
 
     <article class="wide">
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
         <a class="cta-secondary" href="/what-is-digup/">What is DigUp?</a>
       </div>
 
-      <div class="faq-item" id="official">
-        <h2>Is digup.run the official DigUp website?</h2>
-        <p><strong>No.</strong> digup.run is the <strong>Digup Run</strong> product site. Digup Run is based on DigUp (MIT) and is <strong>not</strong> an official DigUp / ARahim3 product. Downloads ship from <a href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">ylwl1997/digup-run-app Releases</a>. Upstream DigUp: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a>.</p>
+      <div class="faq-item" id="download">
+        <h2>Where do I download DigUp?</h2>
+        <p>Use the platform buttons on the <a href="/#download">home download section</a>: Mac DMG (<code>0.6.1</code>), Windows setup and Linux <code>.deb</code> / AppImage (<code>0.7.0-beta.1</code>). Guides: <a href="/install-mac/">Mac</a>, <a href="/install-windows/">Windows</a>, <a href="/install-linux/">Linux</a>.</p>
       </div>
 
       <div class="faq-item" id="platforms">
@@ -34,7 +34,7 @@ import { DIGUP_UI } from '../../lib/site';
 
       <div class="faq-item" id="intel-mac">
         <h2>Does DigUp run on Intel Macs?</h2>
-        <p>The Digup Run Mac build targets <strong>Apple Silicon</strong> only. Intel Macs are not supported by that build. Use Windows/Linux beta on compatible PCs if you need those platforms instead.</p>
+        <p>The DigUp Mac build targets <strong>Apple Silicon</strong> only. Intel Macs are not supported by that build. Use Windows/Linux beta on compatible PCs if you need those platforms instead.</p>
       </div>
 
       <div class="faq-item" id="privacy">
@@ -54,7 +54,7 @@ import { DIGUP_UI } from '../../lib/site';
 
       <div class="faq-item" id="brew">
         <h2>Homebrew or DMG on Mac?</h2>
-        <p>Use the Mac DMG from <a href="https://github.com/ylwl1997/digup-run-app/releases">ylwl1997/digup-run-app Releases</a> (Homebrew cask not published yet). Step-by-step: <a href="/install-mac/">Install Digup Run on Mac</a>.</p>
+        <p>Download the <a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a> (Homebrew cask not published yet). Step-by-step: <a href="/install-mac/">Install DigUp on Mac</a>.</p>
       </div>
 
       <div class="faq-item" id="beta">
@@ -74,7 +74,7 @@ import { DIGUP_UI } from '../../lib/site';
 
       <div class="faq-item" id="smartscreen">
         <h2>Windows says it doesn’t recognize DigUp. Is that normal?</h2>
-        <p>The beta installer is <strong>unsigned</strong>. SmartScreen may require More info → Run anyway. Only do this for the EXE you downloaded from the official ARahim3 Releases page. Guide: <a href="/install-windows/">Install on Windows</a>.</p>
+        <p>The beta installer is <strong>unsigned</strong>. SmartScreen may require More info → Run anyway. Only do this for the EXE you downloaded from the Windows download button on this site. Guide: <a href="/install-windows/">Install on Windows</a>.</p>
       </div>
 
       <div class="faq-item" id="stars">
@@ -95,7 +95,7 @@ import { DIGUP_UI } from '../../lib/site';
       </table>
 
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
         <a class="cta-secondary" href="/changelog-notes/">Changelog notes</a>
       </div>
     </article>

@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../lib/site';
 ---
 <Layout
-  title="Digup Run — Download local multimodal semantic file search"
-  description="Download Digup Run for Mac, Windows, and Linux. On-device EmbeddingGemma 2 search for photos, PDFs, audio, video, and code. Binaries from ylwl1997/digup-run-app Releases — this site hosts none."
+  title="DigUp — Download local multimodal semantic file search"
+  description="Download DigUp for Mac, Windows, and Linux. On-device EmbeddingGemma 2 search for photos, PDFs, audio, video, and code."
   canonicalPath="/"
   lang="en"
   ogImage={DIGUP_UI.hero.src}
@@ -14,33 +14,37 @@ import { DIGUP_UI, SITE } from '../lib/site';
       <p class="stage-eyebrow">Local multimodal search · digup.run</p>
       <h1>Describe it. Dig it up on your machine.</h1>
       <p class="stage-lede">
-        Digup Run finds what’s <em>inside</em> photos, PDFs, docs, audio, and video —
+        DigUp finds what’s <em>inside</em> photos, PDFs, docs, audio, and video —
         private folder indexing with EmbeddingGemma 2. Not a cloud drive. Not a launcher.
       </p>
 
-      <div class="dl-arch" aria-label="Download Digup Run">
-        <a class="dl-primary" href={SITE.appReleasesLatest} rel="noopener noreferrer">
+      <div class="dl-arch" id="download" aria-label="Download DigUp">
+        <a class="dl-primary" href={SITE.downloads.mac} rel="noopener noreferrer" download>
           <span class="dl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 15 2.94 10.53 4.7 7.5c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.22-2 1.08-3.15-1.05.04-2.31.72-3.05 1.58-.66.76-1.23 1.98-1.08 3.14 1.14.09 2.32-.65 3.05-1.57"/></svg></span>
           <span class="dl-copy">
-            <strong>Download for Mac</strong>
-            <span>Apple Silicon · macOS 14+ · DMG</span>
+            <strong>Download DigUp for Mac</strong>
+            <span>Apple Silicon · macOS 14+ · DMG · <em class="ver">{SITE.downloads.macVersion}</em></span>
           </span>
         </a>
         <div class="dl-secondary">
-          <a class="dl-pill" href={SITE.appReleases} rel="noopener noreferrer">
+          <a class="dl-pill" href={SITE.downloads.windows} rel="noopener noreferrer" download>
             <span class="os-ico" aria-hidden="true">▦</span>
             Windows <em>beta</em>
+            <span class="ver-chip">{SITE.downloads.windowsVersion}</span>
           </a>
-          <a class="dl-pill" href={SITE.appReleases} rel="noopener noreferrer">
+          <a class="dl-pill" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>
             <span class="os-ico" aria-hidden="true">⬡</span>
-            Linux <em>beta</em>
+            Linux .deb
+            <span class="ver-chip">{SITE.downloads.linuxVersion}</span>
+          </a>
+          <a class="dl-pill" href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>
+            <span class="os-ico" aria-hidden="true">⬡</span>
+            Linux AppImage
+            <span class="ver-chip">{SITE.downloads.linuxVersion}</span>
           </a>
         </div>
       </div>
       <p class="stage-note">
-        Builds ship only from
-        <a href={SITE.appReleases} rel="noopener noreferrer">ylwl1997/digup-run-app Releases</a>.
-        This site never hosts binaries.
         Guides: <a href="/install-mac/">Mac</a> · <a href="/install-windows/">Windows</a> · <a href="/install-linux/">Linux</a>
       </p>
 
@@ -48,7 +52,7 @@ import { DIGUP_UI, SITE } from '../lib/site';
       <figure class="app-window demo-stage">
         <div class="app-chrome" aria-hidden="true">
           <div class="app-dots"><i></i><i></i><i></i></div>
-          <div class="app-chrome-title">Digup Run · Demo</div>
+          <div class="app-chrome-title">DigUp · Demo</div>
         </div>
         <div class="demo-media">
           <video
@@ -68,9 +72,6 @@ import { DIGUP_UI, SITE } from '../lib/site';
             <img src={DIGUP_UI.demo.gif} width="1200" height="800" alt={DIGUP_UI.demo.altEn} />
           </video>
         </div>
-        <figcaption class="app-caption">
-          {DIGUP_UI.demo.captionEn}
-        </figcaption>
       </figure>
 
       <!-- Windows search UI product framing -->
@@ -113,8 +114,8 @@ import { DIGUP_UI, SITE } from '../lib/site';
           <span>Jump to page, timestamp, or line — not just the file.</span>
         </div>
         <div class="trust-item" role="listitem">
-          <strong>DigUp lineage</strong>
-          <span>Based on DigUp (MIT). Not an official DigUp product.</span>
+          <strong>Open source</strong>
+          <span>MIT-licensed desktop app for local folders.</span>
         </div>
       </div>
     </section>
@@ -151,7 +152,7 @@ import { DIGUP_UI, SITE } from '../lib/site';
         <div class="band-head">
           <p class="kicker">UI</p>
           <h2>Search → results → open to page / time</h2>
-          <p>Real DigUp-lineage UI stills — illustrative for Digup Run.</p>
+          <p>Search UI across Mac, Windows, and Linux.</p>
         </div>
         <div class="filmstrip">
           <figure class="film-main">
@@ -169,7 +170,6 @@ import { DIGUP_UI, SITE } from '../lib/site';
             </figure>
           </div>
         </div>
-        <p class="film-note">{DIGUP_UI.sourceNoteEn}</p>
       </div>
     </section>
 
@@ -195,8 +195,8 @@ import { DIGUP_UI, SITE } from '../lib/site';
       <div class="wrap">
         <div class="band-head">
           <p class="kicker">Guides</p>
-          <h2>Install &amp; learn Digup Run</h2>
-          <p>Thick install notes and digup SEO guides — downloads still go to GitHub Releases.</p>
+          <h2>Install &amp; learn DigUp</h2>
+          <p>Install notes and digup SEO guides.</p>
         </div>
         <div class="guide-list">
           <a class="guide-link" href="/install-mac/">
@@ -212,7 +212,7 @@ import { DIGUP_UI, SITE } from '../lib/site';
             <span class="gl-arrow" aria-hidden="true">→</span>
           </a>
           <a class="guide-link" href="/what-is-digup/">
-            <span class="gl-meta"><span class="gl-tag">Overview</span><span class="gl-title">What is Digup Run?</span></span>
+            <span class="gl-meta"><span class="gl-tag">Overview</span><span class="gl-title">What is DigUp?</span></span>
             <span class="gl-arrow" aria-hidden="true">→</span>
           </a>
           <a class="guide-link" href="/vs-spotlight/">
@@ -234,11 +234,11 @@ import { DIGUP_UI, SITE } from '../lib/site';
         </div>
 
         <div class="bottom-cta">
-          <p><strong>Ready to dig?</strong> Get Digup Run from our GitHub Releases. Based on DigUp (MIT).</p>
+          <p><strong>Ready to dig?</strong> Download DigUp for your platform.</p>
           <div class="actions">
-            <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">All Releases</a>
-            <a class="cta-secondary" href={SITE.appRepo} rel="noopener noreferrer">App source</a>
-            <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">Upstream DigUp</a>
+            <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>
+            <a class="cta-secondary" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
+            <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
           </div>
         </div>
       </div>

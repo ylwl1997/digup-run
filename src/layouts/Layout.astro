@@ -37,6 +37,7 @@ const isCurrent = (p: string) => {
 
 const label = (en: string, zh: string) => (lang === 'zh' ? zh : en);
 const homeHref = pathFor(lang, '/');
+const downloadHref = `${homeHref}#download`;
 const ogImageAbs = ogImage
   ? ogImage.startsWith('http')
     ? ogImage
@@ -72,7 +73,7 @@ const ogImageAbs = ogImage
   <body>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="logo" href={homeHref}><img class="mark" src="/logo.svg" width="28" height="28" alt="" />Digup Run</a>
+        <a class="logo" href={homeHref}><img class="mark" src="/logo.svg" width="28" height="28" alt="" />DigUp</a>
         <nav class="nav" aria-label={label('Primary', '主导航')}>
           <a href={homeHref} aria-current={path === homeHref || path === '/zh' ? 'page' : undefined}>{label('Home', '首页')}</a>
           <a href={pathFor(lang, '/what-is-digup/')} aria-current={isCurrent('/what-is-digup/') ? 'page' : undefined}>{label('What is', '是什么')}</a>
@@ -96,7 +97,7 @@ const ogImageAbs = ogImage
             <a href={pathFor('en', canonicalPath)} class:list={['lang-opt', lang === 'en' && 'is-on']} hreflang="en" lang="en">EN</a>
             <a href={pathFor('zh', canonicalPath)} class:list={['lang-opt', lang === 'zh' && 'is-on']} hreflang="zh-CN" lang="zh-CN">中文</a>
           </div>
-          <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">{label('Download', '下载')}</a>
+          <a class="cta" href={downloadHref}>{label('Download', '下载')}</a>
         </div>
       </div>
     </header>
@@ -105,17 +106,9 @@ const ogImageAbs = ogImage
 
     <footer class="site-footer">
       <div class="wrap">
-        <p class="disclaimer">
-          {lang === 'zh' ? SITE.disclaimerZh : SITE.disclaimerEn}
-          {' '}
-          <a href={SITE.appRepo} rel="noopener noreferrer">ylwl1997/digup-run-app</a>
-          {' · '}
-          <a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp (MIT)</a>
-        </p>
         <div class="footer-links">
-          <a href={SITE.appReleases} rel="noopener noreferrer">{label('Download on GitHub Releases', '前往 GitHub Releases 下载')}</a>
-          <a href={SITE.appRepo} rel="noopener noreferrer">{label('App repo', '应用仓库')}</a>
-          <a href={SITE.upstreamRepo} rel="noopener noreferrer">{label('Upstream DigUp', '上游 DigUp')}</a>
+          <a href={downloadHref}>{label('Download DigUp', '下载 DigUp')}</a>
+          <a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
           <a href={pathFor(lang, '/faq/')}>{label('FAQ', '常见问题')}</a>
           {lang === 'en' ? (
             <a href="/changelog-notes/">Changelog notes</a>
@@ -127,11 +120,7 @@ const ogImageAbs = ogImage
             <a href={pathFor('zh', canonicalPath)} class:list={['lang-opt', lang === 'zh' && 'is-on']} hreflang="zh-CN">中文</a>
           </div>
         </div>
-        <p class="tm">
-          {lang === 'zh'
-            ? 'Digup Run 基于 DigUp（MIT，ARahim3 / Abdur Rahim）。DigUp 为相应权利人商标；Digup Run / digup.run 为本产品品牌。Gemma / EmbeddingGemma 为 Google LLC 商标。Mac 与 Spotlight 为 Apple Inc. 商标。本站不托管 DMG、EXE 或其他二进制文件。'
-            : 'Digup Run is based on DigUp (MIT, ARahim3 / Abdur Rahim). DigUp is a trademark of its owners; Digup Run / digup.run is our product brand. Gemma / EmbeddingGemma are trademarks of Google LLC. Mac and Spotlight are trademarks of Apple Inc. This site does not host DMG, EXE, or other binaries.'}
-        </p>
+        <p class="disclaimer">{lang === 'zh' ? SITE.disclaimerZh : SITE.disclaimerEn}</p>
       </div>
     </footer>
   </body>
