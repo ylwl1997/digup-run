@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import { DIGUP_UI } from '../../lib/site';
 ---
 <Layout
-  title={'Install DigUp on Linux — .deb & AppImage Guide'}
-  description={'Install DigUp 0.7 beta on Ubuntu/Debian/Mint (.deb) or other distros (AppImage). GPU vs CPU notes, Wayland shortcuts, and first-run indexing checklist.'}
+  title={'Install Digup Run on Linux — .deb & AppImage Guide'}
+  description={'Install Digup Run 0.7 beta on Ubuntu/Debian/Mint (.deb) or other distros (AppImage). GPU vs CPU notes, Wayland shortcuts, and first-run indexing checklist.'}
   canonicalPath="/install-linux/"
   lang="en"
   ogImage={DIGUP_UI.code.src}
@@ -12,13 +12,13 @@ import { DIGUP_UI } from '../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Linux · beta</span> · Install guide</p>
-      <h1>Install DigUp on Linux</h1>
+      <h1>Install Digup Run on Linux</h1>
       <p class="lead">DigUp <strong>0.7.0-beta.1</strong> ships amd64 <code>.deb</code> and AppImage builds. Same on-device EmbeddingGemma 2 search as Mac — labeled beta. Binaries only from GitHub Releases.</p>
     </header>
 
     <article class="wide">
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/install-mac/">Mac</a>
         <a class="cta-secondary" href="/install-windows/">Windows (beta)</a>
       </div>
@@ -39,33 +39,34 @@ import { DIGUP_UI } from '../../lib/site';
 
       <h2>Install with .deb</h2>
       <ol class="checklist">
-        <li>Download <code>DigUp_0.7.0-beta.1_amd64.deb</code> (or newer) from <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a>.</li>
+        <li>Download <code>digup-run_*.deb</code> (or newer) from <a href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">Releases</a>.</li>
         <li>Install from the download directory:</li>
       </ol>
-      <pre><code>sudo apt install ./DigUp_0.7.0-beta.1_amd64.deb</code></pre>
+      <pre><code>sudo apt install ./digup-run_*.deb
+# Exact filename: check ylwl1997/digup-run-app Releases assets</code></pre>
       <ol class="checklist" start="3">
-        <li>Launch DigUp from your app menu; complete model download (~865 MB) and folder picks.</li>
+        <li>Launch Digup Run from your app menu; complete model download (~865 MB) and folder picks.</li>
         <li>Hotkey: <strong>Ctrl+Shift+Space</strong>.</li>
       </ol>
       <p class="muted">Filenames change with versions — always copy the exact name from the Releases asset list.</p>
 
       <h2>Install with AppImage</h2>
       <ol class="checklist">
-        <li>Download <code>DigUp_*_amd64.AppImage</code> from Releases.</li>
+        <li>Download <code>Digup_Run_*_amd64.AppImage</code> from Releases.</li>
         <li>Make it executable and run:</li>
       </ol>
-      <pre><code>chmod +x DigUp_0.7.0-beta.1_amd64.AppImage
-./DigUp_0.7.0-beta.1_amd64.AppImage</code></pre>
+      <pre><code>chmod +x Digup_Run_*.AppImage
+./Digup_Run_*.AppImage</code></pre>
 
       <h2>Wayland shortcuts</h2>
       <ul class="checklist">
-        <li><strong>GNOME and KDE under Wayland:</strong> DigUp can add Ctrl+Shift+Space to the desktop’s keyboard shortcuts during setup.</li>
+        <li><strong>GNOME and KDE under Wayland:</strong> Digup Run can add Ctrl+Shift+Space to the desktop’s keyboard shortcuts during setup.</li>
         <li><strong>Other Wayland desktops:</strong> Settings shows the command to bind manually to a shortcut.</li>
       </ul>
 
       <h2>GPU, logs, and beta caveats</h2>
       <p>Same GPU-vs-CPU selection as Windows. Check:</p>
-      <pre><code>~/.local/share/com.abdurrahim.DigUp/logs/speed.log</code></pre>
+      <pre><code>~/.local/share/com.ylwl1997.diguprun/logs/speed.log</code></pre>
       <ul class="checklist">
         <li>Last line should show <code>"device": "gpu"</code> or <code>"cpu"</code>.</li>
         <li><strong>Not in 0.7.0-beta.1 yet:</strong> screenshot OCR text; old <code>.doc</code>, RAW, SVG are skipped.</li>
@@ -82,7 +83,7 @@ import { DIGUP_UI } from '../../lib/site';
       </ol>
 
       <div class="cta-bar">
-        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href="https://github.com/ylwl1997/digup-run-app/releases" rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/faq/">FAQ</a>
         <a class="cta-secondary" href="/changelog-notes/">Changelog notes</a>
       </div>

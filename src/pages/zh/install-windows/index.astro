@@ -3,8 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../../lib/site';
 ---
 <Layout
-  title="在 Windows 上安装 DigUp（0.7 测试版）— 安装指南"
-  description="在 64 位 Windows 10/11 安装 DigUp 0.7 测试版：从 GitHub 下载官方 x64 安装包、SmartScreen「仍要运行」、模型下载与 Ctrl+Shift+Space。"
+  title="在 Windows 上安装 Digup Run（0.7 测试版）— 安装指南"
+  description="在 64 位 Windows 10/11 安装 Digup Run 0.7 测试版：从 GitHub 下载官方 x64 安装包、SmartScreen「仍要运行」、模型下载与 Ctrl+Shift+Space。"
   canonicalPath="/install-windows/"
   lang="zh"
   ogImage={DIGUP_UI.pdf.src}
@@ -12,15 +12,15 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Windows · 测试版</span> · 安装指南</p>
-      <h1>在 Windows 上安装 DigUp</h1>
+      <h1>在 Windows 上安装 Digup Run</h1>
       <p class="lead">DigUp <strong>0.7.0-beta.1</strong> 把同一套 EmbeddingGemma 2 搜索带到 64 位 Windows 10/11。这是测试版——预期会有毛边。请只从官方 GitHub Releases 下载。</p>
     </header>
     <article class="wide">
       <div class="callout" style="margin-bottom:1.25rem;">
-        <strong>测试版标。</strong> Windows 构建的实战时间远少于 Mac 0.6.1。安装前在 <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a> 核验最新资源文件名。勿把第三方 Windows 移植当作官方 ARahim3 构建。
+        <strong>测试版标。</strong> Windows 构建的实战时间远少于 Mac 0.6.1。安装前在 <a href={SITE.appReleases} rel="noopener noreferrer">Releases</a> 核验最新资源文件名。勿把第三方 Windows 移植当作官方 ARahim3 构建。
       </div>
       <div class="cta-bar">
-        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/zh/install-mac/">Mac（稳定）</a>
         <a class="cta-secondary" href="/zh/install-linux/">Linux（测试）</a>
       </div>
@@ -38,14 +38,14 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
           <tr><td><strong>系统</strong></td><td>64 位 Windows 10 或 11</td></tr>
           <tr><td><strong>安装程序</strong></td><td>按用户安装；无需管理员权限</td></tr>
           <tr><td><strong>签名</strong></td><td>安装包尚未签名 → SmartScreen「更多信息」→ <strong>仍要运行</strong></td></tr>
-          <tr><td><strong>资源命名</strong></td><td><code>DigUp_*_x64-setup.exe</code>（例如 <code>DigUp_0.7.0-beta.1_x64-setup.exe</code>）— 以 Releases 最新为准</td></tr>
+          <tr><td><strong>资源命名</strong></td><td><code>DigupRun_*_x64-setup.exe</code>（例如 <code>DigupRun_*_x64-setup.exe</code>）— 以 Releases 最新为准</td></tr>
           <tr><td><strong>模型</strong></td><td>首次启动约下载 865 MB</td></tr>
         </tbody>
       </table>
 
       <h2>安装清单</h2>
       <ol class="checklist">
-        <li>打开 <a href={SITE.upstreamReleases} rel="noopener noreferrer">官方 Releases</a>，下载最新 Windows <code>x64-setup.exe</code>。</li>
+        <li>打开 <a href={SITE.appReleases} rel="noopener noreferrer">官方 Releases</a>，下载最新 Windows <code>x64-setup.exe</code>。</li>
         <li>运行安装程序。若出现 SmartScreen：<strong>更多信息</strong> → <strong>仍要运行</strong>。</li>
         <li>启动 DigUp。模型下载期间即可选择要搜索的文件夹。</li>
         <li>留意本机首遍索引时长估计。</li>
@@ -55,7 +55,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
       <h2>GPU 与 CPU</h2>
       <p>DigUp 会快速测速：在更快且结果等价时用 GPU，否则用 CPU。仅 CPU 时每张照片可能要几秒——大型图库首次更久。之后只读新文件。</p>
       <p>确认选用设备，打开 <code>speed.log</code> 最后一行：</p>
-      <pre><code>%LOCALAPPDATA%\com.abdurrahim.DigUp\logs\speed.log</code></pre>
+      <pre><code>%LOCALAPPDATA%\com.ylwl1997.diguprun\logs\speed.log</code></pre>
       <p class="muted">查找 <code>"device": "gpu"</code> 或 <code>"device": "cpu"</code>。</p>
 
       <h2>测试版限制（0.7.0-beta.1）</h2>
@@ -77,7 +77,7 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
       </table>
 
       <div class="cta-bar">
-        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta" href={SITE.appReleases} rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/changelog-notes/" hreflang="en">Changelog（英文）</a>
         <a class="cta-secondary" href="/zh/faq/">常见问题</a>
       </div>
