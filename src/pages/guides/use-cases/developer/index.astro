@@ -1,0 +1,60 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp for Developers — Semantic Code &amp; Artifact Search On-Device"
+  description="How DigUp + EmbeddingGemma 2 helps developers find screenshots, logs, PDFs, and code: folders with code: prefix, local index, no cloud upload."
+  canonicalPath="/guides/use-cases/developer/"
+  lang="en"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Use case</span> · Developers &amp; programmers</p>
+      <h1>DigUp for developers</h1>
+      <p class="lead">Repos, PR screenshots, stack traces in PDFs, meeting recordings — DigUp indexes meaning with EmbeddingGemma 2 on your machine. Opt in to code search with the code: prefix. Community guide — based on DigUp (MIT). Not affiliated; DigUp is not Google-official.</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href="/embeddinggemma-2/">EmbeddingGemma 2</a>
+        <a class="cta-secondary" href="/guides/use-cases/">All roles</a>
+      </div>
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">On-device flow</span>
+        <img src="/media/use-cases/developer.svg" width="960" height="540" alt="Schematic: DigUp uses EmbeddingGemma 2 for Developers and programmers local search" loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">Original schematic — DigUp indexes local files with EmbeddingGemma 2 (llama.cpp).</figcaption>
+      </figure>
+      
+      <h2>Sourced snapshot (2026-10-15)</h2>
+      <table>
+        <thead><tr><th>Fact</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Model</td><td>EmbeddingGemma 2 · ~740M params · ~865 MB Q8 via llama.cpp</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI</a> · DigUp README</td></tr>
+          <tr><td>Vector space</td><td>768-d shared multimodal space</td><td>Google AI · DigUp README</td></tr>
+          <tr><td>Mac / Win·Linux</td><td>0.6.1 · 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars / forks</td><td>~3,768 / ~254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+      <h2>Pain → DigUp workflow → tip</h2>
+      <table><thead><tr><th>Pain</th><th>DigUp + EmbeddingGemma 2 workflow</th><th>Tip</th></tr></thead><tbody><tr><td>Forgot which repo has the backoff helper</td><td>Enable code folders → query <code>code: retry with backoff</code></td><td>Results open at the line in Cursor/VS Code/Zed</td></tr><tr><td>Screenshot of an error buried in Downloads</td><td>Index Screenshots + Downloads; search by what the UI showed</td><td>Mac OCR on screenshots helps exact strings too</td></tr><tr><td>Design PDF vs implementation drift</td><td>Index docs + code; compare meaning across modalities</td><td>Keep Spotlight for filenames; DigUp for meaning</td></tr><tr><td>Old Loom / mp4 of a weird bug</td><td>Video frame + audio windows (~30s) in shared 768-d space</td><td>Jump near the moment — README behavior</td></tr></tbody></table>
+      <h2>Numbered checklist</h2>
+      <ol class="checklist"><li>Install DigUp (Mac 0.6.1 or Win/Linux 0.7.0-beta.1) — first EmbeddingGemma 2 download ~865 MB.</li><li>Add project folders; enable <strong>code search</strong> in Settings for repos you want.</li><li>Wait for first-pass estimate; schedule overnight hours if fans bother you.</li><li>Query with <code>code:</code> for source; natural language for screenshots/PDFs/recordings.</li><li>If index stays empty on cloud sync folders, see the 0-files guide.</li></ol>
+      <h2>Why EmbeddingGemma 2 matters here</h2>
+      <p>Google’s <a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">EmbeddingGemma 2</a> (~740M, unified 768-d multimodal space) is what DigUp runs via llama.cpp (~865 MB Q8 package). One query can rank images, PDF pages, audio windows, video frames, and optional code — see the <a href="/guides/embeddinggemma-2-local-multimodal-search/">local multimodal guide</a> and <a href="/embeddinggemma-2/">model page</a>. digup.run is not Google-official.</p>
+      <h2>Downloads &amp; installs</h2>
+      <ul class="checklist">
+        <li><a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG {SITE.downloads.macVersion}</a> · <a href="/install-mac/">Mac install</a></li>
+        <li><a href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows {SITE.downloads.windowsVersion}</a> · <a href="/install-windows/">Windows install</a></li>
+        <li><a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Linux .deb</a> / <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a> · <a href="/install-linux/">Linux install</a></li>
+        <li><a href="/faq/">FAQ</a> · <a href="/faq/#model-size">Model size / Use Files…</a></li>
+      </ul>
+      <h2>Related</h2>
+      <div class="cards"><a class="card" href="/guides/use-cases/"><h3>All roles hub</h3><p>Browse every use case</p></a><a class="card" href="/embeddinggemma-2/"><h3>EmbeddingGemma 2</h3><p>Model size &amp; runtime</p></a><a class="card" href="/guides/embeddinggemma-2-local-multimodal-search/"><h3>Multimodal guide</h3><p>Photos · PDF · audio · video · code</p></a><a class="card" href="/guides/use-cases/office-clerk/"><h3>Office clerks &amp; admins</h3><p>Role playbook</p></a><a class="card" href="/guides/use-cases/accountant/"><h3>Finance &amp; accountants</h3><p>Role playbook</p></a><a class="card" href="/guides/use-cases/student/"><h3>Students</h3><p>Role playbook</p></a></div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

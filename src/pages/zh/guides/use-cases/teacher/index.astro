@@ -1,0 +1,60 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import { SITE } from '../../../../../lib/site';
+---
+<Layout
+  title="DigUp 给教师：找教案、练习与课堂录像"
+  description="教师用 DigUp 本机 EmbeddingGemma 2 按主题找教案 PDF、练习照片与课堂录像。"
+  canonicalPath="/guides/use-cases/teacher/"
+  lang="zh"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">用例</span> · 教师</p>
+      <h1>DigUp 给教师</h1>
+      <p class="lead">多年教案文件夹很难整齐命名。DigUp 用本机 EmbeddingGemma 2 按主题找回——社区文档见 digup.run。</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href="/zh/embeddinggemma-2/">EmbeddingGemma 2</a>
+        <a class="cta-secondary" href="/zh/guides/use-cases/">全部角色</a>
+      </div>
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">本机流程</span>
+        <img src="/media/use-cases/teacher.svg" width="960" height="540" alt="示意图：DigUp 用 EmbeddingGemma 2 为教师做本机搜索" loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">原创示意图——DigUp 用 EmbeddingGemma 2（llama.cpp）索引本地文件。</figcaption>
+      </figure>
+      
+      <h2>数据快照（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>数值</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>模型</td><td>EmbeddingGemma 2 · 约 740M 参数 · 约 865 MB Q8（llama.cpp）</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI</a> · DigUp README</td></tr>
+          <tr><td>向量空间</td><td>共享 768 维多模态空间</td><td>Google AI · DigUp README</td></tr>
+          <tr><td>Mac / Win·Linux</td><td>0.6.1 · 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars / forks</td><td>约 3,768 / 254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+      <h2>痛点 → DigUp 流程 → 提示</h2>
+      <table><thead><tr><th>痛点</th><th>DigUp + EmbeddingGemma 2 做法</th><th>提示</th></tr></thead><tbody><tr><td>去年的分数练习</td><td>索引教学文件夹；语义查询</td><td>PDF/图片命中</td></tr><tr><td>实验演示录像</td><td>音视频窗</td><td>跳到讲解</td></tr><tr><td>学生板书照片（本地）</td><td>图像嵌入</td><td>仅你选择的文件夹</td></tr><tr><td>学校笔记本离线备课</td><td>模型下载后本机可用</td><td>无 DigUp 账号</td></tr></tbody></table>
+      <h2>分步清单</h2>
+      <ol class="checklist"><li>安装 DigUp；遵守学校对学生媒体的隐私规定。</li><li>在校园网下载 EmbeddingGemma 2（约 865 MB）。</li><li>索引课程文件夹；跳过私人云垃圾。</li><li>用白话搜教学目标。</li><li>长时间批改时参考耗电指南。</li></ol>
+      <h2>为什么这里需要 EmbeddingGemma 2</h2>
+      <p>Google 的 <a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">EmbeddingGemma 2</a>（约 740M，统一 768 维多模态空间）正是 DigUp 经 llama.cpp 运行的模型（约 865 MB Q8 包）。一次查询可排序图片、PDF 页、音频窗、视频帧与可选代码——见<a href="/zh/guides/embeddinggemma-2-local-multimodal-search/">本机多模态指南</a>与<a href="/zh/embeddinggemma-2/">模型页</a>。digup.run 非 Google 官方。</p>
+      <h2>下载与安装</h2>
+      <ul class="checklist">
+        <li><a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG {SITE.downloads.macVersion}</a> · <a href="/zh/install-mac/">Mac 安装</a></li>
+        <li><a href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows {SITE.downloads.windowsVersion}</a> · <a href="/zh/install-windows/">Windows 安装</a></li>
+        <li><a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Linux .deb</a> / <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a> · <a href="/zh/install-linux/">Linux 安装</a></li>
+        <li><a href="/zh/faq/">常见问题</a> · <a href="/zh/faq/#model-size">模型大小 / Use Files…</a></li>
+      </ul>
+      <h2>相关</h2>
+      <div class="cards"><a class="card" href="/zh/guides/use-cases/"><h3>角色总览</h3><p>浏览全部用例</p></a><a class="card" href="/zh/embeddinggemma-2/"><h3>EmbeddingGemma 2</h3><p>模型体积与运行时</p></a><a class="card" href="/zh/guides/embeddinggemma-2-local-multimodal-search/"><h3>多模态指南</h3><p>照片 · PDF · 音频 · 视频 · 代码</p></a><a class="card" href="/zh/guides/use-cases/developer/"><h3>程序员 / 开发者</h3><p>角色手册</p></a><a class="card" href="/zh/guides/use-cases/office-clerk/"><h3>文员 / 行政</h3><p>角色手册</p></a><a class="card" href="/zh/guides/use-cases/accountant/"><h3>财务 / 会计</h3><p>角色手册</p></a></div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

@@ -13,73 +13,161 @@ import { DIGUP_UI, SITE } from '../../lib/site';
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Model</span> · DigUp angle</p>
       <h1>How DigUp uses EmbeddingGemma 2</h1>
-      <p class="lead">DigUp’s search quality comes from Google DeepMind’s EmbeddingGemma 2, run on-device through llama.cpp. Your files stay local; the model maps text queries and multimodal content into one ranking space.</p>
+      <p class="lead">DigUp’s search quality comes from Google DeepMind’s EmbeddingGemma 2, run on-device through llama.cpp. Your files stay local; the model maps text queries and multimodal content into one ranking space. Community page based on DigUp (MIT). Not affiliated with Google or ARahim3.</p>
     </header>
 
     <article class="wide">
       <div class="callout" style="margin-bottom:1.25rem;">
-        Model docs: <a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI — EmbeddingGemma</a>. DigUp project: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a>. Other apps (e.g. Aether) may also use EmbeddingGemma 2 — this page is DigUp-focused, not a competitor teardown.
+        Model docs: <a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI — EmbeddingGemma</a>. DigUp project: <a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>. Other apps (e.g. Aether) may also use EmbeddingGemma 2 — this page is DigUp-focused, not a competitor teardown. digup.run is a community site; DigUp is not a Google-official product.
       </div>
 
       <div class="cta-bar">
         <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
-        <a class="cta-secondary" href="/what-is-digup/">What is DigUp?</a>
+        <a class="cta-secondary" href="/guides/embeddinggemma-2-local-multimodal-search/">Multimodal guide</a>
         <a class="cta-secondary" href="/install-mac/">Install Mac</a>
       </div>
 
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">Shared space → multimodal results</span>
+        <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altEn} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">One query can surface images, video, audio, and PDFs together.</figcaption>
+      </figure>
+
       <h2>What EmbeddingGemma 2 is</h2>
-      <p>EmbeddingGemma is Google’s embedding model family for turning inputs into vectors you can compare. DigUp uses <strong>EmbeddingGemma 2</strong> so a typed query can rank photos, PDF pages, document passages, audio windows, and video frames together — not only keyword hits.</p>
+      <p>EmbeddingGemma is Google’s embedding model family for turning inputs into vectors you can compare. Per <a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI docs</a> (updated 2026-10-06), <strong>EmbeddingGemma 2</strong> is a lightweight open-weight ~740M-parameter model that maps text, images, audio, and video into a unified <strong>768-dimensional</strong> vector space (Apache 2.0 weights). DigUp uses that model so a typed query can rank photos, PDF pages, document passages, audio windows, and video frames together — not only keyword hits.</p>
       <ul class="checklist">
-        <li>Approximate scale cited in DigUp materials: ~740M parameters; ~865 MB download for DigUp’s quantized on-device package.</li>
-        <li>Shared dimensionality commonly described as <strong>768-d</strong> for DigUp’s multimodal index.</li>
+        <li>Google docs: native multimodality (text, code, image, video, audio) in one space; Matryoshka dimensions 128–768; up to 8,192 tokens for text/code across 100+ languages.</li>
+        <li>DigUp materials: ~740M parameters; ~865 MB quantized on-device package via llama.cpp.</li>
+        <li>Shared dimensionality DigUp describes for its multimodal index: <strong>768-d</strong>.</li>
         <li>Runtime: <strong>llama.cpp</strong> (GGUF Q8-style weights), Metal on Mac; CPU or GPU (e.g. Vulkan) on Win/Linux after a speed check.</li>
       </ul>
 
-      <h2>One index, many modalities</h2>
+      <h2>Model size &amp; files DigUp downloads</h2>
+      <p>First launch downloads EmbeddingGemma 2 once (~865 MB total). DigUp’s README and release notes document this size; research notes for digup.run break the Q8 GGUF pair as text ~310 MB + multimodal projection ~555 MB ≈ 865 MB. After that, indexing and search stay on device.</p>
+      <table>
+        <thead>
+          <tr><th>Piece</th><th>Approx. size</th><th>Role</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Text / code GGUF (Q8)</td><td>~310 MB</td><td>Embed queries (+ code when enabled)</td><td>DigUp README / ModelFiles</td></tr>
+          <tr><td>Multimodal projection GGUF (Q8)</td><td>~555 MB</td><td>Images, PDF pages, audio/video frames</td><td>DigUp README / ModelFiles</td></tr>
+          <tr><td><strong>Total first download</strong></td><td><strong>~865 MB</strong></td><td>Once per machine (resumable; checksummed)</td><td><a href={SITE.upstreamRepo} rel="noopener noreferrer">README</a></td></tr>
+          <tr><td>Parameters (model family)</td><td>~740M</td><td>EmbeddingGemma 2 scale</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI</a></td></tr>
+          <tr><td>Vector dim (DigUp index)</td><td>768-d</td><td>One shared ranking space</td><td>DigUp README</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Runtime by platform</h2>
+      <table>
+        <thead>
+          <tr><th>Platform</th><th>DigUp version</th><th>How EmbeddingGemma 2 runs</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Mac</strong></td><td>{SITE.downloads.macVersion}</td><td>llama.cpp + Metal on Apple Silicon</td><td>macOS 14+; Intel Macs not supported</td></tr>
+          <tr><td><strong>Windows</strong></td><td>{SITE.downloads.windowsVersion}</td><td>CPU or Vulkan GPU after setup speed check</td><td>Unsigned beta; CPU photo indexing is slower</td></tr>
+          <tr><td><strong>Linux</strong></td><td>{SITE.downloads.linuxVersion}</td><td>Same as Windows (CPU / Vulkan)</td><td>.deb package name <code>dig-up</code>; AppImage also</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Modalities DigUp indexes with the model</h2>
       <table>
         <thead>
           <tr>
             <th>Input</th>
-            <th>How DigUp uses the model</th>
+            <th>How DigUp uses EmbeddingGemma 2</th>
             <th>You get</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>Text query</strong></td>
-            <td>Embed query with text tower at search time</td>
+            <td>Embed query with text tower at search time (~250–310 MB resident while searching)</td>
             <td>Nearest neighbors + keyword boost</td>
           </tr>
           <tr>
             <td><strong>Images / screenshots</strong></td>
-            <td>Visual embeddings (OCR text on Mac for scans/screenshots)</td>
+            <td>Visual embeddings; Mac also OCR text on screenshots/scans (Vision)</td>
             <td>Find by what’s depicted</td>
           </tr>
           <tr>
             <td><strong>PDF pages</strong></td>
-            <td>Page-level meaning (+ text / OCR where available)</td>
+            <td>Page-level meaning (+ text / OCR where available); long PDFs: first 30 pages fast, up to 5,000 pages/file</td>
             <td>Open to the right page</td>
           </tr>
           <tr>
+            <td><strong>Documents</strong></td>
+            <td>txt, md, rtf, docx, odt, html (+ Mac <code>.doc</code>); numeric-heavy text matched exactly</td>
+            <td>Jump to the passage</td>
+          </tr>
+          <tr>
             <td><strong>Audio</strong></td>
-            <td>~30s windows in the shared space</td>
+            <td>Overlapping ~30s windows in the shared space</td>
             <td>Jump near the moment</td>
           </tr>
           <tr>
             <td><strong>Video</strong></td>
-            <td>Frame / moment embeddings</td>
+            <td>Frame / shot embeddings + soundtrack like audio</td>
             <td>Jump near the moment</td>
+          </tr>
+          <tr>
+            <td><strong>Code</strong> (opt-in)</td>
+            <td>Separate index; query with <code>code:</code> prefix</td>
+            <td>Open editor at the line</td>
           </tr>
         </tbody>
       </table>
+      <p>Step-by-step product walkthrough: <a href="/guides/embeddinggemma-2-local-multimodal-search/">How DigUp uses EmbeddingGemma 2 for on-device multimodal search</a>.</p>
+
+      <h2>First-run steps (model + folders)</h2>
+      <ol class="checklist">
+        <li>Install DigUp — Mac <a href={SITE.downloads.mac} rel="noopener noreferrer" download>DMG {SITE.downloads.macVersion}</a> or <code>{SITE.brewCommand}</code>; Win/Linux from <a href="/guides/win-linux-beta/">beta guide</a>.</li>
+        <li>Open DigUp and let the <strong>~865 MB</strong> EmbeddingGemma 2 download finish (or use Settings → Storage → <strong>Use Files…</strong> if the network blocks Hugging Face — issue <a href="https://github.com/ARahim3/DigUp/issues/25" rel="noopener noreferrer">#25</a>).</li>
+        <li>Pick folders to index. DigUp never downloads cloud-only placeholders (iCloud / OneDrive).</li>
+        <li>Wait for the first-pass time estimate from the on-device speed check.</li>
+        <li>Search: <strong>⇧⌘Space</strong> (Mac) or <strong>Ctrl+Shift+Space</strong> (Win/Linux). Describe meaning, not only filenames.</li>
+        <li>Optional: enable code search and use the <code>code:</code> prefix.</li>
+      </ol>
 
       <h2>Local-first implications</h2>
       <ol class="checklist">
         <li><strong>First launch</strong> downloads the model (~865 MB). After that, indexing and search run on device.</li>
         <li><strong>No DigUp account</strong> — privacy model is local index + optional update check (can be disabled per upstream docs).</li>
-        <li><strong>If network blocks the download (Mac 0.6.1)</strong> — Settings → Storage → Use Files… to supply the model files DigUp expects.</li>
+        <li><strong>If network blocks the download (Mac 0.6.1)</strong> — Settings → Storage → Use Files… to supply the two GGUF files DigUp expects (checksummed).</li>
         <li><strong>Hardware</strong> — Apple Silicon Metal on Mac; Win/Linux pick GPU when faster and equivalent, else CPU (CPU photo indexing is slower).</li>
+        <li><strong>Index versioning</strong> — DigUp remembers which model built the vectors; llama.cpp updates are regression-checked against reference vectors before ship (README).</li>
       </ol>
+
+      <h2>FAQ-style: cause → fix</h2>
+      <table>
+        <thead><tr><th>Symptom</th><th>Likely cause</th><th>What to try</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Model never finishes downloading</td>
+            <td>Firewall / blocked Hugging Face (#25)</td>
+            <td>Download GGUFs elsewhere → Settings → Storage → <strong>Use Files…</strong>. See <a href="/faq/#model-size">FAQ</a> + <a href="/install-mac/">Mac install</a>.</td>
+          </tr>
+          <tr>
+            <td>0 files indexed after folders added</td>
+            <td>Cloud placeholders, FDA, or code folders needing opt-in</td>
+            <td><a href="/guides/zero-files-indexed/">0 files indexed guide</a></td>
+          </tr>
+          <tr>
+            <td>Fans / battery drain during first pass</td>
+            <td>Embedding every file is heavy (expected)</td>
+            <td>Schedule overnight hours; pause on battery — <a href="/guides/battery-and-indexing-hours/">battery guide</a></td>
+          </tr>
+          <tr>
+            <td>Want model self-host / offline only</td>
+            <td>Same EmbeddingGemma 2 package, already local after download (#7)</td>
+            <td>Complete first download (or Use Files…); turn off update checks if desired per README</td>
+          </tr>
+          <tr>
+            <td>Intel Mac won’t run DigUp</td>
+            <td>Mac build is Apple Silicon only (#28)</td>
+            <td>Use Win/Linux beta on a compatible PC — don’t chase broken Metal-on-Intel paths</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Sourced numbers (cite date 2026-10-15)</h2>
       <table>
@@ -87,15 +175,27 @@ import { DIGUP_UI, SITE } from '../../lib/site';
           <tr><th>Number</th><th>Context</th><th>Where to verify</th></tr>
         </thead>
         <tbody>
-          <tr><td>~865 MB</td><td>First-run model download size DigUp documents</td><td>README / release notes</td></tr>
-          <tr><td>~740M params</td><td>EmbeddingGemma 2 scale (Google / DigUp materials)</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI docs</a></td></tr>
-          <tr><td>768-d</td><td>Shared vector space DigUp describes</td><td>Upstream README</td></tr>
-          <tr><td>~3,716 stars</td><td>ARahim3/DigUp popularity signal</td><td>GitHub API</td></tr>
+          <tr><td>~865 MB</td><td>First-run model download DigUp documents</td><td><a href={SITE.upstreamRepo} rel="noopener noreferrer">DigUp README</a> / release notes</td></tr>
+          <tr><td>~310 + ~555 MB</td><td>Q8 text GGUF + mmproj pair</td><td>DigUp ModelFiles / community research notes</td></tr>
+          <tr><td>~740M params</td><td>EmbeddingGemma 2 scale</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI docs</a></td></tr>
+          <tr><td>768-d</td><td>Unified vector space (Google + DigUp)</td><td>Google AI docs · DigUp README</td></tr>
+          <tr><td>~3,768 stars · ~254 forks</td><td>ARahim3/DigUp popularity signal</td><td>GitHub API</td></tr>
+          <tr><td>Mac DMG ~4,689 downloads</td><td>v0.6.1 asset count at scan</td><td>GitHub Release assets</td></tr>
         </tbody>
       </table>
 
+      <h2>Related guides</h2>
+      <div class="cards">
+        <a class="card" href="/guides/embeddinggemma-2-local-multimodal-search/"><h3>Local multimodal search</h3><p>Photos, PDF, audio, video, code — how DigUp wires EmbeddingGemma 2</p></a>
+        <a class="card" href="/guides/use-cases/"><h3>Use cases by role</h3><p>Developer, clerk, finance, student…</p></a>
+        <a class="card" href="/guides/zero-files-indexed/"><h3>0 files indexed</h3><p>Cloud placeholders, FDA, code folders</p></a>
+        <a class="card" href="/guides/battery-and-indexing-hours/"><h3>Battery &amp; hours</h3><p>Overnight schedule, pause on battery</p></a>
+        <a class="card" href="/faq/#model-size"><h3>FAQ · model size</h3><p>865 MB + Use Files…</p></a>
+      </div>
+
       <div class="cta-bar">
         <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows beta</a>
         <a class="cta-secondary" href="/vs-spotlight/">vs Spotlight</a>
         <a class="cta-secondary" href="/faq/">FAQ</a>
       </div>

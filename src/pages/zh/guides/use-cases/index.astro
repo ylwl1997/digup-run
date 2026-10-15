@@ -1,0 +1,63 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp 角色用例 — 程序员、文员、财务、学生等"
+  description="DigUp 与 EmbeddingGemma 2 如何帮助程序员、文员、财务、学生、律师、设计师等——本机多模态搜索手册。社区站点——非官方关联。"
+  canonicalPath="/guides/use-cases/"
+  lang="zh"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">指南</span> · 用例</p>
+      <h1>按角色看 DigUp：帮谁、怎么帮</h1>
+      <p class="lead">面向真实岗位的厚手册。每页把职场痛点与 DigUp 流程配对，底层是本机 EmbeddingGemma 2（约 740M，约 865 MB via llama.cpp，共享 768 维）。基于 DigUp（MIT）。非官方关联。DigUp 不是 Google 官方产品。</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href="/zh/embeddinggemma-2/">EmbeddingGemma 2</a>
+        <a class="cta-secondary" href="/zh/guides/embeddinggemma-2-local-multimodal-search/">多模态指南</a>
+      </div>
+      
+      <h2>数据快照（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>数值</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>模型</td><td>EmbeddingGemma 2 · 约 740M 参数 · 约 865 MB Q8（llama.cpp）</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI</a> · DigUp README</td></tr>
+          <tr><td>向量空间</td><td>共享 768 维多模态空间</td><td>Google AI · DigUp README</td></tr>
+          <tr><td>Mac / Win·Linux</td><td>0.6.1 · 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars / forks</td><td>约 3,768 / 254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+      <h2>角色一览</h2>
+      <table>
+        <thead><tr><th>角色</th><th>示例痛点</th><th>DigUp 角度</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/zh/guides/use-cases/developer/">程序员 / 开发者</a></td><td>忘了 backoff 辅助函数在哪个仓库</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/office-clerk/">文员 / 行政</a></td><td>请假表在哪个 PDF？</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/accountant/">财务 / 会计</a></td><td>按供应商描述找发票</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/student/">学生</a></td><td>哪个 PDF 定义了「熵」？</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/lawyer/">律师</a></td><td>多版草稿里找赔偿条款</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/designer/">设计师</a></td><td>找旧情绪板照片</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/journalist/">记者</a></td><td>他们哪段提到预算？</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/sales/">销售</a></td><td>哪个 Deck 有价格表？</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/hr/">人力资源</a></td><td>远程办公条款在哪</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/teacher/">教师</a></td><td>去年的分数练习</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/researcher/">科研人员</a></td><td>哪篇 PDF 有那张图？</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/customer-support/">客户支持</a></td><td>哪个 runbook 覆盖退款边界？</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/product-manager/">产品经理</a></td><td>非目标写在哪？</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr><tr><td><a href="/zh/guides/use-cases/devops/">DevOps / SRE</a></td><td>复盘 PDF 回滚章节</td><td>在你选择的文件夹上做本机 EmbeddingGemma 2 搜索</td></tr>
+        </tbody>
+      </table>
+      <h2>共用首次清单</h2>
+      <ol class="checklist">
+        <li>安装 DigUp — Mac <strong>0.6.1</strong> 或 Win/Linux <strong>0.7.0-beta.1</strong>（见<a href="/zh/#download">下载</a>）。</li>
+        <li>完成 EmbeddingGemma 2（约 865 MB），或网络阻挡时用设置 → Storage → <strong>Use Files…</strong>。</li>
+        <li>选择文件夹；DigUp 跳过仅云端占位。</li>
+        <li>按含义搜索；开启代码搜索后用 <code>code:</code>。</li>
+        <li>卡住时看<a href="/zh/faq/">常见问题</a>、<a href="/zh/guides/zero-files-indexed/">索引为 0</a>、<a href="/zh/guides/battery-and-indexing-hours/">耗电与时段</a>。</li>
+      </ol>
+      <h2>模型与产品链接</h2>
+      <div class="cards">
+        <a class="card" href="/zh/embeddinggemma-2/"><h3>EmbeddingGemma 2</h3><p>体积、运行时、模态</p></a>
+        <a class="card" href="/zh/guides/embeddinggemma-2-local-multimodal-search/"><h3>本机多模态搜索</h3><p>DigUp 如何接模型</p></a>
+        <a class="card" href="/zh/what-is-digup/"><h3>DigUp 是什么？</h3><p>产品概览</p></a>
+        <a class="card" href="/zh/faq/"><h3>常见问题</h3><p>短答</p></a>
+      </div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>
+        <a class="cta-secondary" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

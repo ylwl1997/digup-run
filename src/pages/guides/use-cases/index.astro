@@ -1,0 +1,63 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp Use Cases by Role — Developers, Office, Finance, Students &amp; More"
+  description="How DigUp and EmbeddingGemma 2 help developers, clerks, accountants, students, lawyers, designers, and more — on-device multimodal search playbooks. Community site — not affiliated."
+  canonicalPath="/guides/use-cases/"
+  lang="en"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Guides</span> · Use cases</p>
+      <h1>DigUp by role: who it helps and how</h1>
+      <p class="lead">Thick playbooks for real jobs. Each page pairs workplace pain with DigUp workflows powered by on-device EmbeddingGemma 2 (~740M, ~865 MB via llama.cpp, 768-d shared space). Based on DigUp (MIT). Not affiliated. DigUp is not a Google-official product.</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href="/embeddinggemma-2/">EmbeddingGemma 2</a>
+        <a class="cta-secondary" href="/guides/embeddinggemma-2-local-multimodal-search/">Multimodal guide</a>
+      </div>
+      
+      <h2>Sourced snapshot (2026-10-15)</h2>
+      <table>
+        <thead><tr><th>Fact</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Model</td><td>EmbeddingGemma 2 · ~740M params · ~865 MB Q8 via llama.cpp</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI</a> · DigUp README</td></tr>
+          <tr><td>Vector space</td><td>768-d shared multimodal space</td><td>Google AI · DigUp README</td></tr>
+          <tr><td>Mac / Win·Linux</td><td>0.6.1 · 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars / forks</td><td>~3,768 / ~254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+      <h2>Roles at a glance</h2>
+      <table>
+        <thead><tr><th>Role</th><th>Example pain</th><th>DigUp angle</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/guides/use-cases/developer/">Developers &amp; programmers</a></td><td>Forgot which repo has the backoff helper</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/office-clerk/">Office clerks &amp; admins</a></td><td>Which PDF has the leave form?</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/accountant/">Finance &amp; accountants</a></td><td>Find invoice by vendor description</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/student/">Students</a></td><td>Which PDF defined “entropy”?</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/lawyer/">Lawyers</a></td><td>Find indemnity language across drafts</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/designer/">Designers</a></td><td>Find a past moodboard photo</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/journalist/">Journalists</a></td><td>Where did they mention the budget?</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/sales/">Sales</a></td><td>Which deck has the pricing grid?</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/hr/">HR</a></td><td>Remote-work clause location</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/teacher/">Teachers</a></td><td>Worksheet on fractions from last year</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/researcher/">Researchers &amp; scientists</a></td><td>Which PDF has that plot?</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/customer-support/">Customer support</a></td><td>Which runbook covers refund edge case?</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/product-manager/">Product managers</a></td><td>Where did we write the non-goal?</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr><tr><td><a href="/guides/use-cases/devops/">DevOps &amp; SRE</a></td><td>Postmortem PDF section on rollback</td><td>On-device EmbeddingGemma 2 search across files you choose</td></tr>
+        </tbody>
+      </table>
+      <h2>Shared first-run checklist</h2>
+      <ol class="checklist">
+        <li>Install DigUp — Mac <strong>0.6.1</strong> or Win/Linux <strong>0.7.0-beta.1</strong> from <a href="/#download">downloads</a>.</li>
+        <li>Complete the EmbeddingGemma 2 download (~865 MB) or Settings → Storage → <strong>Use Files…</strong> if blocked.</li>
+        <li>Pick folders; DigUp skips cloud-only placeholders.</li>
+        <li>Search by meaning; use <code>code:</code> when code search is enabled.</li>
+        <li>Read <a href="/faq/">FAQ</a>, <a href="/guides/zero-files-indexed/">0 files indexed</a>, and <a href="/guides/battery-and-indexing-hours/">battery &amp; hours</a> when stuck.</li>
+      </ol>
+      <h2>Model &amp; product links</h2>
+      <div class="cards">
+        <a class="card" href="/embeddinggemma-2/"><h3>EmbeddingGemma 2</h3><p>Size, runtime, modalities</p></a>
+        <a class="card" href="/guides/embeddinggemma-2-local-multimodal-search/"><h3>Local multimodal search</h3><p>How DigUp wires the model</p></a>
+        <a class="card" href="/what-is-digup/"><h3>What is DigUp?</h3><p>Product overview</p></a>
+        <a class="card" href="/faq/"><h3>FAQ</h3><p>Short answers</p></a>
+      </div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>
+        <a class="cta-secondary" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

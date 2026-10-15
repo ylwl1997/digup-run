@@ -61,6 +61,12 @@ export const NAV = [
       { href: '/guides/zero-files-indexed/', labelEn: '0 files indexed', labelZh: '索引为 0' },
       { href: '/guides/battery-and-indexing-hours/', labelEn: 'Battery & hours', labelZh: '耗电与时段' },
       { href: '/guides/win-linux-beta/', labelEn: 'Win/Linux beta', labelZh: 'Win/Linux 测试' },
+      {
+        href: '/guides/embeddinggemma-2-local-multimodal-search/',
+        labelEn: 'EmbeddingGemma multimodal',
+        labelZh: 'EmbeddingGemma 多模态',
+      },
+      { href: '/guides/use-cases/', labelEn: 'Use cases by role', labelZh: '角色用例' },
     ],
   },
   { href: '/faq/', labelEn: 'FAQ', labelZh: '常见问题' },

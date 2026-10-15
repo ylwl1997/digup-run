@@ -1,0 +1,103 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp 如何用 EmbeddingGemma 2 做本机多模态搜索"
+  description="分步说明：DigUp 经 llama.cpp 运行 EmbeddingGemma 2（约 740M，约 865 MB Q8，768 维），使一次查询可排序照片、PDF 页、音频、视频与可选代码——全在本机。社区指南——非官方关联。"
+  canonicalPath="/guides/embeddinggemma-2-local-multimodal-search/"
+  lang="zh"
+  ogImage={DIGUP_UI.multimodal.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">指南</span> · EmbeddingGemma 2</p>
+      <h1>DigUp 如何用 EmbeddingGemma 2 做本机多模态搜索</h1>
+      <p class="lead">照片、PDF 页、文档、音频窗、视频帧与可选代码共享一个排序空间。DigUp 通过 llama.cpp 在本机用 Google DeepMind 的 EmbeddingGemma 2 嵌入它们。基于 DigUp（MIT）。非官方关联。DigUp 不是 Google 官方产品。</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href="/zh/embeddinggemma-2/">模型页</a>
+        <a class="cta-secondary" href="/zh/guides/use-cases/">角色用例</a>
+      </div>
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">一次查询 · 多种模态</span>
+        <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altZh} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">取自 DigUp demo.gif（MIT）——VIDEO / IMAGES / AUDIO / DOCUMENTS 同屏。</figcaption>
+      </figure>
+
+      <h2>数据快照（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>数值</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>EmbeddingGemma 2</td><td>约 740M 参数 · 统一 768 维多模态空间 · Apache 2.0 权重</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI 文档</a></td></tr>
+          <tr><td>DigUp 包</td><td>约 865 MB Q8 GGUF（文本约 310 + mmproj 约 555）</td><td>DigUp README / ModelFiles</td></tr>
+          <tr><td>运行时</td><td>llama.cpp · Metal（Mac）· CPU/Vulkan（Win/Linux）</td><td>DigUp README</td></tr>
+          <tr><td>版本</td><td>Mac 0.6.1 · Win/Linux 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars</td><td>约 3,768 · forks 约 254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+
+      <h2>DigUp 文档中的管道</h2>
+      <table>
+        <thead><tr><th>阶段</th><th>发生什么</th><th>在哪运行</th></tr></thead>
+        <tbody>
+          <tr><td>1. 你选的文件夹</td><td>读取器把文件变成图/文/声</td><td>仅本机磁盘</td></tr>
+          <tr><td>2. EmbeddingGemma 2</td><td>llama.cpp helper 嵌入块；用完退出</td><td>本机 GPU/CPU</td></tr>
+          <tr><td>3. SQLite 索引</td><td>每图/页/段落/帧/30 秒音频一条向量 + 关键词</td><td>Application Support / XDG</td></tr>
+          <tr><td>4. 你的查询</td><td>文本塔嵌入词语 → 近邻 + 精确词加权</td><td>本机毫秒级</td></tr>
+        </tbody>
+      </table>
+
+      <h2>模态清单</h2>
+      <table>
+        <thead><tr><th>模态</th><th>DigUp 行为（README）</th><th>可试查询</th></tr></thead>
+        <tbody>
+          <tr><td>图片</td><td>按画面；Mac 截图 OCR</td><td>「海滩上的狗」</td></tr>
+          <tr><td>PDF</td><td>逐页；含扫描；先 30 页</td><td>「租约里关于宠物的条款」</td></tr>
+          <tr><td>文档</td><td>txt/md/rtf/docx/odt/html（+ Mac .doc）</td><td>概念短语</td></tr>
+          <tr><td>音频</td><td>约 30 秒重叠窗</td><td>「他们讲睡眠的地方」</td></tr>
+          <tr><td>视频</td><td>隔几秒取帧 + 音轨</td><td>「视频里的斑马」</td></tr>
+          <tr><td>代码（可选）</td><td><code>code:</code> 前缀；独立索引</td><td><code>code: retry with backoff</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2>分步设置</h2>
+      <ol class="checklist">
+        <li>下载 DigUp：<a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>、<a href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>，或 Linux <a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a> / <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a>。</li>
+        <li>启动并完成 EmbeddingGemma 2（约 865 MB）。若挡 Hugging Face，设置 → Storage → <strong>Use Files…</strong>（#25）。</li>
+        <li>选择文件夹。DigUp 从不代下仅云端文件。</li>
+        <li>阅读本机测速给出的首遍耗时估计。</li>
+        <li>快捷键：Mac ⇧⌘Space；Win/Linux Ctrl+Shift+Space。描述含义。</li>
+        <li>可选：开启代码搜索；用 <code>code:</code> 查询。</li>
+        <li>仍为空：<a href="/zh/guides/zero-files-indexed/">索引为 0</a>。风扇狂转：<a href="/zh/guides/battery-and-indexing-hours/">耗电与时段</a>。</li>
+      </ol>
+
+      <h2>FAQ 式：原因 → 处理</h2>
+      <table>
+        <thead><tr><th>原因</th><th>处理</th></tr></thead>
+        <tbody>
+          <tr><td>模型下载卡住</td><td>Use Files… 提供 DigUp 校验的两个 GGUF — <a href="/zh/faq/#model-size">FAQ</a></td></tr>
+          <tr><td>云占位</td><td>先在 Finder/资源管理器「立即下载」</td></tr>
+          <tr><td>代码从不出现</td><td>开启代码目录 + <code>code:</code> 前缀（#21）</td></tr>
+          <tr><td>仅 CPU 照片爬取慢（Win/Linux）</td><td>预期；查 <code>speed.log</code> 的 gpu/cpu — <a href="/zh/guides/win-linux-beta/">测试版指南</a></td></tr>
+        </tbody>
+      </table>
+
+      <h2>角色手册</h2>
+      <p>同一模型、不同岗位——浏览<a href="/zh/guides/use-cases/">按角色的 DigUp 用例</a>（程序员、文员、财务、学生、律师等）。</p>
+
+      <div class="cards">
+        <a class="card" href="/zh/embeddinggemma-2/"><h3>EmbeddingGemma 2 专页</h3><p>表格 · 有来源体积 · 运行时</p></a>
+        <a class="card" href="/zh/guides/use-cases/"><h3>用例总览</h3><p>14 个角色手册</p></a>
+        <a class="card" href="/zh/install-mac/"><h3>Mac 安装</h3><p>Brew + DMG</p></a>
+        <a class="card" href="/zh/what-is-digup/"><h3>DigUp 是什么？</h3><p>产品概览</p></a>
+      </div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

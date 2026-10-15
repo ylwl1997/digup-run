@@ -1,0 +1,105 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../lib/site';
+---
+<Layout
+  title="How DigUp Uses EmbeddingGemma 2 for On-Device Multimodal Search"
+  description="Step-by-step: DigUp runs EmbeddingGemma 2 (~740M, ~865 MB Q8, 768-d) via llama.cpp so one query ranks photos, PDF pages, audio, video, and optional code — locally. Community guide — not affiliated."
+  canonicalPath="/guides/embeddinggemma-2-local-multimodal-search/"
+  lang="en"
+  ogImage={DIGUP_UI.multimodal.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Guide</span> · EmbeddingGemma 2</p>
+      <h1>How DigUp uses EmbeddingGemma 2 for on-device multimodal search</h1>
+      <p class="lead">Photos, PDF pages, documents, audio windows, video frames, and optional code share one ranking space. DigUp embeds them with Google DeepMind’s EmbeddingGemma 2 through llama.cpp on your machine. Based on DigUp (MIT). Not affiliated. DigUp is not Google-official.</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href="/embeddinggemma-2/">Model page</a>
+        <a class="cta-secondary" href="/guides/use-cases/">Role use cases</a>
+      </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">One query · many modalities</span>
+        <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altEn} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">Still from DigUp demo.gif (MIT) — VIDEO / IMAGES / AUDIO / DOCUMENTS together.</figcaption>
+      </figure>
+
+      <h2>Sourced snapshot (2026-10-15)</h2>
+      <table>
+        <thead><tr><th>Fact</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>EmbeddingGemma 2</td><td>~740M params · unified 768-d multimodal space · Apache 2.0 weights</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI docs</a></td></tr>
+          <tr><td>DigUp package</td><td>~865 MB Q8 GGUF (~310 MB text + ~555 MB mmproj)</td><td>DigUp README / ModelFiles</td></tr>
+          <tr><td>Runtime</td><td>llama.cpp · Metal (Mac) · CPU/Vulkan (Win/Linux)</td><td>DigUp README</td></tr>
+          <tr><td>Versions</td><td>Mac 0.6.1 · Win/Linux 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars</td><td>~3,768 · forks ~254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Pipeline DigUp documents</h2>
+      <table>
+        <thead><tr><th>Stage</th><th>What happens</th><th>Where it runs</th></tr></thead>
+        <tbody>
+          <tr><td>1. Folders you choose</td><td>Readers turn files into pictures, text, sound</td><td>Your disk only</td></tr>
+          <tr><td>2. EmbeddingGemma 2</td><td>llama.cpp helper embeds chunks; quits when done</td><td>On-device GPU/CPU</td></tr>
+          <tr><td>3. SQLite index</td><td>Vector per image/page/passage/frame/30s audio + keywords</td><td>Application Support / XDG</td></tr>
+          <tr><td>4. Your query</td><td>Text tower embeds words → nearest vectors + exact-word boost</td><td>Milliseconds on device</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Modality checklist</h2>
+      <table>
+        <thead><tr><th>Modality</th><th>DigUp behavior (README)</th><th>Try querying</th></tr></thead>
+        <tbody>
+          <tr><td>Images</td><td>By what they show; Mac screenshot OCR for text</td><td>“dog on the beach”</td></tr>
+          <tr><td>PDFs</td><td>Page by page; scans included; first 30 pages fast</td><td>“clause about pets in the lease”</td></tr>
+          <tr><td>Docs</td><td>txt/md/rtf/docx/odt/html (+ Mac .doc)</td><td>Concept phrases</td></tr>
+          <tr><td>Audio</td><td>Overlapping ~30s windows</td><td>“where they talk about sleep”</td></tr>
+          <tr><td>Video</td><td>Frames every few seconds + soundtrack</td><td>“zebra in a video”</td></tr>
+          <tr><td>Code (opt-in)</td><td><code>code:</code> prefix; separate index</td><td><code>code: retry with backoff</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Numbered setup</h2>
+      <ol class="checklist">
+        <li>Download DigUp: <a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>, <a href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>, or Linux <a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a> / <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a>.</li>
+        <li>Launch and finish EmbeddingGemma 2 (~865 MB). If Hugging Face is blocked, Settings → Storage → <strong>Use Files…</strong> (#25).</li>
+        <li>Pick folders. DigUp never downloads cloud-only files.</li>
+        <li>Read the first-pass time estimate from the local speed check.</li>
+        <li>Hotkey: ⇧⌘Space (Mac) or Ctrl+Shift+Space (Win/Linux). Describe meaning.</li>
+        <li>Optional: enable code search; query with <code>code:</code>.</li>
+        <li>If results stay empty: <a href="/guides/zero-files-indexed/">0 files indexed</a>. If fans roar: <a href="/guides/battery-and-indexing-hours/">battery &amp; hours</a>.</li>
+      </ol>
+
+      <h2>FAQ-style cause → fix</h2>
+      <table>
+        <thead><tr><th>Cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Model download stuck</td><td>Use Files… with the two GGUFs DigUp checksums — <a href="/faq/#model-size">FAQ</a></td></tr>
+          <tr><td>Cloud placeholders</td><td>Download Now in Finder/Explorer first</td></tr>
+          <tr><td>Code never appears</td><td>Enable code folders + <code>code:</code> prefix (#21)</td></tr>
+          <tr><td>CPU-only photo crawl slow (Win/Linux)</td><td>Expected; check <code>speed.log</code> for gpu vs cpu — <a href="/guides/win-linux-beta/">beta guide</a></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Role playbooks</h2>
+      <p>Same model, different jobs — browse <a href="/guides/use-cases/">DigUp use cases by role</a> (developers, clerks, accountants, students, lawyers, and more).</p>
+
+      <div class="cards">
+        <a class="card" href="/embeddinggemma-2/"><h3>EmbeddingGemma 2 page</h3><p>Tables · sourced sizes · runtime</p></a>
+        <a class="card" href="/guides/use-cases/"><h3>Use cases hub</h3><p>14 role playbooks</p></a>
+        <a class="card" href="/install-mac/"><h3>Install Mac</h3><p>Brew + DMG</p></a>
+        <a class="card" href="/what-is-digup/"><h3>What is DigUp?</h3><p>Product overview</p></a>
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

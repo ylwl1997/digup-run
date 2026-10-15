@@ -1,0 +1,60 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp for Researchers — Papers, Lab Notes &amp; Experiment Media"
+  description="Researchers use DigUp EmbeddingGemma 2 to search papers, lab PDFs, and experiment videos on-device in a shared 768-d space."
+  canonicalPath="/guides/use-cases/researcher/"
+  lang="en"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Use case</span> · Researchers &amp; scientists</p>
+      <h1>DigUp for researchers &amp; scientists</h1>
+      <p class="lead">Literature and lab captures sprawl. DigUp runs EmbeddingGemma 2 via llama.cpp so one query ranks figures, pages, and clips — private to your workstation.</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href="/embeddinggemma-2/">EmbeddingGemma 2</a>
+        <a class="cta-secondary" href="/guides/use-cases/">All roles</a>
+      </div>
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">On-device flow</span>
+        <img src="/media/use-cases/researcher.svg" width="960" height="540" alt="Schematic: DigUp uses EmbeddingGemma 2 for Researchers and scientists local search" loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">Original schematic — DigUp indexes local files with EmbeddingGemma 2 (llama.cpp).</figcaption>
+      </figure>
+      
+      <h2>Sourced snapshot (2026-10-15)</h2>
+      <table>
+        <thead><tr><th>Fact</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Model</td><td>EmbeddingGemma 2 · ~740M params · ~865 MB Q8 via llama.cpp</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI</a> · DigUp README</td></tr>
+          <tr><td>Vector space</td><td>768-d shared multimodal space</td><td>Google AI · DigUp README</td></tr>
+          <tr><td>Mac / Win·Linux</td><td>0.6.1 · 0.7.0-beta.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Stars / forks</td><td>~3,768 / ~254</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+      <h2>Pain → DigUp workflow → tip</h2>
+      <table><thead><tr><th>Pain</th><th>DigUp + EmbeddingGemma 2 workflow</th><th>Tip</th></tr></thead><tbody><tr><td>Which PDF has that plot?</td><td>PDF + image embeddings</td><td>Open page / find figure shot</td></tr><tr><td>Notebook cell explaining preprocess</td><td>Opt-in code: search</td><td>Jupyter without outputs (README)</td></tr><tr><td>Microscope video moment</td><td>Video frames</td><td>Jump near event</td></tr><tr><td>Reproducibility offline</td><td>Local index</td><td>~865 MB model once; then offline search</td></tr></tbody></table>
+      <h2>Numbered checklist</h2>
+      <ol class="checklist"><li>Install DigUp on your lab machine (Apple Silicon or Win/Linux beta).</li><li>Index Papers / LabNotes / Captures — ensure files are local.</li><li>Enable code search for analysis repos.</li><li>Combine semantic queries with exact citation keys.</li><li>Read EmbeddingGemma docs + DigUp model page for 740M / 768-d facts.</li></ol>
+      <h2>Why EmbeddingGemma 2 matters here</h2>
+      <p>Google’s <a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">EmbeddingGemma 2</a> (~740M, unified 768-d multimodal space) is what DigUp runs via llama.cpp (~865 MB Q8 package). One query can rank images, PDF pages, audio windows, video frames, and optional code — see the <a href="/guides/embeddinggemma-2-local-multimodal-search/">local multimodal guide</a> and <a href="/embeddinggemma-2/">model page</a>. digup.run is not Google-official.</p>
+      <h2>Downloads &amp; installs</h2>
+      <ul class="checklist">
+        <li><a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG {SITE.downloads.macVersion}</a> · <a href="/install-mac/">Mac install</a></li>
+        <li><a href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows {SITE.downloads.windowsVersion}</a> · <a href="/install-windows/">Windows install</a></li>
+        <li><a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Linux .deb</a> / <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a> · <a href="/install-linux/">Linux install</a></li>
+        <li><a href="/faq/">FAQ</a> · <a href="/faq/#model-size">Model size / Use Files…</a></li>
+      </ul>
+      <h2>Related</h2>
+      <div class="cards"><a class="card" href="/guides/use-cases/"><h3>All roles hub</h3><p>Browse every use case</p></a><a class="card" href="/embeddinggemma-2/"><h3>EmbeddingGemma 2</h3><p>Model size &amp; runtime</p></a><a class="card" href="/guides/embeddinggemma-2-local-multimodal-search/"><h3>Multimodal guide</h3><p>Photos · PDF · audio · video · code</p></a><a class="card" href="/guides/use-cases/developer/"><h3>Developers &amp; programmers</h3><p>Role playbook</p></a><a class="card" href="/guides/use-cases/office-clerk/"><h3>Office clerks &amp; admins</h3><p>Role playbook</p></a><a class="card" href="/guides/use-cases/accountant/"><h3>Finance &amp; accountants</h3><p>Role playbook</p></a></div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>
