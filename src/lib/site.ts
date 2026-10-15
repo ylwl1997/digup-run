@@ -47,6 +47,7 @@ export const NAV = [
     labelZh: '安装',
     children: [
       { href: '/install-mac/', labelEn: 'Mac', labelZh: 'Mac' },
+      { href: '/install-mac/#homebrew', labelEn: 'Homebrew (brew)', labelZh: 'Homebrew（brew）' },
       { href: '/install-windows/', labelEn: 'Windows (beta)', labelZh: 'Windows（测试）' },
       { href: '/install-linux/', labelEn: 'Linux (beta)', labelZh: 'Linux（测试）' },
     ],
@@ -70,7 +71,7 @@ export const NAV = [
     ],
   },
   { href: '/faq/', labelEn: 'FAQ', labelZh: '常见问题' },
-  { href: '/changelog-notes/', labelEn: 'Changelog', labelZh: '更新说明', enOnly: true },
+  { href: '/changelog-notes/', labelEn: 'Changelog', labelZh: '更新说明' },
 ] as const;
 
 /** UI stills from DigUp demo.gif (ARahim3/DigUp, MIT). */

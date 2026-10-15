@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
-  title={'Install DigUp on Mac (Apple Silicon) — Homebrew & DMG'}
+  title={'Install DigUp on Mac — brew install / Homebrew & DMG'}
   description={'Install DigUp on Apple Silicon (macOS 14+): brew install --cask arahim3/tap/digup, or DigUp-0.6.1.dmg. First-run model (~865 MB) and ⇧⌘Space.'}
   canonicalPath="/install-mac/"
   lang="en"
@@ -12,8 +12,8 @@ import { DIGUP_UI, SITE } from '../../lib/site';
   <main class="wrap">
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Mac · {SITE.downloads.macVersion}</span> · Install guide</p>
-      <h1>Install DigUp on Mac</h1>
-      <p class="lead">Apple Silicon Macs on macOS 14 or later. Prefer Homebrew (tap), or download the DigUp DMG.</p>
+      <h1>Install DigUp on Mac with Homebrew or DMG</h1>
+      <p class="lead">Apple Silicon Macs on macOS 14 or later. Prefer <strong>Homebrew</strong> (<code>brew install --cask arahim3/tap/digup</code>), or download the DigUp DMG.</p>
     </header>
 
     <article class="wide">
@@ -42,7 +42,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
         </tbody>
       </table>
 
-      <h2>Install with Homebrew (recommended)</h2>
+      <h2 id="homebrew">Install DigUp with Homebrew (recommended)</h2>
       <p class="muted">Official tap from ARahim3 (issue <a href="https://github.com/ARahim3/DigUp/issues/2" rel="noopener noreferrer">#2</a>). Core <code>homebrew/cask</code> listing is expected after DigUp’s repo is ~30 days old (~Nov 7, 2026). The tap works now.</p>
       <pre><code>{SITE.brewCommand}</code></pre>
       <ol class="checklist">
