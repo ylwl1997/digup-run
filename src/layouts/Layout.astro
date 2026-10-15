@@ -87,7 +87,6 @@ const ogImageAbs = ogImage
         <a class="logo" href={homeHref}><img class="mark" src="/logo.svg" width="28" height="28" alt="" />DigUp</a>
         <nav class="nav" aria-label={label('Primary', '主导航')}>
           <a href={homeHref} aria-current={path === homeHref || path === '/zh' ? 'page' : undefined}>{label('Home', '首页')}</a>
-          <a href={pathFor(lang, '/what-is-digup/')} aria-current={isCurrent('/what-is-digup/') ? 'page' : undefined}>{label('What is', '是什么')}</a>
           <details class="nav-group">
             <summary>{label('Install', '安装')}</summary>
             <div class="submenu">
@@ -96,20 +95,28 @@ const ogImageAbs = ogImage
               <a href={pathFor(lang, '/install-linux/')}>{label('Linux (beta)', 'Linux（测试）')}</a>
             </div>
           </details>
-          <a href={pathFor(lang, '/vs-spotlight/')} aria-current={isCurrent('/vs-spotlight/') ? 'page' : undefined}>{label('vs Spotlight', '对比 Spotlight')}</a>
-          <a href={pathFor(lang, '/embeddinggemma-2/')} aria-current={isCurrent('/embeddinggemma-2/') ? 'page' : undefined}>EmbeddingGemma 2</a>
           <details class="nav-group">
             <summary>{label('Guides', '指南')}</summary>
-            <div class="submenu">
+            <div class="submenu submenu-wide">
+              <span class="submenu-label">{label('Product', '产品')}</span>
+              <a href={pathFor(lang, '/what-is-digup/')}>{label('What is DigUp', 'DigUp 是什么')}</a>
+              <a href={pathFor(lang, '/vs-spotlight/')}>{label('vs Spotlight', '对比 Spotlight')}</a>
+              <a href={pathFor(lang, '/embeddinggemma-2/')}>EmbeddingGemma 2</a>
+              {lang === 'en' ? (
+                <a href="/changelog-notes/">Changelog</a>
+              ) : (
+                <a href="/changelog-notes/" hreflang="en">{label('Changelog (EN)', '更新说明（英文）')}</a>
+              )}
+              <span class="submenu-label">{label('How-to', '教程')}</span>
               <a href={pathFor(lang, '/guides/zero-files-indexed/')}>{label('0 files indexed', '索引为 0')}</a>
               <a href={pathFor(lang, '/guides/battery-and-indexing-hours/')}>{label('Battery & hours', '耗电与时段')}</a>
               <a href={pathFor(lang, '/guides/win-linux-beta/')}>{label('Win/Linux beta', 'Win/Linux 测试')}</a>
+              <a href={pathFor(lang, '/guides/embeddinggemma-2-local-multimodal-search/')}>{label('Multimodal search', '多模态搜索')}</a>
+              <span class="submenu-label">{label('Use cases', '场景')}</span>
+              <a href={pathFor(lang, '/guides/use-cases/')}>{label('Use cases hub', '使用场景')}</a>
             </div>
           </details>
           <a href={pathFor(lang, '/faq/')} aria-current={isCurrent('/faq/') ? 'page' : undefined}>{label('FAQ', '常见问题')}</a>
-          {lang === 'en' && (
-            <a href="/changelog-notes/" aria-current={isCurrent('/changelog-notes/') ? 'page' : undefined}>Changelog</a>
-          )}
         </nav>
         <div class="header-end">
           <div class="lang-switch" role="group" aria-label={label('Language', '语言')}>
