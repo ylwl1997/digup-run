@@ -1551,3 +1551,39 @@ pre code {
   .stage h1 { max-width: 18ch; }
   .dl-primary { width: 100%; }
 }
+
+
+/* Real demo (self-hosted @xiaohu clip) */
+.real-demo {
+  margin: 2.5rem auto 0;
+  max-width: 980px;
+}
+.real-demo-head {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.real-demo-head h2 {
+  margin: 0.25rem 0 0.4rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+}
+.real-demo-head .muted {
+  margin: 0;
+  max-width: 52ch;
+}
+.real-demo-stage {
+  margin: 0;
+}
+.real-demo-stage .demo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+.real-demo-stage .app-caption a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.real-demo-stage .app-caption a:hover {
+  color: var(--accent-bright);
+}
