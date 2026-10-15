@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  ogType?: string;
+}
+
+const { title, description, canonicalPath, ogType = 'website' } = Astro.props;
+const site = 'https://digup.run';
+const canonical = `${site}${canonicalPath}`;
+const path = Astro.url.pathname;
+
+const isCurrent = (p: string) => path === p || path.startsWith(p);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="digup.run (unofficial)" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="logo" href="/">digup.run <span>unofficial</span></a>
+        <nav class="nav" aria-label="Primary">
+          <a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a>
+          <a href="/what-is-digup/" aria-current={isCurrent('/what-is-digup/') ? 'page' : undefined}>What is</a>
+          <details class="nav-group">
+            <summary>Install</summary>
+            <div class="submenu">
+              <a href="/install-mac/">Mac</a>
+              <a href="/install-windows/">Windows (beta)</a>
+              <a href="/install-linux/">Linux (beta)</a>
+            </div>
+          </details>
+          <a href="/vs-spotlight/" aria-current={isCurrent('/vs-spotlight/') ? 'page' : undefined}>vs Spotlight</a>
+          <a href="/embeddinggemma-2/" aria-current={isCurrent('/embeddinggemma-2/') ? 'page' : undefined}>EmbeddingGemma 2</a>
+          <a href="/faq/" aria-current={isCurrent('/faq/') ? 'page' : undefined}>FAQ</a>
+          <a href="/changelog-notes/" aria-current={isCurrent('/changelog-notes/') ? 'page' : undefined}>Changelog</a>
+        </nav>
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="disclaimer">
+          <strong>Unofficial coverage site.</strong> digup.run is an independent informational / keyword site about the open-source DigUp project. It is <strong>not</strong> affiliated with, endorsed by, or operated by ARahim3 or the DigUp maintainers. DigUp is MIT-licensed open source; trademarks and product names belong to their owners. For downloads and support, use the official repository:
+          <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">github.com/ARahim3/DigUp</a>
+          and
+          <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a>.
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
+          <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">Upstream repo</a>
+          <a href="/faq/">FAQ</a>
+          <a href="/changelog-notes/">Changelog notes</a>
+          <span>Unofficial</span>
+        </div>
+        <p class="tm">DigUp is a project by ARahim3. Gemma / EmbeddingGemma are trademarks of Google LLC. Mac and Spotlight are trademarks of Apple Inc. This site does not host DMG, EXE, or other binaries.</p>
+      </div>
+    </footer>
+  </body>
+</html>

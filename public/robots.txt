@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://digup.run/sitemap-index.xml

@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="What Is DigUp? Local Multimodal File Search Explained"
+  description="DigUp is an open-source, on-device app that finds photos, PDFs, documents, recordings, videos, and optional code by meaning using EmbeddingGemma 2 — not by filename alone."
+  canonicalPath="/what-is-digup/"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Unofficial</span> · Independent overview</p>
+      <h1>What is DigUp?</h1>
+      <p class="lead">DigUp is a local-first multimodal semantic file search desktop app. You pick folders; it embeds what’s inside (photos, PDF pages, docs, audio windows, video frames, optional code) with EmbeddingGemma 2 and lets you search by meaning — on Mac, Windows, and Linux.</p>
+    </header>
+
+    <article class="wide">
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <strong>Independent coverage.</strong> This page is not affiliated with ARahim3. Source of truth: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">github.com/ARahim3/DigUp</a>. Downloads only via <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a>.
+      </div>
+
+      <h2>In one sentence</h2>
+      <p>Describe what you remember about a file’s contents; DigUp ranks matches in a shared embedding space on your machine — no account, no cloud index of your files.</p>
+
+      <h2>What it can search (modalities)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Modality</th>
+            <th>What DigUp indexes</th>
+            <th>Open-to</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Photos / images</strong></td>
+            <td>Visual content (and OCR text on Mac for screenshots / scanned pages)</td>
+            <td>File</td>
+          </tr>
+          <tr>
+            <td><strong>PDFs</strong></td>
+            <td>Pages as meaning + text; scanned PDFs get OCR on Mac (0.6.1+)</td>
+            <td>Page</td>
+          </tr>
+          <tr>
+            <td><strong>Documents</strong></td>
+            <td>txt, md, rtf, docx, odt, html; .doc mainly Mac</td>
+            <td>File / passage</td>
+          </tr>
+          <tr>
+            <td><strong>Audio</strong></td>
+            <td>~30-second windows in a shared vector space</td>
+            <td>Timestamp</td>
+          </tr>
+          <tr>
+            <td><strong>Video</strong></td>
+            <td>Frames / moments by description</td>
+            <td>Timestamp</td>
+          </tr>
+          <tr>
+            <td><strong>Code (optional)</strong></td>
+            <td>Enable in settings; query with <code>code:</code> prefix</td>
+            <td>Line</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="muted">Win/Linux beta (0.7.0-beta.1) does not yet OCR screenshot text; skips old .doc, RAW, and SVG on that beta — see <a href="/install-windows/">Windows</a> / <a href="/install-linux/">Linux</a> guides.</p>
+
+      <h2>How it works (high level)</h2>
+      <ol class="checklist">
+        <li><strong>You choose folders</strong> — DigUp does not auto-index the whole disk; cloud placeholders (undownloaded iCloud/OneDrive) are skipped.</li>
+        <li><strong>Extract → embed</strong> — content becomes images/text/audio chunks; EmbeddingGemma 2 runs locally via llama.cpp (~865 MB first download).</li>
+        <li><strong>SQLite index</strong> — vectors plus keyword boost for exact strings (invoice numbers, error codes, names).</li>
+        <li><strong>Search</strong> — query text is embedded; nearest neighbors + keyword weights; hotkey opens the panel from any app.</li>
+      </ol>
+      <p>More on the model: <a href="/embeddinggemma-2/">How DigUp uses EmbeddingGemma 2</a>.</p>
+
+      <h2>Requirements by platform</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Version (2026-10-15)</th>
+            <th>Hardware / OS</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mac</strong></td>
+            <td>0.6.1</td>
+            <td>Apple Silicon, macOS 14+</td>
+            <td>Stable</td>
+          </tr>
+          <tr>
+            <td><strong>Windows</strong></td>
+            <td>0.7.0-beta.1</td>
+            <td>64-bit Windows 10/11</td>
+            <td><strong>Beta</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Linux</strong></td>
+            <td>0.7.0-beta.1</td>
+            <td>amd64; .deb or AppImage</td>
+            <td><strong>Beta</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="muted">GitHub stars ~3,716 as of 2026-10-15 — re-check the <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">repo</a> for live counts.</p>
+
+      <h2>What DigUp is not</h2>
+      <ul class="checklist">
+        <li>Not a full Spotlight / Windows Search replacement (it can sit beside them).</li>
+        <li>Not an app launcher (as of research date).</li>
+        <li>Not a cloud sync or collaboration search product.</li>
+        <li>Not available as an official App Store listing you should trust from random mirrors — use GitHub Releases.</li>
+      </ul>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/install-mac/">Mac install</a>
+        <a class="cta-secondary" href="/vs-spotlight/">vs Spotlight</a>
+      </div>
+
+      <section class="related">
+        <h2>Related</h2>
+        <div class="cards">
+          <a class="card" href="/install-mac/"><h3>Install Mac</h3><p>Brew + DMG checklist</p></a>
+          <a class="card" href="/faq/"><h3>FAQ</h3><p>Privacy, platforms, troubleshooting</p></a>
+          <a class="card" href="/embeddinggemma-2/"><h3>EmbeddingGemma 2</h3><p>Model size and shared space</p></a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>

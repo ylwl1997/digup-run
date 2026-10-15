@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="DigUp FAQ — Requirements, Privacy, Platforms, Troubleshooting"
+  description="Unofficial DigUp FAQ: Apple Silicon vs Windows/Linux beta, model size, privacy (local-first), brew install, indexing time, code search, and links to official GitHub Releases."
+  canonicalPath="/faq/"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">FAQ</span> · Unofficial answers</p>
+      <h1>DigUp FAQ</h1>
+      <p class="lead">Short answers with links to thicker guides. Always prefer official GitHub README and Releases when anything conflicts.</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/what-is-digup/">What is DigUp?</a>
+      </div>
+
+      <div class="faq-item" id="official">
+        <h2>Is digup.run the official DigUp website?</h2>
+        <p><strong>No.</strong> digup.run is an independent informational / keyword coverage site. It is not affiliated with or operated by ARahim3. Downloads and support belong on <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">github.com/ARahim3/DigUp</a> and <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a>.</p>
+      </div>
+
+      <div class="faq-item" id="platforms">
+        <h2>Which platforms are supported?</h2>
+        <p>Mac: <strong>0.6.1</strong> stable on Apple Silicon, macOS 14+. Windows and Linux: <strong>0.7.0-beta.1</strong> beta on 64-bit Intel/AMD. See <a href="/install-mac/">Mac</a>, <a href="/install-windows/">Windows</a>, and <a href="/install-linux/">Linux</a> guides. Re-check Releases before you install.</p>
+      </div>
+
+      <div class="faq-item" id="intel-mac">
+        <h2>Does DigUp run on Intel Macs?</h2>
+        <p>The official Mac build targets <strong>Apple Silicon</strong> only. Intel Macs are not supported by that build. Use Windows/Linux beta on compatible PCs if you need those platforms instead.</p>
+      </div>
+
+      <div class="faq-item" id="privacy">
+        <h2>Is DigUp private? Is there telemetry or an account?</h2>
+        <p>DigUp is designed local-first: indexing and inference run on your machine. Upstream documents no account requirement and no telemetry of your file contents. Expect a first model download and optional update checks you can control. Read the current README privacy section for the definitive wording.</p>
+      </div>
+
+      <div class="faq-item" id="model-size">
+        <h2>How big is the model download?</h2>
+        <p>About <strong>865 MB</strong> on first run (EmbeddingGemma 2 via llama.cpp). On Mac 0.6.1, if the network blocks the download, use Settings → Storage → <strong>Use Files…</strong>. Details: <a href="/embeddinggemma-2/">EmbeddingGemma 2 in DigUp</a>.</p>
+      </div>
+
+      <div class="faq-item" id="indexing">
+        <h2>How long does indexing take?</h2>
+        <p>Depends on folder size, file types, and CPU/GPU. DigUp shows an estimate after a quick speed check. After the first pass, new files are indexed incrementally. You can schedule indexing hours on Mac (0.6.1 Settings → Folders).</p>
+      </div>
+
+      <div class="faq-item" id="brew">
+        <h2>Homebrew or DMG on Mac?</h2>
+        <p>Both are fine. Brew: <code>brew install --cask arahim3/tap/digup</code>. Or download the DMG from Releases. Step-by-step: <a href="/install-mac/">Install DigUp on Mac</a>.</p>
+      </div>
+
+      <div class="faq-item" id="beta">
+        <h2>What does “beta” mean for Windows and Linux?</h2>
+        <p>0.7.0-beta.1 works but has had far less real-world use than Mac. Expect rough edges. Screenshot OCR text is not in yet; .doc / RAW / SVG are skipped on that beta. Prefer filing issues upstream with logs (e.g. <code>speed.log</code> device line).</p>
+      </div>
+
+      <div class="faq-item" id="code">
+        <h2>How does code search work?</h2>
+        <p>Code indexing is optional — enable it in settings and select repositories. Query with the <code>code:</code> prefix. DigUp is not a full IDE replacement; it jumps to matching lines when code search is enabled.</p>
+      </div>
+
+      <div class="faq-item" id="spotlight">
+        <h2>Should I turn off Spotlight if I install DigUp?</h2>
+        <p>No need. DigUp is additive. Keep Spotlight for names and apps; use DigUp for meaning across modalities. See <a href="/vs-spotlight/">DigUp vs Spotlight</a>.</p>
+      </div>
+
+      <div class="faq-item" id="smartscreen">
+        <h2>Windows says it doesn’t recognize DigUp. Is that normal?</h2>
+        <p>The beta installer is <strong>unsigned</strong>. SmartScreen may require More info → Run anyway. Only do this for the EXE you downloaded from the official ARahim3 Releases page. Guide: <a href="/install-windows/">Install on Windows</a>.</p>
+      </div>
+
+      <div class="faq-item" id="stars">
+        <h2>How popular is the project?</h2>
+        <p>As of 2026-10-15 the GitHub API reported about <strong>3,716</strong> stars and 252 forks, with Mac 0.6.1 and Win/Linux 0.7.0-beta.1 published. Live counts change — check the repo.</p>
+      </div>
+
+      <h2 style="margin-top:2rem;">Quick requirements table</h2>
+      <table>
+        <thead>
+          <tr><th>Platform</th><th>Version</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Mac</td><td>0.6.1</td><td>Apple Silicon, macOS 14+</td></tr>
+          <tr><td>Windows</td><td>0.7.0-beta.1</td><td>64-bit 10/11, unsigned setup</td></tr>
+          <tr><td>Linux</td><td>0.7.0-beta.1</td><td>.deb / AppImage amd64</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/changelog-notes/">Changelog notes</a>
+      </div>
+    </article>
+  </main>
+</Layout>

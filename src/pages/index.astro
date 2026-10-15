@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="DigUp Guide — On-Device Multimodal Semantic File Search (Unofficial)"
+  description="Independent coverage of DigUp (ARahim3/DigUp) — local EmbeddingGemma 2 search for photos, PDFs, audio, video, and code on Mac, Windows, and Linux. Install links to GitHub Releases."
+  canonicalPath="/"
+>
+  <main>
+    <section class="hero wrap">
+      <span class="badge">Unofficial · Independent coverage</span>
+      <h1>DigUp: search your files by what’s inside them</h1>
+      <p class="lede">
+        DigUp is an open-source, on-device multimodal semantic file search app. Describe a photo, PDF page, recording, or video moment in plain language — it finds matches locally with EmbeddingGemma 2. This site is independent coverage; downloads only from GitHub Releases.
+      </p>
+      <div class="hero-actions">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Download on GitHub Releases</a>
+        <a class="cta-secondary" href="/install-mac/">Mac install guide</a>
+      </div>
+      <p class="muted" style="font-size:0.95rem;margin:0 0 1rem;">
+        Mac Homebrew: <code>brew install --cask arahim3/tap/digup</code>
+      </p>
+      <div class="callout">
+        <strong>Not the official DigUp website.</strong> digup.run is independent keyword / how-to coverage. Upstream project: <a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a> (MIT). We never host DMG or EXE files.
+      </div>
+    </section>
+
+    <section class="wrap" style="margin-top:1.5rem;">
+      <h2>Platforms (verify on GitHub before install)</h2>
+      <p class="muted">Numbers checked via GitHub API on 2026-10-15: ~3,716 stars · forks 252 · MIT.</p>
+      <div class="platform-grid">
+        <div class="platform">
+          <h3>macOS</h3>
+          <p class="ver">0.6.1 stable</p>
+          <p class="muted">Apple Silicon · macOS 14+</p>
+          <p><a href="/install-mac/">Install on Mac →</a></p>
+        </div>
+        <div class="platform">
+          <h3>Windows</h3>
+          <p class="ver beta">0.7.0-beta.1</p>
+          <p class="muted">64-bit Win 10/11 · unsigned installer</p>
+          <p><a href="/install-windows/">Install on Windows →</a></p>
+        </div>
+        <div class="platform">
+          <h3>Linux</h3>
+          <p class="ver beta">0.7.0-beta.1</p>
+          <p class="muted">.deb · AppImage · amd64</p>
+          <p><a href="/install-linux/">Install on Linux →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2>Guides on this site</h2>
+      <div class="cards">
+        <a class="card" href="/what-is-digup/">
+          <span class="tag">Overview</span>
+          <h3>What is DigUp?</h3>
+          <p>Modalities, how indexing works, and OS requirements in one place.</p>
+        </a>
+        <a class="card" href="/install-mac/">
+          <span class="tag">Install</span>
+          <h3>Install on Mac</h3>
+          <p>Homebrew cask or DMG, first-run ~865 MB model, ⇧⌘Space.</p>
+        </a>
+        <a class="card" href="/install-windows/">
+          <span class="tag">Beta</span>
+          <h3>Install on Windows</h3>
+          <p>x64 setup from Releases, SmartScreen “Run anyway,” GPU notes.</p>
+        </a>
+        <a class="card" href="/install-linux/">
+          <span class="tag">Beta</span>
+          <h3>Install on Linux</h3>
+          <p>.deb for Ubuntu/Debian/Mint, AppImage elsewhere, Wayland shortcuts.</p>
+        </a>
+        <a class="card" href="/vs-spotlight/">
+          <span class="tag">Compare</span>
+          <h3>DigUp vs Spotlight</h3>
+          <p>Filename/metadata vs meaning — when to use both on Mac.</p>
+        </a>
+        <a class="card" href="/embeddinggemma-2/">
+          <span class="tag">Model</span>
+          <h3>EmbeddingGemma 2</h3>
+          <p>How DigUp runs Google’s model locally via llama.cpp (~865 MB).</p>
+        </a>
+        <a class="card" href="/faq/">
+          <span class="tag">Support</span>
+          <h3>FAQ</h3>
+          <p>Privacy, Intel Mac, indexing time, code search, beta meaning.</p>
+        </a>
+        <a class="card" href="/changelog-notes/">
+          <span class="tag">Notes</span>
+          <h3>Changelog notes</h3>
+          <p>Unofficial summary of 0.6.1 and 0.7.0-beta.1 — verify on GitHub.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="wrap" style="margin-top:0.5rem;">
+      <h2>Who this site is for</h2>
+      <ul class="checklist">
+        <li>People who searched for <strong>DigUp Mac</strong>, brew install, or Windows/Linux beta setup and want a scannable checklist.</li>
+        <li>Anyone comparing DigUp to Spotlight or reading about EmbeddingGemma 2 file search.</li>
+        <li>Readers who want independent English how-tos with outbound links — not another binary mirror.</li>
+      </ul>
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/what-is-digup/">Start with What is DigUp</a>
+      </div>
+    </section>
+  </main>
+</Layout>

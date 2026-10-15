@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="DigUp vs Spotlight — When to Use Each on Mac"
+  description="Spotlight finds names, text, and metadata. DigUp finds meaning across photos, PDF pages, audio/video moments, and code — on-device with EmbeddingGemma 2. Use both side by side."
+  canonicalPath="/vs-spotlight/"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Compare</span> · Unofficial</p>
+      <h1>DigUp vs Apple Spotlight</h1>
+      <p class="lead">Spotlight is built into macOS and excellent for apps, filenames, and many text/metadata queries. DigUp is additive: it searches by meaning across photos, PDF pages, recordings, video moments, and optional code — locally with EmbeddingGemma 2.</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/install-mac/">Install DigUp on Mac</a>
+      </div>
+
+      <h2>Side-by-side comparison</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Spotlight</th>
+            <th>DigUp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Find by filename / app name</strong></td>
+            <td>Excellent, system-wide</td>
+            <td>Not the primary job</td>
+          </tr>
+          <tr>
+            <td><strong>Find by file meaning / description</strong></td>
+            <td>Limited (some content, not multimodal semantic)</td>
+            <td>Core feature — shared embedding space</td>
+          </tr>
+          <tr>
+            <td><strong>PDF jump to page</strong></td>
+            <td>Can open files; page-jump by meaning is DigUp’s angle</td>
+            <td>Yes — open to matching page</td>
+          </tr>
+          <tr>
+            <td><strong>Audio / video moment</strong></td>
+            <td>Not semantic moment search</td>
+            <td>Yes — open near matching time</td>
+          </tr>
+          <tr>
+            <td><strong>Code search</strong></td>
+            <td>Not a code-aware semantic index</td>
+            <td>Optional <code>code:</code> index</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud / privacy model</strong></td>
+            <td>Apple system indexer; Siri Suggestions etc. separately</td>
+            <td>Local-first; model + index on device; no account</td>
+          </tr>
+          <tr>
+            <td><strong>Scope</strong></td>
+            <td>System defaults + exclusions</td>
+            <td>Only folders you select</td>
+          </tr>
+          <tr>
+            <td><strong>Hotkey</strong></td>
+            <td>⌘Space (default)</td>
+            <td>⇧⌘Space</td>
+          </tr>
+          <tr>
+            <td><strong>Cost / install</strong></td>
+            <td>Built-in</td>
+            <td>Free MIT app + ~865 MB model download</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>When to use which</h2>
+      <ol class="checklist">
+        <li><strong>Use Spotlight</strong> to launch apps, jump to System Settings panes, find a file you remember by name, or do quick Calculator/definition tasks.</li>
+        <li><strong>Use DigUp</strong> when you remember what was <em>in</em> the file: “receipt from the blue cafe,” “slide with the Q3 chart,” “recording where we discussed pricing,” “screenshot of the red error.”</li>
+        <li><strong>Use both</strong> — DigUp does not replace Spotlight. Keep ⌘Space for system search and ⇧⌘Space for semantic digs.</li>
+      </ol>
+
+      <h2>Fair notes</h2>
+      <ul class="checklist">
+        <li>Spotlight is faster to start for name-based lookups; DigUp’s value is multimodal meaning after indexing.</li>
+        <li>First DigUp index takes time proportional to library size and hardware (Metal on Apple Silicon).</li>
+        <li>DigUp skips undownloaded iCloud placeholders — files must be local.</li>
+        <li>Mac DigUp is <strong>0.6.1</strong> stable as of 2026-10-15; Windows/Linux are separate beta builds.</li>
+      </ul>
+
+      <h2>Sourced product facts</h2>
+      <table>
+        <thead>
+          <tr><th>Fact</th><th>Value (2026-10-15)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Upstream</td><td><a href="https://github.com/ARahim3/DigUp" rel="noopener noreferrer">ARahim3/DigUp</a></td></tr>
+          <tr><td>Stars</td><td>~3,716</td></tr>
+          <tr><td>Mac version</td><td>0.6.1 · Apple Silicon · macOS 14+</td></tr>
+          <tr><td>Model</td><td>EmbeddingGemma 2 via llama.cpp · ~865 MB</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/what-is-digup/">What is DigUp?</a>
+        <a class="cta-secondary" href="/embeddinggemma-2/">EmbeddingGemma 2</a>
+      </div>
+    </article>
+  </main>
+</Layout>

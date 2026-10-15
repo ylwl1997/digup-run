@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Install DigUp on Mac (Apple Silicon) — Homebrew & DMG"
+  description="Step-by-step DigUp Mac install for Apple Silicon (macOS 14+): Homebrew cask, DMG from GitHub Releases, first-run model download (~865 MB), and ⇧⌘Space search."
+  canonicalPath="/install-mac/"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Mac · 0.6.1</span> · Unofficial guide</p>
+      <h1>Install DigUp on Mac</h1>
+      <p class="lead">Apple Silicon Macs on macOS 14 or later. Install via Homebrew or the official DMG from GitHub Releases. This page never hosts binaries.</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/install-windows/">Windows (beta)</a>
+        <a class="cta-secondary" href="/install-linux/">Linux (beta)</a>
+      </div>
+
+      <h2>Prerequisites</h2>
+      <table>
+        <thead>
+          <tr><th>Requirement</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Chip</strong></td><td>Apple Silicon (M-series). Intel Macs are not supported by the official Mac build.</td></tr>
+          <tr><td><strong>OS</strong></td><td>macOS 14 (Sonoma) or later</td></tr>
+          <tr><td><strong>Disk / network</strong></td><td>~865 MB for the EmbeddingGemma 2 model on first run; stable download path</td></tr>
+          <tr><td><strong>Version</strong></td><td><strong>0.6.1</strong> stable (verify tag on Releases before install)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Option A — Homebrew (recommended if you use brew)</h2>
+      <ol class="checklist">
+        <li>Install <a href="https://brew.sh/" rel="noopener noreferrer">Homebrew</a> if you do not have it.</li>
+        <li>Run the official cask one-liner:</li>
+      </ol>
+      <pre><code>brew install --cask arahim3/tap/digup</code></pre>
+      <ol class="checklist" start="3">
+        <li>Open DigUp from Applications or Spotlight by name.</li>
+        <li>On first launch, allow the model download and pick folders to index.</li>
+      </ol>
+
+      <h2>Option B — DMG from GitHub Releases</h2>
+      <ol class="checklist">
+        <li>Open <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">github.com/ARahim3/DigUp/releases</a>.</li>
+        <li>Download <code>DigUp-0.6.1.dmg</code> (or the latest Mac DMG listed — always prefer the Releases page over cached filenames).</li>
+        <li>Open the DMG and drag DigUp to Applications.</li>
+        <li>Launch DigUp; complete first-run model download and folder selection.</li>
+      </ol>
+
+      <h2>First-run checklist</h2>
+      <ul class="checklist">
+        <li><strong>Model download (~865 MB)</strong> — required once; stays on device.</li>
+        <li><strong>Pick folders</strong> — only selected folders are indexed; undownloaded cloud placeholders are skipped.</li>
+        <li><strong>Time estimate</strong> — DigUp estimates the first pass from a quick speed check on your Mac.</li>
+        <li><strong>Hotkey</strong> — search panel: <strong>⇧⌘Space</strong> (Shift + Command + Space).</li>
+        <li><strong>Keyword boost</strong> — exact strings (invoice IDs, error codes) still help; try natural language for photos and PDFs.</li>
+      </ul>
+
+      <h2>Troubleshooting</h2>
+      <ul class="checklist">
+        <li><strong>Network blocks the model download</strong> — In Settings → Storage, use <strong>Use Files…</strong> to point at the two model files you downloaded elsewhere (added in 0.6.1). DigUp verifies them before use.</li>
+        <li><strong>IME / composed text</strong> — 0.6.1 fixed Korean/Japanese/Chinese composition breaking the search field.</li>
+        <li><strong>Folder names with accents / CJK</strong> — 0.6.1 fixed indexing stopping for all folders when one path had non-ASCII names.</li>
+        <li><strong>Updates</strong> — DigUp → Check for Updates…, or reinstall from Releases / brew upgrade.</li>
+      </ul>
+      <p>Plain-English release summary: <a href="/changelog-notes/">Changelog notes</a>. Always verify against official release notes.</p>
+
+      <h2>Sourced numbers (2026-10-15)</h2>
+      <table>
+        <thead>
+          <tr><th>Fact</th><th>Value</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Mac version</td><td>0.6.1</td><td>GitHub Releases</td></tr>
+          <tr><td>Model download</td><td>~865 MB</td><td>Upstream README / release notes</td></tr>
+          <tr><td>Stars</td><td>~3,716</td><td>GitHub API</td></tr>
+          <tr><td>License</td><td>MIT</td><td>Repo</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/faq/">FAQ</a>
+      </div>
+
+      <section class="related">
+        <h2>Also install</h2>
+        <div class="cards">
+          <a class="card" href="/install-windows/"><h3>Windows (beta)</h3><p>0.7.0-beta.1 setup</p></a>
+          <a class="card" href="/install-linux/"><h3>Linux (beta)</h3><p>.deb and AppImage</p></a>
+          <a class="card" href="/vs-spotlight/"><h3>vs Spotlight</h3><p>When to use both</p></a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
