@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { DIGUP_UI } from '../../lib/site';
 ---
 <Layout
-  title="Install DigUp on Mac (Apple Silicon) — Homebrew & DMG"
-  description="Step-by-step DigUp Mac install for Apple Silicon (macOS 14+): Homebrew cask, DMG from GitHub Releases, first-run model download (~865 MB), and ⇧⌘Space search."
+  title={'Install DigUp on Mac (Apple Silicon) — Homebrew & DMG'}
+  description={'Step-by-step DigUp Mac install for Apple Silicon (macOS 14+): Homebrew cask, DMG from GitHub Releases, first-run model download (~865 MB), and Shift-Cmd-Space search.'}
   canonicalPath="/install-mac/"
+  lang="en"
+  ogImage={DIGUP_UI.hero.src}
 >
   <main class="wrap">
     <header class="page-hero">
@@ -19,6 +22,12 @@ import Layout from '../../layouts/Layout.astro';
         <a class="cta-secondary" href="/install-windows/">Windows (beta)</a>
         <a class="cta-secondary" href="/install-linux/">Linux (beta)</a>
       </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">After install · Mac search panel</span>
+        <img src={DIGUP_UI.hero.src} width="1200" height="800" alt={DIGUP_UI.hero.altEn} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteEn} Hotkey ⇧⌘Space opens this panel.</figcaption>
+      </figure>
 
       <h2>Prerequisites</h2>
       <table>

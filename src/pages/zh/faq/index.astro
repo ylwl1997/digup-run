@@ -1,0 +1,100 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp 常见问题 — 要求、隐私、平台与排错"
+  description="非官方 DigUp FAQ：Apple Silicon vs Windows/Linux 测试版、模型大小、隐私（本地优先）、brew 安装、索引时长、代码搜索，以及官方 GitHub Releases 链接。"
+  canonicalPath="/faq/"
+  lang="zh"
+  ogImage={DIGUP_UI.audio.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">FAQ</span> · 非官方解答</p>
+      <h1>DigUp 常见问题</h1>
+      <p class="lead">短答 + 链到更厚指南。任何冲突以官方 GitHub README 与 Releases 为准。</p>
+    </header>
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/what-is-digup/">DigUp 是什么？</a>
+      </div>
+
+      <div class="faq-item" id="official">
+        <h2>digup.run 是 DigUp 官方网站吗？</h2>
+        <p><strong>不是。</strong> digup.run 是独立信息 / 关键词介绍站，与 ARahim3 无隶属、无运营关系。下载与支持应在 <a href={SITE.upstreamRepo} rel="noopener noreferrer">github.com/ARahim3/DigUp</a> 与 <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a>。</p>
+      </div>
+
+      <div class="faq-item" id="platforms">
+        <h2>支持哪些平台？</h2>
+        <p>Mac：<strong>0.6.1</strong> 稳定，Apple Silicon，macOS 14+。Windows 与 Linux：<strong>0.7.0-beta.1</strong> 测试版，64 位 Intel/AMD。见 <a href="/zh/install-mac/">Mac</a>、<a href="/zh/install-windows/">Windows</a>、<a href="/zh/install-linux/">Linux</a> 指南。安装前再核验 Releases。</p>
+      </div>
+
+      <div class="faq-item" id="intel-mac">
+        <h2>Intel Mac 能跑 DigUp 吗？</h2>
+        <p>官方 Mac 构建仅面向 <strong>Apple Silicon</strong>。Intel Mac 不受该构建支持。若需要 PC 平台，改用兼容机上的 Windows/Linux 测试版。</p>
+      </div>
+
+      <div class="faq-item" id="privacy">
+        <h2>DigUp 隐私如何？有遥测或账号吗？</h2>
+        <p>DigUp 设计为本地优先：索引与推理在本机。上游文档写明无需账号、不对你的文件内容做遥测。预期有首次模型下载与可选更新检查（可控制）。请以当前 README 隐私段落为最终措辞。</p>
+      </div>
+
+      <div class="faq-item" id="model-size">
+        <h2>模型下载有多大？</h2>
+        <p>首次约 <strong>865 MB</strong>（EmbeddingGemma 2 via llama.cpp）。Mac 0.6.1 若网络挡住下载，可用设置 → Storage → <strong>Use Files…</strong>。细节：<a href="/zh/embeddinggemma-2/">DigUp 中的 EmbeddingGemma 2</a>。</p>
+      </div>
+
+      <div class="faq-item" id="indexing">
+        <h2>索引要多久？</h2>
+        <p>取决于文件夹大小、文件类型与 CPU/GPU。DigUp 测速后会给出估计。首遍之后新文件增量索引。Mac（0.6.1 设置 → Folders）可安排索引时段。</p>
+      </div>
+
+      <div class="faq-item" id="brew">
+        <h2>Mac 上用 Homebrew 还是 DMG？</h2>
+        <p>都可以。Brew：<code>brew install --cask arahim3/tap/digup</code>。或从 Releases 下 DMG。步骤：<a href="/zh/install-mac/">在 Mac 上安装 DigUp</a>。</p>
+      </div>
+
+      <div class="faq-item" id="beta">
+        <h2>Windows / Linux 的「测试版」是什么意思？</h2>
+        <p>0.7.0-beta.1 能用，但实战时间远少于 Mac。预期有毛边。截图 OCR 文字尚未加入；.doc / RAW / SVG 在该 beta 会跳过。建议向上游提 issue 并附日志（如 <code>speed.log</code> 的 device 行）。</p>
+      </div>
+
+      <div class="faq-item" id="code">
+        <h2>代码搜索怎么用？</h2>
+        <p>代码索引可选——在设置中开启并选择仓库。查询加 <code>code:</code> 前缀。DigUp 不是完整 IDE 替代；开启后可跳到匹配行。</p>
+      </div>
+
+      <div class="faq-item" id="spotlight">
+        <h2>装了 DigUp 要关掉 Spotlight 吗？</h2>
+        <p>不必。DigUp 是增量能力。用 Spotlight 找名称与应用；用 DigUp 做跨模态语义。见 <a href="/zh/vs-spotlight/">DigUp vs Spotlight</a>。</p>
+      </div>
+
+      <div class="faq-item" id="smartscreen">
+        <h2>Windows 说无法识别 DigUp，正常吗？</h2>
+        <p>测试版安装包<strong>未签名</strong>。SmartScreen 可能要求「更多信息」→「仍要运行」。请仅对从官方 ARahim3 Releases 下载的 EXE 这样做。指南：<a href="/zh/install-windows/">Windows 安装</a>。</p>
+      </div>
+
+      <div class="faq-item" id="stars">
+        <h2>项目有多热？</h2>
+        <p>截至 2026-10-15，GitHub API 约报 <strong>3,716</strong> stars、252 forks，已发布 Mac 0.6.1 与 Win/Linux 0.7.0-beta.1。实时数字请看仓库。</p>
+      </div>
+
+      <h2 style="margin-top:2rem;">快速要求表</h2>
+      <table>
+        <thead><tr><th>平台</th><th>版本</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>Mac</td><td>0.6.1</td><td>Apple Silicon，macOS 14+</td></tr>
+          <tr><td>Windows</td><td>0.7.0-beta.1</td><td>64 位 10/11，未签名安装包</td></tr>
+          <tr><td>Linux</td><td>0.7.0-beta.1</td><td>.deb / AppImage amd64</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/changelog-notes/" hreflang="en">Changelog notes（英文）</a>
+      </div>
+    </article>
+  </main>
+</Layout>

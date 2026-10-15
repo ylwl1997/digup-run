@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { DIGUP_UI } from '../../lib/site';
 ---
 <Layout
-  title="EmbeddingGemma 2 in DigUp — On-Device Multimodal Search"
-  description="DigUp runs Google DeepMind’s EmbeddingGemma 2 (~740M, ~865 MB Q8 via llama.cpp) locally so one query can rank images, PDF pages, audio, and video in a shared 768-d space."
+  title={'EmbeddingGemma 2 in DigUp — On-Device Multimodal Search'}
+  description={"DigUp runs Google DeepMind's EmbeddingGemma 2 (~740M, ~865 MB Q8 via llama.cpp) locally so one query can rank images, PDF pages, audio, and video in a shared 768-d space."}
   canonicalPath="/embeddinggemma-2/"
+  lang="en"
+  ogImage={DIGUP_UI.multimodal.src}
 >
   <main class="wrap">
     <header class="page-hero">

@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { DIGUP_UI } from '../../lib/site';
 ---
 <Layout
-  title="DigUp vs Spotlight — When to Use Each on Mac"
-  description="Spotlight finds names, text, and metadata. DigUp finds meaning across photos, PDF pages, audio/video moments, and code — on-device with EmbeddingGemma 2. Use both side by side."
+  title={'DigUp vs Spotlight — When to Use Each on Mac'}
+  description={'Spotlight finds names, text, and metadata. DigUp finds meaning across photos, PDF pages, audio/video moments, and code — on-device with EmbeddingGemma 2. Use both side by side.'}
   canonicalPath="/vs-spotlight/"
+  lang="en"
+  ogImage={DIGUP_UI.hero.src}
 >
   <main class="wrap">
     <header class="page-hero">
@@ -29,6 +32,12 @@ import Layout from '../../layouts/Layout.astro';
         <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
         <a class="cta-secondary" href="/install-mac/">Install DigUp on Mac</a>
       </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">DigUp content search (real UI)</span>
+        <img src={DIGUP_UI.hero.src} width="1200" height="800" alt={DIGUP_UI.hero.altEn} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteEn} Spotlight finds names; DigUp opens the video at 0:42 for “zebra in a video.”</figcaption>
+      </figure>
 
       <h2>Side-by-side comparison</h2>
       <table>

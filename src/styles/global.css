@@ -1041,3 +1041,109 @@ pre code {
   }
   .cta:hover, .cta-secondary:hover, a.card:hover, .modality:hover { transform: none; }
 }
+
+/* ——— Language switch + header end ——— */
+.header-end {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+.header-end .cta { margin-left: 0; }
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  gap: 0.1rem;
+}
+.lang-opt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  text-decoration: none;
+  padding: 0.32rem 0.55rem;
+  border-radius: 999px;
+  line-height: 1;
+}
+.lang-opt:hover { text-decoration: none; color: var(--text); }
+.lang-opt.is-on {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+
+/* ——— Real DigUp UI screenshots ——— */
+.shot-panel {
+  position: relative;
+  border-radius: calc(var(--radius) + 4px);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 0.55rem;
+}
+.shot-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  margin: 0 0 0.45rem 0.1rem;
+}
+.shot-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  background: #0a0908;
+}
+.shot-caption {
+  margin: 0.55rem 0.15rem 0.1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.shot-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.25rem 0 0.5rem;
+}
+.shot-gallery .shot-panel { margin: 0; }
+.shot-gallery figcaption {
+  margin: 0.45rem 0.1rem 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.demo-panel.secondary {
+  opacity: 0.92;
+  margin-top: 1rem;
+  transform: scale(0.98);
+  transform-origin: top center;
+}
+.demo-panel.secondary .demo-label {
+  color: var(--faint);
+}
+
+html[lang="zh-CN"] body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 960px) {
+  .shot-gallery { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .header-end { width: 100%; order: 2; margin-left: 0; }
+  .header-end .cta { margin-left: auto; }
+}

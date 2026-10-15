@@ -1,0 +1,86 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../lib/site';
+---
+<Layout
+  title="在 Windows 上安装 DigUp（0.7 测试版）— 安装指南"
+  description="在 64 位 Windows 10/11 安装 DigUp 0.7 测试版：从 GitHub 下载官方 x64 安装包、SmartScreen「仍要运行」、模型下载与 Ctrl+Shift+Space。"
+  canonicalPath="/install-windows/"
+  lang="zh"
+  ogImage={DIGUP_UI.pdf.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Windows · 测试版</span> · 非官方指南</p>
+      <h1>在 Windows 上安装 DigUp</h1>
+      <p class="lead">DigUp <strong>0.7.0-beta.1</strong> 把同一套 EmbeddingGemma 2 搜索带到 64 位 Windows 10/11。这是测试版——预期会有毛边。请只从官方 GitHub Releases 下载。</p>
+    </header>
+    <article class="wide">
+      <div class="callout" style="margin-bottom:1.25rem;">
+        <strong>测试版标。</strong> Windows 构建的实战时间远少于 Mac 0.6.1。安装前在 <a href={SITE.upstreamReleases} rel="noopener noreferrer">Releases</a> 核验最新资源文件名。勿把第三方 Windows 移植当作官方 ARahim3 构建。
+      </div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/install-mac/">Mac（稳定）</a>
+        <a class="cta-secondary" href="/zh/install-linux/">Linux（测试）</a>
+      </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">Windows 真实界面 · PDF</span>
+        <img src={DIGUP_UI.pdf.src} width="1200" height="800" alt={DIGUP_UI.pdf.altZh} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} 租约 PDF 打开到第 4 页。</figcaption>
+      </figure>
+
+      <h2>要求</h2>
+      <table>
+        <thead><tr><th>项目</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>系统</strong></td><td>64 位 Windows 10 或 11</td></tr>
+          <tr><td><strong>安装程序</strong></td><td>按用户安装；无需管理员权限</td></tr>
+          <tr><td><strong>签名</strong></td><td>安装包尚未签名 → SmartScreen「更多信息」→ <strong>仍要运行</strong></td></tr>
+          <tr><td><strong>资源命名</strong></td><td><code>DigUp_*_x64-setup.exe</code>（例如 <code>DigUp_0.7.0-beta.1_x64-setup.exe</code>）— 以 Releases 最新为准</td></tr>
+          <tr><td><strong>模型</strong></td><td>首次启动约下载 865 MB</td></tr>
+        </tbody>
+      </table>
+
+      <h2>安装清单</h2>
+      <ol class="checklist">
+        <li>打开 <a href={SITE.upstreamReleases} rel="noopener noreferrer">官方 Releases</a>，下载最新 Windows <code>x64-setup.exe</code>。</li>
+        <li>运行安装程序。若出现 SmartScreen：<strong>更多信息</strong> → <strong>仍要运行</strong>。</li>
+        <li>启动 DigUp。模型下载期间即可选择要搜索的文件夹。</li>
+        <li>留意本机首遍索引时长估计。</li>
+        <li>用 <strong>Ctrl+Shift+Space</strong> 从任意应用打开搜索。</li>
+      </ol>
+
+      <h2>GPU 与 CPU</h2>
+      <p>DigUp 会快速测速：在更快且结果等价时用 GPU，否则用 CPU。仅 CPU 时每张照片可能要几秒——大型图库首次更久。之后只读新文件。</p>
+      <p>确认选用设备，打开 <code>speed.log</code> 最后一行：</p>
+      <pre><code>%LOCALAPPDATA%\com.abdurrahim.DigUp\logs\speed.log</code></pre>
+      <p class="muted">查找 <code>"device": "gpu"</code> 或 <code>"device": "cpu"</code>。</p>
+
+      <h2>测试版限制（0.7.0-beta.1）</h2>
+      <ul class="checklist">
+        <li><strong>尚无截图 OCR 文字</strong> — 截图按画面语义找，不能靠输入屏上代码文本来搜。</li>
+        <li><strong>此 beta 跳过：</strong>旧 Word <code>.doc</code>、RAW 照片、SVG。</li>
+        <li>安装程序 / AppImage 后续可自更新；请以当前 release notes 为准。</li>
+      </ul>
+
+      <h2>有来源的事实（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>值</th></tr></thead>
+        <tbody>
+          <tr><td>标签</td><td>v0.7.0-beta.1（预发布）</td></tr>
+          <tr><td>发布时间</td><td>2026-10-14（UTC）</td></tr>
+          <tr><td>Mac 仍为</td><td>0.6.1（不在 0.7 Win/Linux 包内）</td></tr>
+          <tr><td>上游 stars</td><td>约 3,716</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/changelog-notes/" hreflang="en">Changelog（英文）</a>
+        <a class="cta-secondary" href="/zh/faq/">常见问题</a>
+      </div>
+    </article>
+  </main>
+</Layout>

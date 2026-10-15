@@ -1,0 +1,82 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DIGUP_UI, SITE } from '../../../lib/site';
+---
+<Layout
+  title="DigUp 中的 EmbeddingGemma 2 — 本机多模态搜索"
+  description="DigUp 通过 llama.cpp 本机运行 Google DeepMind 的 EmbeddingGemma 2（约 740M，约 865 MB Q8），使一次查询可在共享 768 维空间中排序图片、PDF 页、音频与视频。"
+  canonicalPath="/embeddinggemma-2/"
+  lang="zh"
+  ogImage={DIGUP_UI.multimodal.src}
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">模型</span> · 非官方 DigUp 视角</p>
+      <h1>DigUp 如何使用 EmbeddingGemma 2</h1>
+      <p class="lead">DigUp 的搜索质量来自 Google DeepMind 的 EmbeddingGemma 2，经 llama.cpp 在设备上运行。文件留在本地；模型把文本查询与多模态内容映射到同一排序空间。</p>
+    </header>
+    <article class="wide">
+      <div class="callout" style="margin-bottom:1.25rem;">
+        模型文档：<a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI — EmbeddingGemma</a>。DigUp 项目：<a href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>。其他应用（如 Aether）也可能使用 EmbeddingGemma 2——本页聚焦 DigUp，不是竞品拆解。
+      </div>
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/what-is-digup/">DigUp 是什么？</a>
+        <a class="cta-secondary" href="/zh/install-mac/">Mac 安装</a>
+      </div>
+
+      <figure class="shot-panel" style="margin-bottom:1.5rem;">
+        <span class="shot-label">共享空间 → 多模态结果</span>
+        <img src={DIGUP_UI.multimodal.src} width="1200" height="800" alt={DIGUP_UI.multimodal.altZh} loading="lazy" decoding="async" />
+        <figcaption class="shot-caption">{DIGUP_UI.sourceNoteZh} 一次查询同时命中图片、视频、音频与 PDF。</figcaption>
+      </figure>
+
+      <h2>EmbeddingGemma 2 是什么</h2>
+      <p>EmbeddingGemma 是 Google 的嵌入模型系列，把输入变成可比较的向量。DigUp 使用 <strong>EmbeddingGemma 2</strong>，使键入的查询可以同时排序照片、PDF 页、文档段落、音频窗与视频帧——不只靠关键词命中。</p>
+      <ul class="checklist">
+        <li>DigUp 材料中约引用：约 740M 参数；本机量化包首次下载约 865 MB。</li>
+        <li>共享维度常描述为 DigUp 多模态索引的 <strong>768 维</strong>。</li>
+        <li>运行时：<strong>llama.cpp</strong>（GGUF Q8 类权重）；Mac 上 Metal；Win/Linux 测速后选 CPU 或 GPU（如 Vulkan）。</li>
+      </ul>
+
+      <h2>一个索引，多种模态</h2>
+      <table>
+        <thead>
+          <tr><th>输入</th><th>DigUp 如何用模型</th><th>你得到</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>文本查询</strong></td><td>搜索时用文本塔嵌入查询</td><td>近邻 + 关键词加权</td></tr>
+          <tr><td><strong>图片 / 截图</strong></td><td>视觉嵌入（Mac 上扫描/截图可 OCR）</td><td>按画面找</td></tr>
+          <tr><td><strong>PDF 页</strong></td><td>页级语义（+ 可用文本/OCR）</td><td>打开到正确页</td></tr>
+          <tr><td><strong>音频</strong></td><td>约 30 秒窗进入共享空间</td><td>跳到接近时刻</td></tr>
+          <tr><td><strong>视频</strong></td><td>帧 / 瞬间嵌入</td><td>跳到接近时刻</td></tr>
+        </tbody>
+      </table>
+
+      <h2>本地优先意味着什么</h2>
+      <ol class="checklist">
+        <li><strong>首次启动</strong>下载模型（约 865 MB）。之后索引与搜索在本机运行。</li>
+        <li><strong>无 DigUp 账号</strong> — 隐私模型为本地索引 + 可选更新检查（可按上游文档关闭）。</li>
+        <li><strong>若网络挡住下载（Mac 0.6.1）</strong> — 设置 → Storage → Use Files… 提供 DigUp 期望的模型文件。</li>
+        <li><strong>硬件</strong> — Mac 用 Apple Silicon Metal；Win/Linux 在更快且等价时选 GPU，否则 CPU（CPU 下照片索引更慢）。</li>
+      </ol>
+
+      <h2>有来源的数字（引用日 2026-10-15）</h2>
+      <table>
+        <thead><tr><th>数字</th><th>语境</th><th>如何核验</th></tr></thead>
+        <tbody>
+          <tr><td>约 865 MB</td><td>DigUp 文档中的首次模型下载大小</td><td>README / release notes</td></tr>
+          <tr><td>约 740M 参数</td><td>EmbeddingGemma 2 规模（Google / DigUp 材料）</td><td><a href="https://ai.google.dev/gemma/docs/embeddinggemma" rel="noopener noreferrer">Google AI 文档</a></td></tr>
+          <tr><td>768 维</td><td>DigUp 描述的共享向量空间</td><td>上游 README</td></tr>
+          <tr><td>约 3,716 stars</td><td>ARahim3/DigUp 热度信号</td><td>GitHub API</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.upstreamReleases} rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/zh/vs-spotlight/">对比 Spotlight</a>
+        <a class="cta-secondary" href="/zh/faq/">常见问题</a>
+      </div>
+    </article>
+  </main>
+</Layout>
