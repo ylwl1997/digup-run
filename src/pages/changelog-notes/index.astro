@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="DigUp Release Notes Summary — 0.6.1 & 0.7 Beta"
+  description="Plain-English summary of DigUp 0.6.1 Mac fixes and 0.7.0-beta.1 Windows/Linux launch. Always verify against official GitHub Releases."
+  canonicalPath="/changelog-notes/"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Unofficial summary</span></p>
+      <h1>DigUp changelog notes (unofficial summary)</h1>
+      <p class="lead">Condensed highlights from official GitHub Releases. This is not a substitute for upstream notes — verify every bullet on GitHub before upgrading or filing bugs.</p>
+    </header>
+
+    <article class="wide">
+      <div class="callout" style="margin-bottom:1.25rem;">
+        <strong>Verify on GitHub Releases.</strong> Source of truth:
+        <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">https://github.com/ARahim3/DigUp/releases</a>.
+        Versions cited below were current on 2026-10-15.
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/install-mac/">Mac install</a>
+        <a class="cta-secondary" href="/install-windows/">Windows install</a>
+      </div>
+
+      <h2>0.6.1 — Mac (stable)</h2>
+      <p class="muted">Tag <code>v0.6.1</code> · asset <code>DigUp-0.6.1.dmg</code> · Apple Silicon, macOS 14+</p>
+      <table>
+        <thead>
+          <tr><th>Area</th><th>What changed (summary)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>IME</strong></td><td>Composed text (Korean/Japanese/Chinese) no longer breaks into loose letters in search.</td></tr>
+          <tr><td><strong>Partial words</strong></td><td>Prefix matches (e.g. “Grok” in “Grok4”) stay found after you stop typing.</td></tr>
+          <tr><td><strong>Folder names</strong></td><td>Accents / CJK in folder paths no longer halt indexing for every folder.</td></tr>
+          <tr><td><strong>Indexing stability</strong></td><td>Fewer restart loops on huge changing folders; runaway file readers are skipped; helper memory growth on long text fixed.</td></tr>
+          <tr><td><strong>Scanned PDFs</strong></td><td>OCR on scanned PDF pages (like screenshots) so typed invoice numbers can hit.</td></tr>
+          <tr><td><strong>SVG</strong></td><td>SVG images are indexed (were skipped).</td></tr>
+          <tr><td><strong>Scheduled hours</strong></td><td>Index only at set hours (default overnight window); search still works all day.</td></tr>
+          <tr><td><strong>Offline model</strong></td><td><strong>Use Files…</strong> when network blocks the model download.</td></tr>
+        </tbody>
+      </table>
+      <p>Full install steps: <a href="/install-mac/">Install DigUp on Mac</a>.</p>
+
+      <h2>0.7.0-beta.1 — Windows &amp; Linux (beta)</h2>
+      <p class="muted">Tag <code>v0.7.0-beta.1</code> · published 2026-10-14 · Mac remains on 0.6.1 in this train</p>
+      <ul class="checklist">
+        <li><strong>Windows:</strong> <code>DigUp_*_x64-setup.exe</code>, per-user, unsigned → SmartScreen Run anyway.</li>
+        <li><strong>Linux:</strong> <code>.deb</code> (package <code>dig-up</code>) for Ubuntu 22.04+ / Debian 12+ / Mint 21+; AppImage elsewhere; <code>chmod +x</code>.</li>
+        <li><strong>Hotkey:</strong> Ctrl+Shift+Space; Wayland GNOME/KDE can register it; other desktops bind manually.</li>
+        <li><strong>GPU/CPU:</strong> automatic choice; check <code>speed.log</code> (<code>%LOCALAPPDATA%\com.abdurrahim.DigUp\logs</code> or <code>~/.local/share/com.abdurrahim.DigUp/logs</code>).</li>
+        <li><strong>Not yet:</strong> screenshot OCR text; skip .doc / RAW / SVG on this beta.</li>
+      </ul>
+      <ol class="checklist">
+        <li>Read the official beta release body before installing.</li>
+        <li>Follow <a href="/install-windows/">Windows</a> or <a href="/install-linux/">Linux</a> checklists.</li>
+        <li>Report issues upstream with the <code>speed.log</code> device line when GPU behavior matters.</li>
+      </ol>
+
+      <h2>Version matrix (2026-10-15)</h2>
+      <table>
+        <thead>
+          <tr><th>Platform</th><th>Version</th><th>Channel</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>macOS</td><td>0.6.1</td><td>Stable</td></tr>
+          <tr><td>Windows</td><td>0.7.0-beta.1</td><td>Beta</td></tr>
+          <tr><td>Linux</td><td>0.7.0-beta.1</td><td>Beta</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Stars ~3,716 · model ~865 MB · MIT — verify live on GitHub.</p>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/faq/">FAQ</a>
+      </div>
+    </article>
+  </main>
+</Layout>

@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Install DigUp on Windows (0.7 Beta) — Setup Guide"
+  description="How to install DigUp 0.7 beta on 64-bit Windows 10/11: download the official x64 setup from GitHub, SmartScreen “Run anyway,” model download, and Ctrl+Shift+Space."
+  canonicalPath="/install-windows/"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Windows · beta</span> · Unofficial guide</p>
+      <h1>Install DigUp on Windows</h1>
+      <p class="lead">DigUp <strong>0.7.0-beta.1</strong> brings the same EmbeddingGemma 2 search to 64-bit Windows 10/11. This is a beta — expect rough edges. Download only from official GitHub Releases.</p>
+    </header>
+
+    <article class="wide">
+      <div class="callout" style="margin-bottom:1.25rem;">
+        <strong>Beta label.</strong> Windows builds have had far less field time than Mac 0.6.1. Verify the latest asset names on <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a> before installing. Do not use third-party Windows ports as if they were official ARahim3 builds.
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/install-mac/">Mac (stable)</a>
+        <a class="cta-secondary" href="/install-linux/">Linux (beta)</a>
+      </div>
+
+      <h2>Requirements</h2>
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>OS</strong></td><td>64-bit Windows 10 or 11</td></tr>
+          <tr><td><strong>Installer</strong></td><td>Per-user; no admin rights required</td></tr>
+          <tr><td><strong>Signing</strong></td><td>Installer not signed yet → SmartScreen “More info” → <strong>Run anyway</strong></td></tr>
+          <tr><td><strong>Asset pattern</strong></td><td><code>DigUp_*_x64-setup.exe</code> (e.g. <code>DigUp_0.7.0-beta.1_x64-setup.exe</code>) — grab latest from Releases</td></tr>
+          <tr><td><strong>Model</strong></td><td>~865 MB download on first launch</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Install checklist</h2>
+      <ol class="checklist">
+        <li>Open <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">official Releases</a> and download the latest Windows <code>x64-setup.exe</code>.</li>
+        <li>Run the installer. If Windows SmartScreen appears: <strong>More info</strong> → <strong>Run anyway</strong>.</li>
+        <li>Launch DigUp. Let the model download while you pick folders to search.</li>
+        <li>Note the first-pass time estimate for your machine.</li>
+        <li>Open search from any app with <strong>Ctrl+Shift+Space</strong>.</li>
+      </ol>
+
+      <h2>GPU vs CPU</h2>
+      <p>DigUp runs a quick check and uses the GPU when it is faster and gives the same results; otherwise it uses the CPU. On CPU alone, pictures take a few seconds each — large photo libraries take longer the first time. After that, only new files are read.</p>
+      <p>To confirm which device was chosen, open the last line of <code>speed.log</code>:</p>
+      <pre><code>%LOCALAPPDATA%\com.abdurrahim.DigUp\logs\speed.log</code></pre>
+      <p class="muted">Look for <code>"device": "gpu"</code> or <code>"device": "cpu"</code>.</p>
+
+      <h2>Beta limits (0.7.0-beta.1)</h2>
+      <ul class="checklist">
+        <li><strong>No screenshot OCR text yet</strong> — screenshots are found by what they show, not by typing the on-screen code into search.</li>
+        <li><strong>Skipped on this beta:</strong> old Word <code>.doc</code>, RAW photos, SVG.</li>
+        <li>Self-updating installer / AppImage path exists going forward; always confirm behavior in current release notes.</li>
+      </ul>
+
+      <h2>Sourced facts (2026-10-15)</h2>
+      <table>
+        <thead>
+          <tr><th>Fact</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tag</td><td>v0.7.0-beta.1 (prerelease)</td></tr>
+          <tr><td>Published</td><td>2026-10-14 (UTC)</td></tr>
+          <tr><td>Mac stays at</td><td>0.6.1 (not in the 0.7 Windows/Linux release bundle)</td></tr>
+          <tr><td>Upstream stars</td><td>~3,716</td></tr>
+        </tbody>
+      </table>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/changelog-notes/">Changelog notes</a>
+        <a class="cta-secondary" href="/faq/">FAQ</a>
+      </div>
+
+      <section class="related">
+        <h2>Related</h2>
+        <div class="cards">
+          <a class="card" href="/install-linux/"><h3>Linux install</h3><p>Same beta train</p></a>
+          <a class="card" href="/what-is-digup/"><h3>What is DigUp?</h3><p>Modalities &amp; architecture</p></a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>

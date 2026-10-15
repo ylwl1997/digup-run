@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Install DigUp on Linux — .deb & AppImage Guide"
+  description="Install DigUp 0.7 beta on Ubuntu/Debian/Mint (.deb) or other distros (AppImage). GPU vs CPU notes, Wayland shortcuts, and first-run indexing checklist."
+  canonicalPath="/install-linux/"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Linux · beta</span> · Unofficial guide</p>
+      <h1>Install DigUp on Linux</h1>
+      <p class="lead">DigUp <strong>0.7.0-beta.1</strong> ships amd64 <code>.deb</code> and AppImage builds. Same on-device EmbeddingGemma 2 search as Mac — labeled beta. Binaries only from GitHub Releases.</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/install-mac/">Mac</a>
+        <a class="cta-secondary" href="/install-windows/">Windows (beta)</a>
+      </div>
+
+      <h2>Requirements</h2>
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>CPU</strong></td><td>64-bit Intel/AMD (amd64)</td></tr>
+          <tr><td><strong>.deb targets</strong></td><td>Ubuntu 22.04+, Debian 12+, Linux Mint 21+</td></tr>
+          <tr><td><strong>Other distros</strong></td><td>AppImage</td></tr>
+          <tr><td><strong>Package name (.deb)</strong></td><td><code>dig-up</code></td></tr>
+          <tr><td><strong>Version</strong></td><td>0.7.0-beta.1 — verify on Releases</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Install with .deb</h2>
+      <ol class="checklist">
+        <li>Download <code>DigUp_0.7.0-beta.1_amd64.deb</code> (or newer) from <a href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">Releases</a>.</li>
+        <li>Install from the download directory:</li>
+      </ol>
+      <pre><code>sudo apt install ./DigUp_0.7.0-beta.1_amd64.deb</code></pre>
+      <ol class="checklist" start="3">
+        <li>Launch DigUp from your app menu; complete model download (~865 MB) and folder picks.</li>
+        <li>Hotkey: <strong>Ctrl+Shift+Space</strong>.</li>
+      </ol>
+      <p class="muted">Filenames change with versions — always copy the exact name from the Releases asset list.</p>
+
+      <h2>Install with AppImage</h2>
+      <ol class="checklist">
+        <li>Download <code>DigUp_*_amd64.AppImage</code> from Releases.</li>
+        <li>Make it executable and run:</li>
+      </ol>
+      <pre><code>chmod +x DigUp_0.7.0-beta.1_amd64.AppImage
+./DigUp_0.7.0-beta.1_amd64.AppImage</code></pre>
+
+      <h2>Wayland shortcuts</h2>
+      <ul class="checklist">
+        <li><strong>GNOME and KDE under Wayland:</strong> DigUp can add Ctrl+Shift+Space to the desktop’s keyboard shortcuts during setup.</li>
+        <li><strong>Other Wayland desktops:</strong> Settings shows the command to bind manually to a shortcut.</li>
+      </ul>
+
+      <h2>GPU, logs, and beta caveats</h2>
+      <p>Same GPU-vs-CPU selection as Windows. Check:</p>
+      <pre><code>~/.local/share/com.abdurrahim.DigUp/logs/speed.log</code></pre>
+      <ul class="checklist">
+        <li>Last line should show <code>"device": "gpu"</code> or <code>"cpu"</code>.</li>
+        <li><strong>Not in 0.7.0-beta.1 yet:</strong> screenshot OCR text; old <code>.doc</code>, RAW, SVG are skipped.</li>
+        <li>With <code>.deb</code>, DigUp notifies you of new versions; AppImage can self-update per release notes.</li>
+      </ul>
+
+      <h2>First-run checklist</h2>
+      <ol class="checklist">
+        <li>Confirm you installed from <strong>ARahim3/DigUp</strong> Releases only.</li>
+        <li>Wait for the ~865 MB model (or use offline files if documented for your build).</li>
+        <li>Select local folders (not undownloaded cloud placeholders).</li>
+        <li>Test Ctrl+Shift+Space and a natural-language photo/PDF query.</li>
+        <li>If GPU expected but missing, open <code>speed.log</code> and file an upstream issue with that line.</li>
+      </ol>
+
+      <div class="cta-bar">
+        <a class="cta" href="https://github.com/ARahim3/DigUp/releases" rel="noopener noreferrer">GitHub Releases</a>
+        <a class="cta-secondary" href="/faq/">FAQ</a>
+        <a class="cta-secondary" href="/changelog-notes/">Changelog notes</a>
+      </div>
+
+      <section class="related">
+        <h2>Related</h2>
+        <div class="cards">
+          <a class="card" href="/install-windows/"><h3>Windows install</h3><p>Same 0.7 beta</p></a>
+          <a class="card" href="/what-is-digup/"><h3>What is DigUp?</h3><p>How indexing works</p></a>
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
