@@ -1,0 +1,95 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../lib/site';
+---
+<Layout
+  title="Why DigUp Shows 0 Files Indexed — Cloud Placeholders, FDA, Code Folders"
+  description="Troubleshoot DigUp “0 files indexed”: iCloud/OneDrive placeholders, Full Disk Access, code folders (issue #21), and indexer logs. Community guide — not affiliated."
+  canonicalPath="/guides/zero-files-indexed/"
+  lang="en"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">Guide</span> · Troubleshooting</p>
+      <h1>Why DigUp shows 0 files indexed</h1>
+      <p class="lead">You added folders, but DigUp reports near-zero files. This usually means cloud-only placeholders, permissions, or code folders that need an opt-in — not a broken install. Community write-up based on upstream issues <a href="https://github.com/ARahim3/DigUp/issues/67" rel="noopener noreferrer">#67</a>, <a href="https://github.com/ARahim3/DigUp/issues/61" rel="noopener noreferrer">#61</a>, <a href="https://github.com/ARahim3/DigUp/issues/21" rel="noopener noreferrer">#21</a>. Not affiliated with ARahim3.</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href="/faq/#empty-index">FAQ</a>
+        <a class="cta-secondary" href="/install-mac/">Mac install</a>
+      </div>
+
+      <h2>Sourced snapshot (2026-10-15)</h2>
+      <table>
+        <thead><tr><th>Fact</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Stars / forks</td><td>~3,768 / ~254</td><td>GitHub API</td></tr>
+          <tr><td>Mac version</td><td>0.6.1 · DMG downloads ~4,689</td><td>Release assets</td></tr>
+          <tr><td>Model</td><td>~865 MB EmbeddingGemma 2</td><td>README / release notes</td></tr>
+          <tr><td>Example (#61)</td><td>20,115 / 20,137 files dataless (online-only)</td><td>Issue discussion</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Cause → check → fix</h2>
+      <table>
+        <thead><tr><th>Cause</th><th>How to check</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Cloud placeholders</strong> (iCloud Optimize Mac Storage, OneDrive / Synology Files on-demand)</td>
+            <td>Finder shows cloud icon; file opens only after download. Issue <a href="https://github.com/ARahim3/DigUp/issues/61" rel="noopener noreferrer">#61</a>.</td>
+            <td>Right-click → <strong>Download Now</strong> (or equivalent). DigUp never downloads cloud-only files for you.</td>
+          </tr>
+          <tr>
+            <td><strong>Full Disk Access (FDA)</strong> incomplete</td>
+            <td>System Settings → Privacy &amp; Security → Full Disk Access — DigUp listed but still empty.</td>
+            <td>Toggle FDA off/on; fully quit DigUp (menu bar) <em>and</em> leftover helpers in Activity Monitor; reopen.</td>
+          </tr>
+          <tr>
+            <td><strong>Code folders</strong> not opted in</td>
+            <td>Repos are <code>src/</code>, <code>node_modules</code> trees, etc. Issue <a href="https://github.com/ARahim3/DigUp/issues/21" rel="noopener noreferrer">#21</a>.</td>
+            <td>Enable code search / select code folders; query with <code>code:</code> prefix.</td>
+          </tr>
+          <tr>
+            <td><strong>Skipped types</strong></td>
+            <td>Only Office / encrypted / unsupported formats in that folder.</td>
+            <td>See limitations in closed issue <a href="https://github.com/ARahim3/DigUp/issues/4" rel="noopener noreferrer">#4</a>; try a folder of local photos/PDFs first.</td>
+          </tr>
+          <tr>
+            <td><strong>Index still starting</strong></td>
+            <td>First pass estimate still running; model just finished downloading.</td>
+            <td>Wait for the first-pass estimate; check menu-bar progress.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Numbered checklist</h2>
+      <ol class="checklist">
+        <li>Confirm DigUp version is <strong>0.6.1+</strong> (Mac). Update via Homebrew or <a href={SITE.downloads.mac} rel="noopener noreferrer" download>DMG</a>.</li>
+        <li>In DigUp Settings → Folders, note exactly which paths you added.</li>
+        <li>In Finder, open those folders: if files show cloud icons, download them locally first.</li>
+        <li>Grant / re-grant <strong>Full Disk Access</strong>; quit DigUp completely; relaunch.</li>
+        <li>If the folder is source code, enable code indexing and try a <code>code:</code> query.</li>
+        <li>Inspect logs (redact personal paths before sharing upstream):
+          <pre><code>~/Library/Application Support/DigUp/index.noindex/
+# Look at app.log and indexer.log</code></pre>
+        </li>
+        <li>Still stuck? File or comment on <a href="https://github.com/ARahim3/DigUp/issues/67" rel="noopener noreferrer">#67</a> with OS, chip, DigUp version, and whether folders are cloud-synced.</li>
+      </ol>
+
+      <h2>Related guides</h2>
+      <div class="cards">
+        <a class="card" href="/guides/battery-and-indexing-hours/"><h3>Battery &amp; indexing hours</h3><p>Overnight schedule, pause on battery</p></a>
+        <a class="card" href="/guides/win-linux-beta/"><h3>Win/Linux beta</h3><p>0.7.0-beta.1 first week</p></a>
+        <a class="card" href="/faq/"><h3>FAQ</h3><p>Short answers</p></a>
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>Download DigUp for Mac</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

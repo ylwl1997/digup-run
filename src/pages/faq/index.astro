@@ -49,17 +49,27 @@ import { DIGUP_UI, SITE } from '../../lib/site';
 
       <div class="faq-item" id="indexing">
         <h2>How long does indexing take?</h2>
-        <p>Depends on folder size, file types, and CPU/GPU. DigUp shows an estimate after a quick speed check. After the first pass, new files are indexed incrementally. You can schedule indexing hours on Mac (0.6.1 Settings → Folders).</p>
+        <p>Depends on folder size, file types, and CPU/GPU. DigUp shows an estimate after a quick speed check. After the first pass, new files are indexed incrementally. You can schedule indexing hours on Mac (0.6.1 Settings → Folders). Details: <a href="/guides/battery-and-indexing-hours/">battery &amp; indexing hours</a>.</p>
       </div>
 
       <div class="faq-item" id="brew">
         <h2>Homebrew or DMG on Mac?</h2>
-        <p>Download the <a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a> (Homebrew cask not published yet). Step-by-step: <a href="/install-mac/">Install DigUp on Mac</a>.</p>
+        <p>Preferred: <code>{SITE.brewCommand}</code> (ARahim3 tap; issue <a href="https://github.com/ARahim3/DigUp/issues/2" rel="noopener noreferrer">#2</a>). Core <code>homebrew/cask</code> is expected after DigUp’s repo is ~30 days old (~Nov 7, 2026) — the tap works now. Alternate: <a href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>. Steps: <a href="/install-mac/">Install DigUp on Mac</a>.</p>
+      </div>
+
+      <div class="faq-item" id="empty-index">
+        <h2>Why does DigUp show 0 files indexed?</h2>
+        <p>Usually cloud-only placeholders (iCloud / OneDrive), Full Disk Access, or code folders that need opt-in — see issues <a href="https://github.com/ARahim3/DigUp/issues/67" rel="noopener noreferrer">#67</a>, <a href="https://github.com/ARahim3/DigUp/issues/61" rel="noopener noreferrer">#61</a>, <a href="https://github.com/ARahim3/DigUp/issues/21" rel="noopener noreferrer">#21</a>. Thick guide: <a href="/guides/zero-files-indexed/">Why DigUp shows 0 files indexed</a>.</p>
+      </div>
+
+      <div class="faq-item" id="battery">
+        <h2>DigUp drains my Mac battery. What helps?</h2>
+        <p>First-pass indexing is heavy (expected). On 0.6.1 use Settings → Folders → <strong>index only during set hours</strong> (from <a href="https://github.com/ARahim3/DigUp/issues/26" rel="noopener noreferrer">#26</a>) and menu-bar Pause on battery. See <a href="https://github.com/ARahim3/DigUp/issues/68" rel="noopener noreferrer">#68</a> / <a href="https://github.com/ARahim3/DigUp/issues/3" rel="noopener noreferrer">#3</a>. Guide: <a href="/guides/battery-and-indexing-hours/">Battery and overnight indexing</a>.</p>
       </div>
 
       <div class="faq-item" id="beta">
         <h2>What does “beta” mean for Windows and Linux?</h2>
-        <p>0.7.0-beta.1 works but has had far less real-world use than Mac. Expect rough edges. Screenshot OCR text is not in yet; .doc / RAW / SVG are skipped on that beta. Prefer filing issues upstream with logs (e.g. <code>speed.log</code> device line).</p>
+        <p>0.7.0-beta.1 works but has had far less real-world use than Mac. Expect rough edges. Screenshot OCR text is not in yet; .doc / RAW / SVG are skipped on that beta. Prefer filing issues upstream with logs (e.g. <code>speed.log</code> device line). Thick guide: <a href="/guides/win-linux-beta/">Win/Linux beta first week</a>.</p>
       </div>
 
       <div class="faq-item" id="code">
@@ -79,7 +89,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
 
       <div class="faq-item" id="stars">
         <h2>How popular is the project?</h2>
-        <p>As of 2026-10-15 the GitHub API reported about <strong>3,716</strong> stars and 252 forks, with Mac 0.6.1 and Win/Linux 0.7.0-beta.1 published. Live counts change — check the repo.</p>
+        <p>As of 2026-10-15 the GitHub API reported about <strong>3,768</strong> stars and 254 forks, with Mac 0.6.1 and Win/Linux 0.7.0-beta.1 published. Live counts change — check the repo.</p>
       </div>
 
       <h2 style="margin-top:2rem;">Quick requirements table</h2>

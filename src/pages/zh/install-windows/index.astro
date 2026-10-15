@@ -53,6 +53,22 @@ import { DIGUP_UI, SITE } from '../../../lib/site';
         <a class="cta" href={SITE.downloads.windows} rel="noopener noreferrer" download>下载 DigUp（Windows）</a>
         <a class="cta-secondary" href="/zh/faq/">常见问题</a>
       </div>
+
+      <h2>数据快照（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>数值</th></tr></thead>
+        <tbody>
+          <tr><td>标签</td><td>v0.7.0-beta.1</td></tr>
+          <tr><td>Windows 安装包下载</td><td>约 135</td></tr>
+          <tr><td>Mac DMG 0.6.1</td><td>约 4,689</td></tr>
+          <tr><td>本测试版缺口</td><td>无截图 OCR 文本；跳过 .doc / RAW / SVG</td></tr>
+        </tbody>
+      </table>
+      <p>一周详解：<a href="/zh/guides/win-linux-beta/">Win/Linux 测试版指南</a>。非官方关联。</p>
+
+      <h2>用 <code>speed.log</code> 看 GPU</h2>
+      <p>首次启动后查看本地日志最后一行是否含 <code>"device": "gpu"</code> 或 <code>"cpu"</code>；向上游反馈时请附上。</p>
+
     </article>
   </main>
 </Layout>

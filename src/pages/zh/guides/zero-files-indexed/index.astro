@@ -1,0 +1,89 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp 显示「索引了 0 个文件」怎么办 — 云占位、完全磁盘访问、代码目录"
+  description="排查 DigUp「索引为 0」：iCloud/OneDrive 占位文件、完全磁盘访问、代码目录（#21）与日志。社区指南——非官方关联。"
+  canonicalPath="/guides/zero-files-indexed/"
+  lang="zh"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">指南</span> · 排障</p>
+      <h1>为什么 DigUp 显示索引了 0 个文件</h1>
+      <p class="lead">加了文件夹却几乎为 0，常见原因是云端占位、权限，或代码目录需要单独开启——不一定是安装坏了。依据上游议题 <a href="https://github.com/ARahim3/DigUp/issues/67" rel="noopener noreferrer">#67</a>、<a href="https://github.com/ARahim3/DigUp/issues/61" rel="noopener noreferrer">#61</a>、<a href="https://github.com/ARahim3/DigUp/issues/21" rel="noopener noreferrer">#21</a> 整理。与 ARahim3 无关联。</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href="/zh/faq/#empty-index">常见问题</a>
+        <a class="cta-secondary" href="/zh/install-mac/">Mac 安装</a>
+      </div>
+
+      <h2>数据快照（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>事实</th><th>数值</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>Stars / forks</td><td>约 3,768 / 254</td><td>GitHub API</td></tr>
+          <tr><td>Mac 版本</td><td>0.6.1 · DMG 下载约 4,689</td><td>Release 资源</td></tr>
+          <tr><td>模型</td><td>约 865 MB EmbeddingGemma 2</td><td>README / 发行说明</td></tr>
+          <tr><td>示例（#61）</td><td>20,115 / 20,137 个文件为 dataless（仅在线）</td><td>议题讨论</td></tr>
+        </tbody>
+      </table>
+
+      <h2>原因 → 检查 → 处理</h2>
+      <table>
+        <thead><tr><th>原因</th><th>如何检查</th><th>处理</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>云占位文件</strong>（iCloud 优化存储、OneDrive / 群晖按需同步）</td>
+            <td>访达显示云图标；打开才开始下载。见 <a href="https://github.com/ARahim3/DigUp/issues/61" rel="noopener noreferrer">#61</a>。</td>
+            <td>右键 → <strong>立即下载</strong>。DigUp 不会替你下载仅在线文件。</td>
+          </tr>
+          <tr>
+            <td><strong>完全磁盘访问</strong>未生效</td>
+            <td>系统设置 → 隐私与安全性 → 完全磁盘访问。</td>
+            <td>开关一次；完全退出菜单栏 DigUp 与 Activity Monitor 中残留 helper，再打开。</td>
+          </tr>
+          <tr>
+            <td><strong>代码目录</strong>未开启</td>
+            <td>主要是源码树。见 <a href="https://github.com/ARahim3/DigUp/issues/21" rel="noopener noreferrer">#21</a>。</td>
+            <td>开启代码搜索 / 勾选代码文件夹；用 <code>code:</code> 前缀查询。</td>
+          </tr>
+          <tr>
+            <td><strong>类型被跳过</strong></td>
+            <td>文件夹里几乎都是不支持的 Office/加密格式。</td>
+            <td>见已关闭议题 <a href="https://github.com/ARahim3/DigUp/issues/4" rel="noopener noreferrer">#4</a>；先试本地照片/PDF 文件夹。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>步骤清单</h2>
+      <ol class="checklist">
+        <li>确认 Mac 版为 <strong>0.6.1+</strong>（Homebrew 或 <a href={SITE.downloads.mac} rel="noopener noreferrer" download>DMG</a>）。</li>
+        <li>在 Settings → Folders 核对已添加路径。</li>
+        <li>在访达打开这些文件夹：有云图标则先本地下载。</li>
+        <li>重新授予<strong>完全磁盘访问</strong>；彻底退出后重开。</li>
+        <li>若是代码库，开启代码索引并试用 <code>code:</code>。</li>
+        <li>查看日志（分享前打码路径）：
+          <pre><code>~/Library/Application Support/DigUp/index.noindex/
+# 查看 app.log 与 indexer.log</code></pre>
+        </li>
+        <li>仍不行：在 <a href="https://github.com/ARahim3/DigUp/issues/67" rel="noopener noreferrer">#67</a> 说明系统、芯片、版本、是否云同步。</li>
+      </ol>
+
+      <div class="cards">
+        <a class="card" href="/zh/guides/battery-and-indexing-hours/"><h3>耗电与索引时段</h3><p>夜间计划、电池上暂停</p></a>
+        <a class="card" href="/zh/guides/win-linux-beta/"><h3>Win/Linux 测试版</h3><p>0.7.0-beta.1</p></a>
+        <a class="card" href="/zh/faq/"><h3>常见问题</h3><p>短答</p></a>
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.mac} rel="noopener noreferrer" download>下载 DigUp（Mac）</a>
+        <a class="cta-secondary" href={SITE.upstreamRepo} rel="noopener noreferrer">ARahim3/DigUp</a>
+      </div>
+    </article>
+  </main>
+</Layout>

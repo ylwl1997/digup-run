@@ -1,0 +1,79 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { SITE } from '../../../../lib/site';
+---
+<Layout
+  title="DigUp Windows / Linux 测试版一周指南 — SmartScreen、能力缺口、GPU"
+  description="DigUp v0.7.0-beta.1：SmartScreen、相对 Mac 0.6.1 的缺口、speed.log GPU 检查、下载量。社区指南——非官方关联。"
+  canonicalPath="/guides/win-linux-beta/"
+  lang="zh"
+>
+  <main class="wrap">
+    <header class="page-hero">
+      <p class="meta-line"><span class="badge">指南</span> · 测试版 · {SITE.downloads.windowsVersion}</p>
+      <h1>Windows 与 Linux 测试版——第一周</h1>
+      <p class="lead">官方 <strong>v0.7.0-beta.1</strong> 用 Tauri 壳带来与 Mac 相同的 EmbeddingGemma 2 思路——实战时间远更少。安装前先读本页，再跟平台安装指南。跟踪议题：<a href="https://github.com/ARahim3/DigUp/issues/63" rel="noopener noreferrer">#63</a>、<a href="https://github.com/ARahim3/DigUp/issues/1" rel="noopener noreferrer">#1</a>、<a href="https://github.com/ARahim3/DigUp/issues/5" rel="noopener noreferrer">#5</a>。非官方关联。</p>
+    </header>
+
+    <article class="wide">
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows 安装包</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>Linux .deb</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a>
+      </div>
+
+      <h2>下载量快照（2026-10-15）</h2>
+      <table>
+        <thead><tr><th>资源</th><th>下载</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>Mac DMG 0.6.1</td><td>约 4,689</td><td>稳定</td></tr>
+          <tr><td>Windows x64 setup</td><td>约 135</td><td>预发布</td></tr>
+          <tr><td>Linux AppImage</td><td>约 56</td><td>预发布</td></tr>
+          <tr><td>Linux .deb</td><td>约 18</td><td>预发布</td></tr>
+          <tr><td>Stars / forks</td><td>约 3,768 / 254</td><td>扫描时仓库约 7 天</td></tr>
+        </tbody>
+      </table>
+
+      <h2>平台 × 版本 × 缺口</h2>
+      <table>
+        <thead><tr><th>平台</th><th>版本</th><th>本测试版缺口</th></tr></thead>
+        <tbody>
+          <tr><td>macOS</td><td>0.6.1 稳定</td><td>仅 Apple Silicon</td></tr>
+          <tr><td>Windows 10/11 x64</td><td>0.7.0-beta.1</td><td>未签名 → SmartScreen；尚无截图 OCR 文本；跳过 .doc / RAW / SVG</td></tr>
+          <tr><td>Linux amd64</td><td>0.7.0-beta.1</td><td>同上；.deb 包名 <code>dig-up</code>；Wayland 快捷键需注意</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Windows：SmartScreen</h2>
+      <ol class="checklist">
+        <li>仅从 <a href={SITE.downloads.windows} rel="noopener noreferrer" download>本站 Windows 按钮</a>下载。</li>
+        <li>SmartScreen：<strong>更多信息</strong> → <strong>仍要运行</strong>。</li>
+        <li>首次约 865 MB 模型；快捷键 <strong>Ctrl+Shift+Space</strong>。</li>
+      </ol>
+      <p>完整步骤：<a href="/zh/install-windows/">在 Windows 上安装</a>。</p>
+
+      <h2>Linux：.deb 与 AppImage</h2>
+      <ol class="checklist">
+        <li>Ubuntu/Debian/Mint：<a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a>。</li>
+        <li>其他发行版：<a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a> → <code>chmod +x</code>。</li>
+      </ol>
+      <p>完整步骤：<a href="/zh/install-linux/">在 Linux 上安装</a>。</p>
+
+      <h2>GPU / CPU — 看 <code>speed.log</code></h2>
+      <pre><code># 最后一行应含 "device": "gpu" 或 "cpu"
+# 具体目录以当前发行说明 / 设置为准</code></pre>
+
+      <div class="cards">
+        <a class="card" href="/zh/install-windows/"><h3>Windows 安装</h3><p>清单 + SmartScreen</p></a>
+        <a class="card" href="/zh/install-linux/"><h3>Linux 安装</h3><p>.deb 与 AppImage</p></a>
+        <a class="card" href="/zh/guides/zero-files-indexed/"><h3>索引为 0</h3><p>测试版同样适用</p></a>
+      </div>
+
+      <div class="cta-bar">
+        <a class="cta" href={SITE.downloads.windows} rel="noopener noreferrer" download>Windows</a>
+        <a class="cta-secondary" href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a>
+        <a class="cta-secondary" href={SITE.downloads.mac} rel="noopener noreferrer" download>Mac DMG</a>
+      </div>
+    </article>
+  </main>
+</Layout>
