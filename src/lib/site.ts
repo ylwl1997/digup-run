@@ -13,13 +13,13 @@ export const SITE = {
     mac: 'https://github.com/ARahim3/DigUp/releases/download/v0.6.1/DigUp-0.6.1.dmg',
     macVersion: '0.6.1',
     windows:
-      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.1/DigUp_0.7.0-beta.1_x64-setup.exe',
-    windowsVersion: '0.7.0-beta.1',
+      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.2/DigUp_0.7.0-beta.2_x64-setup.exe',
+    windowsVersion: '0.7.0-beta.2',
     linuxDeb:
-      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.1/DigUp_0.7.0-beta.1_amd64.deb',
+      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.2/DigUp_0.7.0-beta.2_amd64.deb',
     linuxAppImage:
-      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.1/DigUp_0.7.0-beta.1_amd64.AppImage',
-    linuxVersion: '0.7.0-beta.1',
+      'https://github.com/ARahim3/DigUp/releases/download/v0.7.0-beta.2/DigUp_0.7.0-beta.2_amd64.AppImage',
+    linuxVersion: '0.7.0-beta.2',
   },
   disclaimerEn: 'Based on DigUp (MIT). Not affiliated.',
   disclaimerZh: '基于 DigUp（MIT）。非官方关联。',

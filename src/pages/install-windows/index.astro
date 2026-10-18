@@ -4,7 +4,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
 ---
 <Layout
   title={'Install DigUp on Windows (0.7 Beta) — Setup Guide'}
-  description={'How to install DigUp 0.7 beta on 64-bit Windows 10/11: download DigUp_0.7.0-beta.1_x64-setup.exe, SmartScreen "Run anyway," model download, and Ctrl+Shift+Space.'}
+  description={'How to install DigUp 0.7 beta on 64-bit Windows 10/11: download DigUp_0.7.0-beta.2_x64-setup.exe, SmartScreen "Run anyway," model download, and Ctrl+Shift+Space.'}
   canonicalPath="/install-windows/"
   lang="en"
   ogImage={DIGUP_UI.pdf.src}
@@ -38,14 +38,14 @@ import { DIGUP_UI, SITE } from '../../lib/site';
           <tr><td><strong>OS</strong></td><td>64-bit Windows 10 or 11</td></tr>
           <tr><td><strong>Installer</strong></td><td>Per-user; no admin rights required</td></tr>
           <tr><td><strong>Signing</strong></td><td>Installer not signed yet → SmartScreen “More info” → <strong>Run anyway</strong></td></tr>
-          <tr><td><strong>Asset</strong></td><td><code>DigUp_0.7.0-beta.1_x64-setup.exe</code></td></tr>
+          <tr><td><strong>Asset</strong></td><td><code>DigUp_0.7.0-beta.2_x64-setup.exe</code></td></tr>
           <tr><td><strong>Model</strong></td><td>~865 MB download on first launch</td></tr>
         </tbody>
       </table>
 
       <h2>Install checklist</h2>
       <ol class="checklist">
-        <li>Download <a href={SITE.downloads.windows} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.1_x64-setup.exe</code></a>.</li>
+        <li>Download <a href={SITE.downloads.windows} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.2_x64-setup.exe</code></a>.</li>
         <li>Run the installer. If Windows SmartScreen appears: <strong>More info</strong> → <strong>Run anyway</strong>.</li>
         <li>Launch DigUp. Let the model download while you pick folders to search.</li>
         <li>Note the first-pass time estimate for your machine.</li>
@@ -58,7 +58,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
       <pre><code>%LOCALAPPDATA%\com.arahim3.digup\logs\speed.log</code></pre>
       <p class="muted">Look for <code>"device": "gpu"</code> or <code>"device": "cpu"</code>. Path may vary by build — check DigUp Settings / docs if missing.</p>
 
-      <h2>Beta limits (0.7.0-beta.1)</h2>
+      <h2>Beta limits (0.7.0-beta.2)</h2>
       <ul class="checklist">
         <li><strong>No screenshot OCR text yet</strong> — screenshots are found by what they show, not by typing the on-screen code into search.</li>
         <li><strong>Skipped on this beta:</strong> old Word <code>.doc</code>, RAW photos, SVG.</li>
@@ -71,7 +71,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
           <tr><th>Fact</th><th>Value</th></tr>
         </thead>
         <tbody>
-          <tr><td>Tag</td><td>v0.7.0-beta.1 (prerelease)</td></tr>
+          <tr><td>Tag</td><td>v0.7.0-beta.2 (prerelease)</td></tr>
           <tr><td>Published</td><td>2026-10-14 (UTC)</td></tr>
           <tr><td>Mac stays at</td><td>0.6.1 (not in the 0.7 Windows/Linux release bundle)</td></tr>
           <tr><td>Upstream stars</td><td>~3,716</td></tr>
@@ -89,7 +89,7 @@ import { DIGUP_UI, SITE } from '../../lib/site';
       <table>
         <thead><tr><th>Fact</th><th>Value</th></tr></thead>
         <tbody>
-          <tr><td>Tag</td><td>v0.7.0-beta.1</td></tr>
+          <tr><td>Tag</td><td>v0.7.0-beta.2</td></tr>
           <tr><td>Windows setup downloads</td><td>~135 (scan)</td></tr>
           <tr><td>Mac DMG 0.6.1 downloads</td><td>~4,689</td></tr>
           <tr><td>Stars</td><td>~3,768</td></tr>
