@@ -4,7 +4,7 @@ import { SITE } from '../../lib/site';
 ---
 <Layout
   title="DigUp Release Notes Summary — 0.6.1 & 0.7 Beta"
-  description="Plain-English summary of DigUp 0.6.1 Mac fixes and 0.7.0-beta.1 Windows/Linux launch."
+  description="Plain-English summary of DigUp 0.6.1 Mac fixes and 0.7.0-beta.2 Windows/Linux updates."
   canonicalPath="/changelog-notes/"
   lang="en"
 >
@@ -12,7 +12,7 @@ import { SITE } from '../../lib/site';
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Summary</span></p>
       <h1>DigUp changelog notes</h1>
-      <p class="lead">Condensed highlights for DigUp 0.6.1 (Mac) and 0.7.0-beta.1 (Windows/Linux). Versions cited were current on 2026-10-15.</p>
+      <p class="lead">Condensed highlights for DigUp 0.6.1 (Mac) and 0.7.0-beta.2 (Windows/Linux). Versions cited were current on 2026-10-19. Based on DigUp (MIT).</p>
     </header>
 
     <article class="wide">
@@ -40,31 +40,55 @@ import { SITE } from '../../lib/site';
           <tr><td><strong>Offline model</strong></td><td><strong>Use Files…</strong> when network blocks the model download.</td></tr>
         </tbody>
       </table>
-      <p>Full install steps: <a href="/install-mac/">Install DigUp on Mac</a>.</p>
+      <p>Full install steps: <a href="/install-mac/">Install DigUp on Mac</a>. Mac is not in the 0.7.0-beta.2 train; next Mac release will carry the code-search security fix.</p>
 
-      <h2>0.7.0-beta.1 — Windows &amp; Linux (beta)</h2>
-      <p class="muted">Tag <code>v0.7.0-beta.1</code> · published 2026-10-14 · Mac remains on 0.6.1 in this train</p>
+      <h2>0.7.0-beta.2 — Windows &amp; Linux (beta)</h2>
+      <p class="muted">Tag <code>v0.7.0-beta.2</code> · published 2026-10-18 · Mac remains on 0.6.1 · follows first beta (<code>v0.7.0-beta.1</code>, 2026-10-14)</p>
+      <p>Fixes what people hit in beta.1 on Windows and Linux, plus three security hardening items. From this version, Windows and Linux update tracks are separate.</p>
+
+      <h3>Stability fixes</h3>
       <ul class="checklist">
-        <li><strong>Windows:</strong> <code>DigUp_0.7.0-beta.1_x64-setup.exe</code>, per-user, unsigned → SmartScreen Run anyway.</li>
-        <li><strong>Linux:</strong> <code>DigUp_0.7.0-beta.1_amd64.deb</code> / <code>DigUp_0.7.0-beta.1_amd64.AppImage</code>; <code>chmod +x</code> for AppImage.</li>
+        <li><strong>Windows — 2–4&nbsp;GB file index stall:</strong> a single file between 2 and 4&nbsp;GB in a chosen folder stopped indexing before it started, so that folder and folders after it never got indexed. Fixed (upstream #87 / #100).</li>
+        <li><strong>Linux AppImage — GStreamer hang:</strong> the search panel no longer freezes when a recording ranks first. The AppImage was missing GStreamer plugins WebKit needs (upstream #64).</li>
+        <li><strong>Linux — model download resume:</strong> on some distros (Debian 13, Ubuntu 26.04 among them), the model download stopped after each finished file and DigUp had to be reopened. It now finishes in one go; if a download ends silently, DigUp re-checks files before calling it failed (upstream #64, #92).</li>
+        <li><strong>Linux — indexing helper exit:</strong> the helper no longer stays in the background until DigUp quits (upstream #63).</li>
+        <li><strong>Linux — AppImage login entry:</strong> extracted AppImage login entries now run AppRun instead of crashing at login (upstream #125).</li>
+        <li><strong>Preview / file robustness:</strong> stop-words no longer highlight as matches; preview jumps to real hits. Malformed RTF or damaged HEIF is skipped instead of killing the helper.</li>
+      </ul>
+
+      <h3>Security</h3>
+      <ul class="checklist">
+        <li><strong>Code search / git config:</strong> listing a repo no longer lets that folder’s own git configuration run a program. Unzipped or copied project folders could carry such a config; normal clones were never affected, and code search stays off unless you enable it.</li>
+        <li><strong>Crafted HEIF / zip bomb:</strong> a crafted HEIF photo, or a document with a zip entry claiming gigabytes, could stop the indexing helper on Linux and Windows — hardened.</li>
+        <li>Advisories follow upstream; Mac will pick up the code-search fix in its next release.</li>
+      </ul>
+
+      <h3>New</h3>
+      <ul class="checklist">
+        <li>Settings → General → <strong>“Run the model on the processor”</strong> for machines whose GPU returns empty or wrong results (upstream #97).</li>
+      </ul>
+
+      <h3>Downloads</h3>
+      <ul class="checklist">
+        <li><strong>Windows:</strong> <a href={SITE.downloads.windows} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.2_x64-setup.exe</code></a> — 64-bit Windows 10/11, per-user, unsigned → SmartScreen More info → Run anyway. Windows installer / AppImage self-update from beta.1.</li>
+        <li><strong>Linux:</strong> <a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.2_amd64.deb</code></a> (package <code>dig-up</code>) or <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.2_amd64.AppImage</code></a>; <code>chmod +x</code> for AppImage. Reinstall .deb over beta.1.</li>
         <li><strong>Hotkey:</strong> Ctrl+Shift+Space; Wayland GNOME/KDE can register it; other desktops bind manually.</li>
-        <li><strong>GPU/CPU:</strong> automatic choice; check <code>speed.log</code> in DigUp’s local log folder.</li>
-        <li><strong>Not yet:</strong> screenshot OCR text; skip .doc / RAW / SVG on this beta.</li>
+        <li><strong>Still not in this beta:</strong> screenshot OCR text; skip .doc / RAW / SVG on Win/Linux beta.</li>
       </ul>
       <ol class="checklist">
         <li>Follow <a href="/install-windows/">Windows</a> or <a href="/install-linux/">Linux</a> checklists.</li>
         <li>Report issues upstream with the <code>speed.log</code> device line when GPU behavior matters.</li>
       </ol>
 
-      <h2>Version matrix (2026-10-15)</h2>
+      <h2>Version matrix (2026-10-19)</h2>
       <table>
         <thead>
           <tr><th>Platform</th><th>Version</th><th>Channel</th></tr>
         </thead>
         <tbody>
           <tr><td>macOS</td><td>0.6.1</td><td>Stable</td></tr>
-          <tr><td>Windows</td><td>0.7.0-beta.1</td><td>Beta</td></tr>
-          <tr><td>Linux</td><td>0.7.0-beta.1</td><td>Beta</td></tr>
+          <tr><td>Windows</td><td>0.7.0-beta.2</td><td>Beta</td></tr>
+          <tr><td>Linux</td><td>0.7.0-beta.2</td><td>Beta</td></tr>
         </tbody>
       </table>
 

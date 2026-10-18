@@ -4,7 +4,7 @@ import { SITE } from '../../../lib/site';
 ---
 <Layout
   title="DigUp Windows & Linux Beta First-Week Guide — SmartScreen, Gaps, GPU"
-  description="DigUp v0.7.0-beta.1 on Windows and Linux: SmartScreen, capability gaps vs Mac 0.6.1, speed.log GPU check, download counts. Community guide — not affiliated."
+  description="DigUp v0.7.0-beta.2 on Windows and Linux: SmartScreen, capability gaps vs Mac 0.6.1, speed.log GPU check, download counts. Community guide — not affiliated."
   canonicalPath="/guides/win-linux-beta/"
   lang="en"
 >
@@ -12,7 +12,7 @@ import { SITE } from '../../../lib/site';
     <header class="page-hero">
       <p class="meta-line"><span class="badge">Guide</span> · Beta · {SITE.downloads.windowsVersion}</p>
       <h1>DigUp on Windows &amp; Linux beta — first week</h1>
-      <p class="lead">Official <strong>v0.7.0-beta.1</strong> packages ship a Tauri shell with the same EmbeddingGemma 2 idea as Mac — far less field time. Use this page before you install, then the platform install guides. Tracking: <a href="https://github.com/ARahim3/DigUp/issues/63" rel="noopener noreferrer">#63</a>, <a href="https://github.com/ARahim3/DigUp/issues/1" rel="noopener noreferrer">#1</a>, <a href="https://github.com/ARahim3/DigUp/issues/5" rel="noopener noreferrer">#5</a>. Not affiliated.</p>
+      <p class="lead">Official <strong>v0.7.0-beta.2</strong> packages ship a Tauri shell with the same EmbeddingGemma 2 idea as Mac — far less field time. Use this page before you install, then the platform install guides. Tracking: <a href="https://github.com/ARahim3/DigUp/issues/63" rel="noopener noreferrer">#63</a>, <a href="https://github.com/ARahim3/DigUp/issues/1" rel="noopener noreferrer">#1</a>, <a href="https://github.com/ARahim3/DigUp/issues/5" rel="noopener noreferrer">#5</a>. Not affiliated.</p>
     </header>
 
     <article class="wide">
@@ -39,14 +39,14 @@ import { SITE } from '../../../lib/site';
         <thead><tr><th>Platform</th><th>Version</th><th>Gaps on this beta</th></tr></thead>
         <tbody>
           <tr><td>macOS</td><td>0.6.1 stable</td><td>Apple Silicon only</td></tr>
-          <tr><td>Windows 10/11 x64</td><td>0.7.0-beta.1</td><td>Unsigned → SmartScreen; no screenshot OCR text yet; skip .doc / RAW / SVG</td></tr>
-          <tr><td>Linux amd64</td><td>0.7.0-beta.1</td><td>Same capability gaps; .deb package name <code>dig-up</code>; Wayland shortcut quirks</td></tr>
+          <tr><td>Windows 10/11 x64</td><td>0.7.0-beta.2</td><td>Unsigned → SmartScreen; no screenshot OCR text yet; skip .doc / RAW / SVG</td></tr>
+          <tr><td>Linux amd64</td><td>0.7.0-beta.2</td><td>Same capability gaps; .deb package name <code>dig-up</code>; Wayland shortcut quirks</td></tr>
         </tbody>
       </table>
 
       <h2>Windows: SmartScreen</h2>
       <ol class="checklist">
-        <li>Download only via <a href={SITE.downloads.windows} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.1_x64-setup.exe</code></a>.</li>
+        <li>Download only via <a href={SITE.downloads.windows} rel="noopener noreferrer" download><code>DigUp_0.7.0-beta.2_x64-setup.exe</code></a>.</li>
         <li>If SmartScreen appears: <strong>More info</strong> → <strong>Run anyway</strong> (unsigned beta).</li>
         <li>Per-user install; no admin required.</li>
         <li>First launch: ~865 MB model; pick folders; hotkey <strong>Ctrl+Shift+Space</strong>.</li>
@@ -55,7 +55,7 @@ import { SITE } from '../../../lib/site';
 
       <h2>Linux: .deb vs AppImage</h2>
       <ol class="checklist">
-        <li>Ubuntu 22.04+ / Debian 12+ / Mint 21+: <a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a> → <code>sudo apt install ./DigUp_0.7.0-beta.1_amd64.deb</code>.</li>
+        <li>Ubuntu 22.04+ / Debian 12+ / Mint 21+: <a href={SITE.downloads.linuxDeb} rel="noopener noreferrer" download>.deb</a> → <code>sudo apt install ./DigUp_0.7.0-beta.2_amd64.deb</code>.</li>
         <li>Other distros: <a href={SITE.downloads.linuxAppImage} rel="noopener noreferrer" download>AppImage</a> → <code>chmod +x</code> then run.</li>
         <li>Hotkey Ctrl+Shift+Space; GNOME/KDE Wayland may register during setup.</li>
       </ol>
